@@ -321,19 +321,19 @@ print(friendlyWelcome)
   ```
 -->
 
-The `print(_:separator:terminator:)` function
-is a global function that prints one or more values
-to an appropriate output.
-In Xcode, for example,
-the `print(_:separator:terminator:)` function prints its output in Xcode's “console” pane.
-The `separator` and `terminator` parameter have default values,
-so you can omit them when you call this function.
-By default, the function terminates the line it prints by adding a line break.
-To print a value without a line break after it,
-pass an empty string as the terminator --- for example,
-`print(someValue, terminator: "")`.
-For information about parameters with default values,
-see <doc:Functions#Default-Parameter-Values>.
+Функция `print(_:separator:terminator:)` является глобальной функцией, 
+которая выводит одно или несколько значений в соответствующий вывод. 
+Например, в Xcode функция 
+`print(_:separator:terminator:)` выводит результат в 
+"консольное" окно Xcode. Параметры `separator` и `terminator` имеют значения по 
+умолчанию, поэтому вы можете опустить их при вызове этой функции.
+По умолчанию функция завершает строку, 
+добавляя перевод строки после печатаемого значения. 
+Чтобы вывести значение без перевода строки после него, 
+передайте пустуюстроку в качестве аргумента `terminator` — 
+например, `print(someValue, terminator: "")`. 
+Дополнительную информацию о параметрах со значениями по умолчанию можно найти в 
+разделе <doc:Functions#Default-Parameter-Values>.
 
 <!--
   - test: `printingWithoutNewline`
@@ -347,19 +347,19 @@ see <doc:Functions#Default-Parameter-Values>.
 -->
 
 <!--
-  QUESTION: have I referred to Xcode's console correctly here?
-  Should I mention other output streams, such as the REPL / playgrounds?
+  ВОПРОС: я правильно обратился к консоли Xcode здесь? 
+  Следует ли упомянуть другие потоки вывода, такие как REPL / песочницы?
 -->
 
 <!--
-  NOTE: this is a deliberately simplistic description of what you can do with print().
-  It will be expanded later on.
+  ПРИМЕЧАНИЕ: это преднамеренно упрощенное описание того, что вы можете сделать с функцией print(). 
+  Позже оно будет расширено.
 -->
 
-Swift uses *string interpolation* to include the name of a constant or variable
-as a placeholder in a longer string,
-and to prompt Swift to replace it with the current value of that constant or variable.
-Wrap the name in parentheses and escape it with a backslash before the opening parenthesis:
+Swift использует *интерполяцию строк* для включения имени константы или переменной
+в качестве заполнителя в более длинной строке и для того, чтобы побудить Swift 
+заменить его текущим значением этой константы или переменной. Оберните имя в 
+круглые скобки и предварительно экранируйте его обратным слешем перед открывающей круглой скобкой:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
@@ -375,20 +375,20 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
   ```
 -->
 
-> Note: All options you can use with string interpolation
-> are described in <doc:StringsAndCharacters#String-Interpolation>.
+> Примечание: Все варианты использования интерполяции строк описаны 
+> в разделе <doc:StringsAndCharacters#String-Interpolation>.
 
-## Comments
+## Комментарии
 
-Use comments to include nonexecutable text in your code,
-as a note or reminder to yourself.
-Comments are ignored by the Swift compiler when your code is compiled.
+Используйте комментарии для включения неисполняемого текста в ваш код в виде 
+заметки или напоминания для себя. 
+Комментарии игнорируются компилятором Swift при компиляции вашего кода.
 
-Comments in Swift are very similar to comments in C.
-Single-line comments begin with two forward-slashes (`//`):
+Комментарии в Swift очень похожи на комментарии в C. 
+Однострочные комментарии начинаются с двух косых черт (`//`):
 
 ```swift
-// This is a comment.
+// Это комментарий.
 ```
 
 <!--
@@ -399,12 +399,12 @@ Single-line comments begin with two forward-slashes (`//`):
   ```
 -->
 
-Multiline comments start with a forward-slash followed by an asterisk (`/*`)
-and end with an asterisk followed by a forward-slash (`*/`):
+Многострочные комментарии начинаются с косой черты, за которой следует звезда (`/*`),
+и заканчиваются звездой, за которой следует косая черта (`*/`):
 
 ```swift
-/* This is also a comment
-but is written over multiple lines. */
+/* Это также комментарий,
+но написанный на нескольких строках. */
 ```
 
 <!--
@@ -416,16 +416,16 @@ but is written over multiple lines. */
   ```
 -->
 
-Unlike multiline comments in C,
-multiline comments in Swift can be nested inside other multiline comments.
-You write nested comments by starting a multiline comment block
-and then starting a second multiline comment within the first block.
-The second block is then closed, followed by the first block:
+В отличие от многострочных комментариев в C, многострочные комментарии в Swift 
+могут быть вложены друг в друга. Вы создаете вложенные комментарии, 
+начиная блок многострочного комментария, а затем начиная второй многострочный 
+комментарий внутри первого блока. Затем второй блок закрывается, 
+за которым следует первый блок:
 
 ```swift
-/* This is the start of the first multiline comment.
-    /* This is the second, nested multiline comment. */
-This is the end of the first multiline comment. */
+/* Это начало первого многострочного комментария.
+    /* Это второй, вложенный многострочный комментарий. */
+Это конец первого многострочного комментария. */
 ```
 
 <!--
@@ -438,20 +438,20 @@ This is the end of the first multiline comment. */
   ```
 -->
 
-Nested multiline comments enable you to comment out large blocks of code quickly and easily,
-even if the code already contains multiline comments.
+Вложенные многострочные комментарии позволяют вам быстро и легко комментировать 
+большие блоки кода, даже если код уже содержит многострочные комментарии.
 
-## Semicolons
+## Точки с запятой
 
-Unlike many other languages,
-Swift doesn't require you to write a semicolon (`;`) after each statement in your code,
-although you can do so if you wish.
-However, semicolons *are* required
-if you want to write multiple separate statements on a single line:
+В отличие от многих других языков программирования, в Swift нет обязательства 
+ставить точку с запятой (`;`) после каждого оператора в вашем коде, 
+хотя вы можете сделать это, если хотите. 
+Однако точки с запятой *обязательны*, 
+если вы хотите написать несколько отдельных операторов в одной строке:
 
 ```swift
 let cat = "🐱"; print(cat)
-// Prints "🐱"
+// Выводит "🐱"
 ```
 
 <!--
@@ -463,143 +463,143 @@ let cat = "🐱"; print(cat)
   ```
 -->
 
-## Integers
+## Целые числа
 
-*Integers* are whole numbers with no fractional component,
-such as `42` and `-23`.
-Integers are either *signed* (positive, zero, or negative)
-or *unsigned* (positive or zero).
+*Целые числа* - это целые числа без дробной части, 
+такие как `42` и `-23`. 
+Целые числа бывают *знаковыми* (положительные, ноль или отрицательные)
+или *беззнаковыми* (положительные или ноль).
 
-Swift provides signed and unsigned integers in 8, 16, 32, and 64 bit forms.
-These integers follow a naming convention similar to C,
-in that an 8-bit unsigned integer is of type `UInt8`,
-and a 32-bit signed integer is of type `Int32`.
-Like all types in Swift, these integer types have capitalized names.
+Swift предоставляет знаковые и беззнаковые целые числа в формах 8, 16, 32 и 64 бита. 
+Эти целые числа следуют конвенции имен, аналогичной C, 
+где 8-битное беззнаковое целое число имеет тип `UInt8`, 
+а 32-битное знаковое целое число - тип `Int32`. Как и все типы в Swift, 
+эти типы целых чисел начинаются с заглавной буквы.
 
-### Integer Bounds
+### Границы целых чисел
 
-You can access the minimum and maximum values of each integer type
-with its `min` and `max` properties:
+Вы можете получить доступ к минимальным и максимальным значениям каждого типа 
+целого числа с использованием свойств `min` и `max`:
 
 ```swift
-let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
-let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+let minValue = UInt8.min  // minValue равно 0, и имеет тип UInt8
+let maxValue = UInt8.max  // maxValue равно 255, и имеет тип UInt8
 ```
 
 <!--
   - test: `integerBounds`
 
   ```swifttest
-  -> let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
-  -> let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+  -> let minValue = UInt8.min  // minValue равно 0, и имеет тип UInt8
+  -> let maxValue = UInt8.max  // maxValue равно 255, и имеет тип UInt8
   >> print(minValue, maxValue)
   << 0 255
   ```
 -->
 
-The values of these properties are of the appropriate-sized number type
-(such as `UInt8` in the example above)
-and can therefore be used in expressions alongside other values of the same type.
+Значения этих свойств соответствуют числам с соответствующим размером (например,
+`UInt8` в приведенном выше примере) и, следовательно, 
+могут использоваться в выражениях вместе с другими значениями того же типа.
 
 ### Int
 
-In most cases, you don't need to pick a specific size of integer to use in your code.
-Swift provides an additional integer type, `Int`,
-which has the same size as the current platform's native word size:
+В большинстве случаев вам не нужно выбирать конкретный размер целого числа для 
+использования в вашем коде.  Swift предоставляет дополнительный тип целого числа, Int, 
+который имеет тот же размер, что и разрядность вашей системы:
 
-- On a 32-bit platform, `Int` is the same size as `Int32`.
-- On a 64-bit platform, `Int` is the same size as `Int64`.
+- На 32-битной платформе `Int` имеет тот же размер, что и `Int32`.
+- На 64-битной платформе `Int` имеет тот же размер, что и `Int64`.
 
-Unless you need to work with a specific size of integer,
-always use `Int` for integer values in your code.
-This aids code consistency and interoperability.
-Even on 32-bit platforms, `Int` can store any value between `-2,147,483,648` and `2,147,483,647`,
-and is large enough for many integer ranges.
+Если вам не нужно работать с конкретным размером целого числа, всегда 
+используйте `Int` для целочисленных значений в вашем коде. 
+Это способствует согласованности кода и взаимодействию. 
+Даже на 32-битных платформах `Int` может хранить любое значение между 
+`-2,147,483,648` и `2,147,483,647` и достаточно велико для многих диапазонов целых чисел.
 
 ### UInt
 
-Swift also provides an unsigned integer type, `UInt`,
-which has the same size as the current platform's native word size:
+Swift также предоставляет беззнаковый тип целого числа, `UInt`, 
+который имеет тот же размер, что и разрядность вашей системы:
 
-- On a 32-bit platform, `UInt` is the same size as `UInt32`.
-- On a 64-bit platform, `UInt` is the same size as `UInt64`.
+- На 32-битной платформе `UInt` имеет тот же размер, что и `UInt32`.
+- На 64-битной платформе `UInt` имеет тот же размер, что и `UInt64`.
 
-> Note: Use `UInt` only when you specifically need
-> an unsigned integer type with the same size as the platform's native word size.
-> If this isn't the case, `Int` is preferred,
-> even when the values to be stored are known to be nonnegative.
-> A consistent use of `Int` for integer values aids code interoperability,
-> avoids the need to convert between different number types,
-> and matches integer type inference, as described in <doc:TheBasics#Type-Safety-and-Type-Inference>.
+> Примечание: Используйте `UInt` только тогда, когда вам действительно нужен 
+> беззнаковый тип целого числа с тем же размером, что и разрядность вашей системы.
+> Если это не так, предпочтительнее использовать `Int`, даже когда известно, что
+> значения будут неотрицательными. Согласованное использование `Int` для 
+> целочисленных значений облегчит взаимодействие с кодом, избежит необходимости 
+> конвертировать между различными типами чисел и соответствует выводу типа для 
+> целых чисел, как описано в <doc:TheBasics#Type-Safety-and-Type-Inference>.
 
-## Floating-Point Numbers
+## Дробные числа с плавающей запятой
 
-*Floating-point numbers* are numbers with a fractional component,
-such as `3.14159`, `0.1`, and `-273.15`.
+*Дробные числа с плавающей запятой* представляют собой числа с дробной частью,
+такие как `3.14159`, `0.1` и `-273.15`.
 
-Floating-point types can represent a much wider range of values than integer types,
-and can store numbers that are much larger or smaller than can be stored in an `Int`.
-Swift provides two signed floating-point number types:
+Типы дробных чисел могут представлять гораздо более широкий диапазон значений, чем целочисленные типы,
+и могут хранить числа, которые намного больше или меньше тех, что могут быть сохранены в `Int`.
+Swift предоставляет два знаковых типа дробных чисел:
 
-- `Double` represents a 64-bit floating-point number.
-- `Float` represents a 32-bit floating-point number.
+- `Double` представляет собой 64-битное дробное число.
+- `Float` представляет собой 32-битное дробное число.
 
-> Note: `Double` has a precision of at least 15 decimal digits,
-> whereas the precision of `Float` can be as little as 6 decimal digits.
-> The appropriate floating-point type to use depends on the nature and range of
-> values you need to work with in your code.
-> In situations where either type would be appropriate, `Double` is preferred.
+> Примечание: `Double` имеет точность не менее 15 десятичных знаков,
+> в то время как точность `Float` может быть всего 6 десятичных знаков.
+> Выбор между типами дробных чисел зависит от характера и диапазона
+> значений, с которыми вам нужно работать в вашем коде.
+> В ситуациях, где подходит любой из типов, предпочтительнее использовать `Double`.
 
 <!--
-  TODO: Explicitly mention situations where Float is appropriate,
-  such as when optimizing for storage size of collections?
+  TODO: Явно упомянуть ситуации, когда Float подходит,
+  например, при оптимизации размера для коллекций?
 -->
 
 <!--
-  TODO: mention infinity, -infinity etc.
+  TODO: упомянуть бесконечность, -бесконечность и т.д.
 -->
 
-## Type Safety and Type Inference
+## Безопасность типов и вывод типов
 
-Swift is a *type-safe* language.
-A type safe language encourages you to be clear about
-the types of values your code can work with.
-If part of your code requires a `String`, you can't pass it an `Int` by mistake.
+Swift - *язык со строгой типизацией*.
+Язык со строгой типизацией побуждает вас быть ясными относительно
+типов значений, с которыми ваш код может работать.
+Если часть вашего кода требует `String`, вы не сможете передать в нее `Int` по ошибке.
 
-Because Swift is type safe,
-it performs *type checks* when compiling your code
-and flags any mismatched types as errors.
-This enables you to catch and fix errors as early as possible in the development process.
+Поскольку Swift является языком со строгой типизацией,
+он выполняет *проверку типов* при компиляции вашего кода
+и выдает сообщения об ошибках при несоответствии типов.
+Это позволяет вам выявлять и устранять ошибки на ранних этапах разработки.
 
-Type-checking helps you avoid errors when you're working with different types of values.
-However, this doesn't mean that you have to specify the type of
-every constant and variable that you declare.
-If you don't specify the type of value you need,
-Swift uses *type inference* to work out the appropriate type.
-Type inference enables a compiler to
-deduce the type of a particular expression automatically when it compiles your code,
-simply by examining the values you provide.
+Проверка типов помогает вам избегать ошибок при работе с различными типами значений.
+Однако это не означает, что вы должны указывать тип
+каждой константе и переменной, которую вы объявляете.
+Если вы не указываете тип значения,
+Swift использует *вывод типов*, чтобы определить соответствующий тип.
+Вывод типов позволяет компилятору
+автоматически выводить тип конкретного выражения при компиляции вашего кода,
+просто анализируя предоставленные значения.
 
-Because of type inference, Swift requires far fewer type declarations
-than languages such as C or Objective-C.
-Constants and variables are still explicitly typed,
-but much of the work of specifying their type is done for you.
+Из-за вывода типов Swift требует гораздо меньше объявлений типов,
+чем языки, такие как C или Objective-C.
+Константы и переменные по-прежнему имеют явные типы,
+но большая часть работы по указанию их типов делается за вас.
 
-Type inference is particularly useful
-when you declare a constant or variable with an initial value.
-This is often done by assigning a *literal value* (or *literal*)
-to the constant or variable at the point that you declare it.
-(A literal value is a value that appears directly in your source code,
-such as `42` and `3.14159` in the examples below.)
+Вывод типов особенно полезен
+при объявлении констант или переменных с начальным значением.
+Это часто делается с использованием *литерального значения* (или *литерала*),
+присваиваемого константе или переменной в момент ее объявления.
+(Литеральное значение - это значение, которое прямо встроено в ваш исходный код,
+как `42` и `3.14159` в приведенных ниже примерах.)
 
-For example, if you assign a literal value of `42` to a new constant
-without saying what type it is,
-Swift infers that you want the constant to be an `Int`,
-because you have initialized it with a number that looks like an integer:
+Например, если вы присваиваете литеральное значение `42` новой константе,
+не указывая при этом тип, Swift вычисляет, что вы хотите,
+чтобы константа была типа `Int`,
+поскольку вы инициализировали ее числом, похожим на целое:
 
 ```swift
 let meaningOfLife = 42
-// meaningOfLife is inferred to be of type Int
+// meaningOfLife выводится как тип Int
 ```
 
 <!--
@@ -613,12 +613,12 @@ let meaningOfLife = 42
   ```
 -->
 
-Likewise, if you don't specify a type for a floating-point literal,
-Swift infers that you want to create a `Double`:
+Точно так же, если вы не указываете тип для литерала с плавающей точкой,
+Swift выводит, что вы хотите создать `Double`:
 
 ```swift
 let pi = 3.14159
-// pi is inferred to be of type Double
+// pi выводится как тип Double
 ```
 
 <!--
@@ -632,17 +632,16 @@ let pi = 3.14159
   ```
 -->
 
-Swift always chooses `Double` (rather than `Float`)
-when inferring the type of floating-point numbers.
+Swift всегда выбирает `Double` (а не `Float`)
+при выводе типа чисел с плавающей запятой.
 
-If you combine integer and floating-point literals in an expression,
-a type of `Double` will be inferred from the context:
+Если вы комбинируете литералы целых и дробных чисел в выражении,
+тип `Double` будет выведен из контекста:
 
 ```swift
 let anotherPi = 3 + 0.14159
-// anotherPi is also inferred to be of type Double
+// anotherPi также выводится как тип Double
 ```
-
 <!--
   - test: `typeInference`
 
@@ -654,26 +653,27 @@ let anotherPi = 3 + 0.14159
   ```
 -->
 
-The literal value of `3` has no explicit type in and of itself,
-and so an appropriate output type of `Double` is inferred
-from the presence of a floating-point literal as part of the addition.
 
-## Numeric Literals
+Литеральное значение `3` не имеет явного типа само по себе,
+и поэтому подходящий выходной тип `Double` выводится
+из-за присутствия литерала с плавающей точкой в составе сложения.
 
-Integer literals can be written as:
+## Числовые литералы
 
-- A *decimal* number, with no prefix
-- A *binary* number, with a `0b` prefix
-- An *octal* number, with a `0o` prefix
-- A *hexadecimal* number, with a `0x` prefix
+Целочисленные литералы можно записывать следующим образом:
 
-All of these integer literals have a decimal value of `17`:
+- *Десятичное* число, без префикса
+- *Двоичное* число, с префиксом `0b`
+- *Восьмеричное* число, с префиксом `0o`
+- *Шестнадцатеричное* число, с префиксом `0x`
+
+Все эти целочисленные литералы имеют десятичное значение `17`:
 
 ```swift
 let decimalInteger = 17
-let binaryInteger = 0b10001       // 17 in binary notation
-let octalInteger = 0o21           // 17 in octal notation
-let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
+let binaryInteger = 0b10001       // 17 в двоичной записи
+let octalInteger = 0o21       // 17 в восьмеричной записи
+let hexadecimalInteger = 0x11 // 17 в шестнадцатеричной записи
 ```
 
 <!--
@@ -689,13 +689,13 @@ let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
   ```
 -->
 
-Floating-point literals can be decimal (with no prefix),
-or hexadecimal (with a `0x` prefix).
-They must always have a number (or hexadecimal number) on both sides of the decimal point.
-Decimal floats can also have an optional *exponent*,
-indicated by an uppercase or lowercase `e`;
-hexadecimal floats must have an exponent,
-indicated by an uppercase or lowercase `p`.
+Литералы с плавающей запятой могут быть десятичными (без префикса)
+или шестнадцатеричными (с префиксом `0x`).
+Они всегда должны иметь число (или шестнадцатеричное число) по обе стороны от десятичной запятой.
+Десятичные числа с плавающей запятой также могут иметь необязательный *показатель степени*,
+обозначенный заглавной или строчной буквой `e`;
+шестнадцатеричные числа с плавающей запятой должны иметь показатель степени,
+обозначенный заглавной или строчной буквой `p`.
 
 <!--
   - test: `float-required-vs-optional-exponent-err`
@@ -718,19 +718,19 @@ indicated by an uppercase or lowercase `p`.
   ```
 -->
 
-For decimal numbers with an exponent of `x`,
-the base number is multiplied by 10ˣ:
+Для десятичных чисел с показателем степени `x`,
+базовое число умножается на 10ˣ:
 
-- `1.25e2` means 1.25 x 10², or `125.0`.
-- `1.25e-2` means 1.25 x 10⁻², or `0.0125`.
+- `1.25e2` означает 1,25 x 10² или `125.0`.
+- `1.25e-2` означает 1,25 x 10⁻² или `0.0125`.
 
-For hexadecimal numbers with an exponent of `x`,
-the base number is multiplied by 2ˣ:
+Для шестнадцатеричных чисел с показателем степени `x`,
+базовое число умножается на 2ˣ:
 
-- `0xFp2` means 15 x 2², or `60.0`.
-- `0xFp-2` means 15 x 2⁻², or `3.75`.
+- `0xFp2` означает 15 x 2² или `60.0`.
+- `0xFp-2` означает 15 x 2⁻² или `3.75`.
 
-All of these floating-point literals have a decimal value of `12.1875`:
+Все эти литералы с плавающей запятой имеют десятичное значение `12.1875`:
 
 ```swift
 let decimalDouble = 12.1875
@@ -748,10 +748,10 @@ let hexadecimalDouble = 0xC.3p0
   ```
 -->
 
-Numeric literals can contain extra formatting to make them easier to read.
-Both integers and floats can be padded with extra zeros
-and can contain underscores to help with readability.
-Neither type of formatting affects the underlying value of the literal:
+Числовые литералы могут содержать дополнительное форматирование, чтобы их было легче читать.
+Как целые числа, так и числа с плавающей запятой могут быть дополнены дополнительными нулями
+и могут содержать символы подчеркивания для повышения читаемости.
+Ни один из этих типов форматирования не влияет на базовое значение литерала:
 
 ```swift
 let paddedDouble = 000123.456
@@ -769,36 +769,36 @@ let justOverOneMillion = 1_000_000.000_000_1
   ```
 -->
 
-## Numeric Type Conversion
+## Преобразование числовых типов
 
-Use the `Int` type for all general-purpose integer constants and variables in your code,
-even if they're known to be nonnegative.
-Using the default integer type in everyday situations means that
-integer constants and variables are immediately interoperable in your code
-and will match the inferred type for integer literal values.
+Используйте тип `Int` для всех целочисленных констант и переменных в вашем коде,
+даже если известно, что они неотрицательны.
+Использование типа целого числа по умолчанию в повседневных ситуациях означает, что
+целочисленные константы и переменные немедленно взаимосовместимы в вашем коде
+и будут соответствовать выведенному типу для целочисленных литералов.
 
-Use other integer types only when they're specifically needed for the task at hand,
-because of explicitly sized data from an external source,
-or for performance, memory usage, or other necessary optimization.
-Using explicitly sized types in these situations
-helps to catch any accidental value overflows
-and implicitly documents the nature of the data being used.
+Используйте другие целочисленные типы только тогда, когда они действительно необходимы для задачи,
+из-за явно определенных данных из внешнего источника,
+или для выполнения оптимизации производительности, использования памяти или других необходимых оптимизаций.
+Использование явно определенных типов в этих ситуациях
+помогает выявить любые случайные переполнения значений
+и неявно документирует характер используемых данных.
 
-### Integer Conversion
+### Преобразование целых чисел
 
-The range of numbers that can be stored in an integer constant or variable
-is different for each numeric type.
-An `Int8` constant or variable can store numbers between `-128` and `127`,
-whereas a `UInt8` constant or variable can store numbers between `0` and `255`.
-A number that won't fit into a constant or variable of a sized integer type
-is reported as an error when your code is compiled:
+Диапазон чисел, которые можно хранить в константе или переменной целого типа,
+различен для каждого числового типа.
+Константа или переменная типа `Int8` может хранить числа от `-128` до `127`,
+в то время как константа или переменная типа `UInt8` может хранить числа от `0` до `255`.
+Число, которое не помещается в константу или переменную с определенным размером целого числа,
+сообщается как ошибка при компиляции вашего кода:
 
 ```swift
 let cannotBeNegative: UInt8 = -1
-// UInt8 can't store negative numbers, and so this will report an error
+// UInt8 не может хранить отрицательные числа, и поэтому это вызовет ошибку
 let tooBig: Int8 = Int8.max + 1
-// Int8 can't store a number larger than its maximum value,
-// and so this will also report an error
+// Int8 не может хранить число, превышающее его максимальное значение,
+// и поэтому это также вызовет ошибку
 ```
 
 <!--
@@ -819,21 +819,21 @@ let tooBig: Int8 = Int8.max + 1
   ```
 -->
 
-Because each numeric type can store a different range of values,
-you must opt in to numeric type conversion on a case-by-case basis.
-This opt-in approach prevents hidden conversion errors
-and helps make type conversion intentions explicit in your code.
+Поскольку каждый числовой тип может хранить различный диапазон значений,
+вы должны явно выбирать преобразование числового типа в каждом конкретном случае.
+Этот подход предотвращает скрытые ошибки преобразования
+и помогает сделать намерения по преобразованию типов явными в вашем коде.
 
-To convert one specific number type to another,
-you initialize a new number of the desired type with the existing value.
-In the example below,
-the constant `twoThousand` is of type `UInt16`,
-whereas the constant `one` is of type `UInt8`.
-They can't be added together directly,
-because they're not of the same type.
-Instead, this example calls `UInt16(one)` to create
-a new `UInt16` initialized with the value of `one`,
-and uses this value in place of the original:
+Чтобы преобразовать один конкретный числовой тип в другой,
+вы инициализируете новое число нужного типа существующим значением.
+В приведенном ниже примере
+константа `twoThousand` имеет тип `UInt16`,
+тогда как константа `one` имеет тип `UInt8`.
+Их нельзя складывать напрямую,
+потому что они не одного и того же типа.
+Вместо этого в этом примере вызывается `UInt16(one)` для создания
+нового `UInt16`, инициализированного значением `one`,
+и это значение используется вместо исходного:
 
 ```swift
 let twoThousand: UInt16 = 2_000
@@ -853,20 +853,20 @@ let twoThousandAndOne = twoThousand + UInt16(one)
   ```
 -->
 
-Because both sides of the addition are now of type `UInt16`,
-the addition is allowed.
-The output constant (`twoThousandAndOne`) is inferred to be of type `UInt16`,
-because it's the sum of two `UInt16` values.
+Поскольку обе стороны сложения теперь имеют тип `UInt16`,
+сложение разрешено.
+Итоговая константа (`twoThousandAndOne`) выводится как тип `UInt16`,
+потому что это сумма двух значений `UInt16`.
 
-`SomeType(ofInitialValue)` is the default way to call the initializer of a Swift type
-and pass in an initial value.
-Behind the scenes, `UInt16` has an initializer that accepts a `UInt8` value,
-and so this initializer is used to make a new `UInt16` from an existing `UInt8`.
-You can't pass in *any* type here, however ---
-it has to be a type for which `UInt16` provides an initializer.
-Extending existing types to provide initializers that accept new types
-(including your own type definitions)
-is covered in <doc:Extensions>.
+`SomeType(ofInitialValue)` - это типичный способ вызова инициализатора типа Swift
+и передачи начального значения.
+Внутри `UInt16` есть инициализатор, принимающий значение типа `UInt8`,
+и поэтому этот инициализатор используется для создания нового `UInt16` из существующего `UInt8`.
+Здесь вы не можете передавать *любой* тип, однако ---
+это должен быть тип, для которого `UInt16` предоставляет инициализатор.
+Расширение существующих типов для предоставления инициализаторов, принимающих новые типы
+(включая ваши собственные определения типов)
+рассматривается в разделе <doc:Extensions>.
 
 ### Integer and Floating-Point Conversion
 
