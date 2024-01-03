@@ -1,56 +1,54 @@
-# The Swift Programming Language
+# Язык программирования Swift [Русская версия]
 
-This repository contains the source for *The Swift Programming Language*
-(sometimes abbreviated as TSPL),
-which is published on [docs.swift.org][published]
-and built using [Swift-DocC][docc].
+Этот репозиторий содержит исходный код для *Языка программирования Swift*
+(иногда сокращенно как TSPL),
+который публикуется на [docs.swift.org.ru][published](в процессе) 
+и создается с использованием [Swift-DocC][docc].
 
-## Contributing
+## Вклад
 
-For small changes,
-like typo fixes and changes to a few paragraphs,
-fork this repository and make a pull request.
+Для небольших изменений,
+таких как исправление опечаток и изменение нескольких абзацев,
+сделайте форк этого репозитория и предложите pull request.
 
-A formal contribution process for this document is still in development.
-In the meantime,
-start a pitch thread in the [Swift forums][forum] for larger changes
-to discuss your approach and identify possible issues
-before you invest a lot of time in writing.
+Формальный процесс внесения вклада в этот документ все еще находится в разработке.
+Тем временем начните обсуждение в [форумах Swift][forum] для более крупных изменений,
+чтобы обсудить свой подход и выявить возможные проблемы
+перед тем, как вложить много времени в написание.
 
-Content in this book follows [Apple Style Guide][asg]
-and [this book’s style guide][tspl-style].
+Содержание в этой книге следует [Руководству по стилю Apple][asg]
+и [стилю этой книги][tspl-style].
 
-File bugs about the content using the [issues page][bugs] on Github.
+Сообщайте о проблемах с содержанием на [странице проблем][bugs] на GitHub.
 
-Discussions and contributions follow the [Swift Code of Conduct][conduct].
+Обсуждения и вклады следуют [Кодексу поведения Swift][conduct].
 
-For more information, see [Contributing to The Swift Programming Language][contributing].
+Дополнительную информацию смотрите в разделе [Внесение вклада в Язык программирования Swift][contributing].
 
 [asg]: https://help.apple.com/applestyleguide/
-[bugs]: https://github.com/apple/swift-book/issues
+[bugs]: https://github.com/unnmd/swift-book/issues
 [conduct]: https://www.swift.org/code-of-conduct
 [contributing]: /CONTRIBUTING.md
 [forum]: https://forums.swift.org/c/swift-documentation/92
 [tspl-style]: /Style.md
-[published]: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/
+[published]: https://docs.swift.org.ru/swift-book/documentation/the-swift-programming-language/
 [docc]: https://github.com/apple/swift-docc
 
-## Building
+## Сборка
 
-Run `docc preview TSPL.docc`
-in this repository's root directory.
+Запустите `docc preview TSPL.docc`
+в корневом каталоге этого репозитория.
 
-After running DocC, open the link that `docc` outputs
-to display a local preview in your browser.
+После запуска DocC откройте ссылку, которую выводит `docc`,
+чтобы отобразить локальный просмотр в вашем браузере.
 
-> Note:
+> Примечание:
 >
-> If you installed DocC by downloading a toolchain from Swift.org,
-> `docc` is located in `usr/bin/`,
-> relative to the installation path of the toolchain.
-> Make sure your shell's `PATH` environment variable
-> includes that directory.
+> Если вы установили DocC, загрузив набор инструментов с Swift.org,
+> `docc` находится в каталоге `usr/bin/`,
+> относительно установочного пути набора инструментов.
+> Убедитесь, что переменная среды `PATH` вашего оболочки
+> включает этот каталог.
 >
-> If you installed DocC by downloading Xcode,
-> run `xcrun docc preview TSPL.docc` instead.
-
+> Если вы установили DocC, загрузив Xcode,
+> запустите вместо этого `xcrun docc preview TSPL.docc`.
