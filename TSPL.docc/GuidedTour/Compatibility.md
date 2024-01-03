@@ -1,11 +1,11 @@
-# Version Compatibility
+# Совместимость версий
 
-Learn what functionality is available in older language modes.
+Узнайте, какая функциональность доступна в более старых версиях языка.
 
-This book describes Swift 5.9.2,
-the default version of Swift that's included in Xcode 15.1.
-You can use Xcode 15.1 to build targets
-that are written in either 5.9.2, Swift 4.2, or Swift 4.
+Эта книга описывает Swift 5.9.2,
+стандартную версию Swift, включенную в Xcode 15.1.
+Вы можете использовать Xcode 15.1 для сборки целей,
+написанных как на Swift 5.9.2, так и на Swift 4.2 или Swift 4.
 
 <!--
   - test: `swift-version`
@@ -22,39 +22,39 @@ that are written in either 5.9.2, Swift 4.2, or Swift 4.
   ```
 -->
 
-When you use Xcode 15.1 to build Swift 4 and Swift 4.2 code,
-most Swift 5.9.2 functionality is available.
-That said,
-the following changes are available only to code that uses 5.9.2 or later:
+Когда вы используете Xcode 15.1 для сборки кода Swift 4 и Swift 4.2,
+большинство функциональности Swift 5.9.2 доступно.
+Тем не менее следующие изменения доступны только для кода, 
+который использует версию 5.9.2 или более позднюю:
 
-- Functions that return an opaque type require the Swift 5.1 runtime.
-- The `try?` expression doesn't introduce an extra level of optionality
-  to expressions that already return optionals.
-- Large integer literal initialization expressions are inferred
-  to be of the correct integer type.
-  For example, `UInt64(0xffff_ffff_ffff_ffff)` evaluates to the correct value
-  rather than overflowing.
+- Функции, возвращающие непрозрачный тип, требуют выполнения Swift 5.1.
+- Выражение `try?` не добавляет дополнительного уровня опциональности
+  для выражений, которые уже возвращают опционалы.
+- Инициализационные выражения с большими литералами целых чисел выводятся
+  как правильный тип целого числа.
+  Например, `UInt64(0xffff_ffff_ffff_ffff)` оценивается как правильное значение,
+  а не как переполнение.
 
-Concurrency requires 5.9.2 or later,
-and a version of the Swift standard library
-that provides the corresponding concurrency types.
-On Apple platforms, set a deployment target
-of at least iOS 13, macOS 10.15, tvOS 13, or watchOS 6.
+Поддержка конкурентности требует версии 5.9.2 или более поздней,
+а также версии стандартной библиотеки Swift,
+которая предоставляет соответствующие типы конкурентности.
+На платформах Apple установите целевую версию
+не ниже iOS 13, macOS 10.15, tvOS 13 или watchOS 6.
 
-A target written in 5.9.2 can depend on
-a target that's written in Swift 4.2 or Swift 4,
-and vice versa.
-This means, if you have a large project
-that's divided into multiple frameworks,
-you can migrate your code from Swift 4 to 5.9.2
-one framework at a time.
+Цель, написанная в 5.9.2, может зависеть от
+цели, написанной на Swift 4.2 или Swift 4,
+и наоборот.
+Это означает, что если у вас есть большой проект,
+разделенный на несколько фреймворков,
+вы можете постепенно мигрировать свой код с Swift 4 на 5.9.2,
+по одному фреймворку за раз.
 
 <!--
-This source file is part of the Swift.org open source project
+Этот исходный файл является частью проекта с открытым исходным кодом Swift.org
 
-Copyright (c) 2014 - 2022 Apple Inc. and the Swift project authors
-Licensed under Apache License v2.0 with Runtime Library Exception
+Авторские права (c) 2014 - 2022 Apple Inc. и авторы проекта Swift
+Лицензировано по Apache License v2.0 с исключением из библиотеки выполнения
 
-See https://swift.org/LICENSE.txt for license information
-See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+См. https://swift.org/LICENSE.txt для информации о лицензии
+См. https://swift.org/CONTRIBUTORS.txt для списка авторов проекта Swift
 -->

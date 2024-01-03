@@ -1,56 +1,56 @@
-# The Basics
+# Основы
 
-Work with common kinds of data and write basic syntax.
+Работайте с общими видами данных и пишите базовый синтаксис.
 
-Swift provides many fundamental data types,
-including `Int` for integers,
-`Double` for floating-point values,
-`Bool` for Boolean values,
-and `String` for text.
-Swift also provides powerful versions of the three primary collection types,
-`Array`, `Set`, and `Dictionary`,
-as described in <doc:CollectionTypes>.
+Swift предоставляет множество фундаментальных типов данных,
+включая `Int` для целых чисел,
+`Double` для чисел с плавающей запятой,
+`Bool` для булевых значений,
+и `String` для текста.
+Swift также предоставляет мощные версии трех основных типов коллекций,
+`Array`, `Set` и `Dictionary`,
+как описано в <doc:CollectionTypes>.
 
-Swift uses variables to store and refer to values by an identifying name.
-Swift also makes extensive use of variables whose values can't be changed.
-These are known as constants, and are used throughout Swift to make code safer and clearer in intent
-when you work with values that don't need to change.
+Swift использует переменные для хранения и ссылки на значения по идентификационному 
+имени. Swift также широко использует переменные, значения которых не могут быть 
+изменены. Эти переменные известны как константы и используются во всем Swift для
+обеспечения безопасности кода и ясности намерений при работе с значениями, которые не должны изменяться.
 
-In addition to familiar types,
-Swift introduces advanced types such as tuples.
-Tuples enable you to create and pass around groupings of values.
-You can use a tuple to return multiple values from a function as a single compound value.
+Помимо знакомых типов, Swift представляет продвинутые типы, такие как кортежи. 
+Кортежи позволяют вам создавать и передавать группировки значений. Вы можете 
+использовать кортеж для возврата нескольких значений из функции как единого 
+составного значения.
 
-Swift also introduces optional types,
-which handle the absence of a value.
-Optionals say either “there *is* a value, and it equals *x*”
-or “there *isn't* a value at all”.
+Swift также вводит опциональные типы, 
+которые обрабатывают отсутствие значения. 
+Опционалы говорят либо "здесь *есть* значение, 
+и оно равно *x*", либо "здесь *нет* значения вообще".
 
-Swift is a *type-safe* language,
-which means the language helps you to be clear about the types of values your code can work with.
-If part of your code requires a `String`,
-type safety prevents you from passing it an `Int` by mistake.
-Likewise, type safety prevents you from
-accidentally passing an optional `String`
-to a piece of code that requires a non-optional `String`.
-Type safety helps you catch and fix errors as early as possible in the development process.
+Swift является *типобезопасным* языком, что означает, что язык помогает вам быть
+ясным относительно типов значений, с которыми ваш код может работать. 
+Если часть вашего кода требует `String`, типовая безопасность предотвращает 
+передачу ей по ошибке `Int`. Точно так же типовая безопасность мешает вам 
+случайно передавать опциональную `String` в участок кода, который требует 
+неопциональную `String`. 
+Типовая безопасность помогает вам выявлять и устранять 
+ошибки как можно раньше впроцессе разработки.
 
-## Constants and Variables
+## Константы и Переменные
 
-Constants and variables associate a name
-(such as `maximumNumberOfLoginAttempts` or `welcomeMessage`)
-with a value of a particular type
-(such as the number `10` or the string `"Hello"`).
-The value of a *constant* can't be changed once it's set,
-whereas a *variable* can be set to a different value in the future.
+Константы и переменные связывают имя
+(например, `maximumNumberOfLoginAttempts` или `welcomeMessage`)
+со значением определенного типа
+(например, число `10` или строка `"Hello"`).
+Значение *константы* не может быть изменено после установки,
+в то время как *переменная* может быть установлена на другое значение в будущем.
 
-### Declaring Constants and Variables
+### Объявление Констант и Переменных
 
-Constants and variables must be declared before they're used.
-You declare constants with the `let` keyword
-and variables with the `var` keyword.
-Here's an example of how constants and variables can be used
-to track the number of login attempts a user has made:
+Константы и переменные должны быть объявлены перед их использованием.
+Константы объявляются с использованием ключевого слова `let`,
+а переменные — с использованием ключевого слова `var`.
+Вот пример того, как константы и переменные могут быть использованы
+для отслеживания количества попыток входа пользователя:
 
 ```swift
 let maximumNumberOfLoginAttempts = 10
@@ -66,42 +66,42 @@ var currentLoginAttempt = 0
   ```
 -->
 
-This code can be read as:
+Этот код можно прочитать следующим образом:
 
-“Declare a new constant called `maximumNumberOfLoginAttempts`,
-and give it a value of `10`.
-Then, declare a new variable called `currentLoginAttempt`,
-and give it an initial value of `0`.”
+"Объявить новую константу с именем `maximumNumberOfLoginAttempts`
+и присвоить ей значение `10`.
+Затем объявить новую переменную с именем `currentLoginAttempt`
+и присвоить ей начальное значение `0`."
 
-In this example,
-the maximum number of allowed login attempts is declared as a constant,
-because the maximum value never changes.
-The current login attempt counter is declared as a variable,
-because this value must be incremented after each failed login attempt.
+В этом примере
+максимальное количество разрешенных попыток входа объявлено как константа,
+поскольку максимальное значение никогда не изменяется.
+Счетчик текущей попытки входа объявлен как переменная,
+потому что это значение должно увеличиваться после каждой неудачной попытки входа.
 
-If a stored value in your code won't change,
-always declare it as a constant with the `let` keyword.
-Use variables only for storing values that change.
+Если сохраненное значение в вашем коде не будет изменяться,
+всегда объявляйте его как константу с использованием ключевого слова `let`.
+Используйте переменные только для хранения значений, которые изменяются.
 
-When you declare a constant or a variable,
-you can give it a value as part of that declaration,
-like the examples above.
-Alternatively,
-you can assign its initial value later in the program,
-as long as it's guaranteed to have a value
-before the first time you read from it.
+При объявлении константы или переменной
+вы можете присвоить ей значение как часть этого объявления,
+как показано в приведенных выше примерах.
+В качестве альтернативы
+вы можете присвоить ей начальное значение позже в программе,
+при условии, что гарантируется, что у нее будет значение
+перед первым чтением из нее.
 
 ```swift
 var environment = "development"
 let maximumNumberOfLoginAttempts: Int
-// maximumNumberOfLoginAttempts has no value yet.
+// Переменной maximumNumberOfLoginAttempts ещё не присвоено значение.
 
 if environment == "development" {
     maximumNumberOfLoginAttempts = 100
 } else {
     maximumNumberOfLoginAttempts = 10
 }
-// Now maximumNumberOfLoginAttempts has a value, and can be read.
+// Теперь у переменной maximumNumberOfLoginAttempts есть значение и его можно прочитать.
 ```
 
 <!--
@@ -120,21 +120,21 @@ if environment == "development" {
   ```
 -->
 
-In this example,
-the maximum number of login attempts is constant,
-and its value depends on the environment.
-In the development environment,
-it has a value of 100;
-in any other environment, its value is 10.
-Both branches of the `if` statement
-initialize `maximumNumberOfLoginAttempts` with some value,
-guaranteeing that the constant always gets a value.
-For information about how Swift checks your code
-when you set an initial value this way,
-see <doc:Declarations#Constant-Declaration>.
+В этом примере максимальное количество 
+попыток входа является константой, 
+и его значение зависит от окружения. 
+В среде разработки у него значение 100; 
+в любой другой среде его значение равно 10. 
+Обе ветви оператора `if` инициализируют `maximumNumberOfLoginAttempts` 
+какое-то значение, гарантируя, 
+что константе всегда присваивается значение. 
+Для получения информации о том, 
+как Swift проверяет ваш код 
+при установке начального значения, таким образом, 
+см. <doc:Declarations#Constant-Declaration>.
 
-You can declare multiple constants or multiple variables on a single line,
-separated by commas:
+Вы можете объявить несколько констант или переменных в одной строке, 
+разделяя их запятыми:
 
 ```swift
 var x = 0.0, y = 0.0, z = 0.0
@@ -150,15 +150,15 @@ var x = 0.0, y = 0.0, z = 0.0
   ```
 -->
 
-### Type Annotations
+### Аннотации Типов
 
-You can provide a *type annotation* when you declare a constant or variable,
-to be clear about the kind of values the constant or variable can store.
-Write a type annotation by placing a colon after the constant or variable name,
-followed by a space, followed by the name of the type to use.
+Вы можете предоставить *аннотацию типа* при объявлении константы или переменной,
+чтобы явно указать тип значений, которые может хранить константа или переменная.
+Напишите аннотацию типа, разместив двоеточие после имени константы или 
+переменной, за которым следует пробел, а затем имя типа для использования.
 
-This example provides a type annotation for a variable called `welcomeMessage`,
-to indicate that the variable can store `String` values:
+В этом примере предоставлена аннотация типа для переменной с именем `welcomeMessage`,
+чтобы указать, что переменная может хранить значения типа `String`:
 
 ```swift
 var welcomeMessage: String
@@ -172,15 +172,15 @@ var welcomeMessage: String
   ```
 -->
 
-The colon in the declaration means “…of type…,”
-so the code above can be read as:
+Двоеточие в объявлении означает "...типа...", 
+поэтому код выше можно прочитать как:
 
-“Declare a variable called `welcomeMessage` that's of type `String`.”
+"Объявить переменную с именем `welcomeMessage` типа `String`."
 
-The phrase “of type `String`” means “can store any `String` value.”
-Think of it as meaning “the type of thing” (or “the kind of thing”) that can be stored.
+Фраза "типа `String`" означает "может хранить любое значение типа `String`". 
+Представьте себе это как описание "типа вещи" (или "вида вещи"), которую можно хранить.
 
-The `welcomeMessage` variable can now be set to any string value without error:
+Переменной `welcomeMessage` теперь можно присвоить любое строковое значение без ошибок:
 
 ```swift
 welcomeMessage = "Hello"
@@ -196,8 +196,8 @@ welcomeMessage = "Hello"
   ```
 -->
 
-You can define multiple related variables of the same type on a single line,
-separated by commas, with a single type annotation after the final variable name:
+Вы можете определить несколько связанных переменных одного типа в одной строке, 
+разделяя их запятыми, с одной аннотацией типа после последнего имени переменной:
 
 ```swift
 var red, green, blue: Double
@@ -211,18 +211,18 @@ var red, green, blue: Double
   ```
 -->
 
-> Note: It's rare that you need to write type annotations in practice.
-> If you provide an initial value for a constant or variable at the point that it's defined,
-> Swift can almost always infer the type to be used for that constant or variable,
-> as described in <doc:TheBasics#Type-Safety-and-Type-Inference>.
-> In the `welcomeMessage` example above, no initial value is provided,
-> and so the type of the `welcomeMessage` variable is specified with a type annotation
-> rather than being inferred from an initial value.
+> Примечание: В практике редко требуется написание аннотаций типов. 
+> Если вы предоставляете начальное значение для константы или переменной в том 
+> месте, где она определена, Swift почти всегда может самостоятельно вывести 
+> тип для использования этой константы или переменной, как описано в
+> <doc:TheBasics#Type-Safety-and-Type-Inference>. В приведенном выше примере 
+> `welcomeMessage` не предоставляется начальное значение, поэтому тип переменной
+> `welcomeMessage` указывается аннотацией типа, а не выводится из начального значения.
 
-### Naming Constants and Variables
+### Именование Констант и Переменных
 
-Constant and variable names can contain almost any character,
-including Unicode characters:
+Имена констант и переменных могут содержать практически любой символ, 
+включая символы Unicode:
 
 ```swift
 let π = 3.14159
@@ -240,30 +240,30 @@ let 🐶🐮 = "dogcow"
   ```
 -->
 
-Constant and variable names can't contain
-whitespace characters, mathematical symbols, arrows, private-use Unicode scalar values,
-or line- and box-drawing characters.
-Nor can they begin with a number,
-although numbers may be included elsewhere within the name.
+Имена констант и переменных не могут содержать пробельные символы, 
+математические символы, стрелки, значения юникодных скаляров для личного 
+использования, а также символы линий и рамок. 
+Они также не могут начинаться с цифры, 
+хотя числа могут включаться в других частях имени.
 
-Once you've declared a constant or variable of a certain type,
-you can't declare it again with the same name,
-or change it to store values of a different type.
-Nor can you change a constant into a variable
-or a variable into a constant.
+После того как вы объявили константу или переменную определенного типа, 
+вы не можете объявить ее снова с тем же именем или изменить ее, 
+чтобы хранить значения другого типа. 
+Вы также не можете изменить константу на переменную 
+или наоборот.
 
-> Note: If you need to give a constant or variable the same name as a reserved Swift keyword,
-> surround the keyword with backticks (`` ` ``) when using it as a name.
-> However, avoid using keywords as names unless you have absolutely no choice.
+> Примечание: Если вам нужно дать константе или переменной то же имя, что и зарезервированное ключевое слово
+> Swift, окружите ключевое слово обратными кавычками (`` ` ``) при использовании его в качестве имени. 
+> Однако избегайте использования ключевых слов в качестве имен, если у вас есть альтернативы.
 
-You can change the value of an existing variable to another value of a compatible type.
-In this example, the value of `friendlyWelcome` is changed from
-`"Hello!"` to `"Bonjour!"`:
+Значение существующей переменной можно изменить на другое значение совместимого типа. 
+В этом примере значение `friendlyWelcome` изменяется с 
+`"Hello!"` на `"Bonjour!"`:
 
 ```swift
 var friendlyWelcome = "Hello!"
 friendlyWelcome = "Bonjour!"
-// friendlyWelcome is now "Bonjour!"
+// friendlyWelcome теперь "Bonjour!"
 ```
 
 <!--
@@ -277,13 +277,13 @@ friendlyWelcome = "Bonjour!"
   ```
 -->
 
-Unlike a variable, the value of a constant can't be changed after it's set.
-Attempting to do so is reported as an error when your code is compiled:
+В отличие от переменной, значение константы не может быть изменено после установки. 
+Попытка сделать это вызовет ошибку во время компиляции:
 
 ```swift
 let languageName = "Swift"
 languageName = "Swift++"
-// This is a compile-time error: languageName cannot be changed.
+// Это ошибка времени компиляции: languageName нельзя изменить.
 ```
 
 <!--
@@ -303,13 +303,13 @@ languageName = "Swift++"
   ```
 -->
 
-### Printing Constants and Variables
+### Печать Констант и Переменных
 
-You can print the current value of a constant or variable with the `print(_:separator:terminator:)` function:
+Вы можете напечатать текущее значение константы или переменной с помощью функции `print(_:separator:terminator:)`:
 
 ```swift
 print(friendlyWelcome)
-// Prints "Bonjour!"
+// Печатает "Bonjour!"
 ```
 
 <!--
