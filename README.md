@@ -1,6 +1,6 @@
-# Язык программирования Swift [Русская версия]
+# The Swift Programming Language book [Русская версия]
 
-Этот репозиторий содержит исходный код для *Языка программирования Swift*
+Этот репозиторий содержит исходный код для *The Swift Programming Language book*
 (иногда сокращенно как TSPL),
 который публикуется на [docs.swift.org.ru][published](в процессе) 
 и создается с использованием [Swift-DocC][docc].
