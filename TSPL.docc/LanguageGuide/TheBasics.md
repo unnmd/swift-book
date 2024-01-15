@@ -868,15 +868,15 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 (включая ваши собственные определения типов)
 рассматривается в разделе <doc:Extensions>.
 
-### Integer and Floating-Point Conversion
+### Преобразование между целыми и числами с плавающей точкой
 
-Conversions between integer and floating-point numeric types must be made explicit:
+Преобразования между целыми и числами с плавающей точкой должны быть сделаны явно:
 
 ```swift
 let three = 3
 let pointOneFourOneFiveNine = 0.14159
 let pi = Double(three) + pointOneFourOneFiveNine
-// pi equals 3.14159, and is inferred to be of type Double
+// pi равно 3.14159 и выводится как тип Double
 ```
 
 <!--
@@ -891,16 +891,16 @@ let pi = Double(three) + pointOneFourOneFiveNine
   ```
 -->
 
-Here, the value of the constant `three` is used to create a new value of type `Double`,
-so that both sides of the addition are of the same type.
-Without this conversion in place, the addition would not be allowed.
+Здесь значение константы `three` используется для создания нового значения типа `Double`,
+чтобы обе стороны сложения имели одинаковый тип.
+Без этого преобразования сложение не было бы разрешено.
 
-Floating-point to integer conversion must also be made explicit.
-An integer type can be initialized with a `Double` or `Float` value:
+Преобразование чисел с плавающей точкой в целые числа также должно быть явным.
+Целочисленный тип можно инициализировать значением типа `Double` или `Float`:
 
 ```swift
 let integerPi = Int(pi)
-// integerPi equals 3, and is inferred to be of type Int
+// integerPi равно 3 и выводится как тип Int
 ```
 
 <!--
@@ -908,34 +908,34 @@ let integerPi = Int(pi)
 
   ```swifttest
   -> let integerPi = Int(pi)
-  /> integerPi equals \(integerPi), and is inferred to be of type Int
-  </ integerPi equals 3, and is inferred to be of type Int
+  /> integerPi равно \(integerPi) и выводится как тип Int
+  </ integerPi равно 3 и выводится как тип Int
   ```
 -->
 
-Floating-point values are always truncated when used to initialize a new integer value in this way.
-This means that `4.75` becomes `4`, and `-3.9` becomes `-3`.
+Значения с плавающей точкой всегда усекаются при использовании для инициализации нового целочисленного значения таким образом.
+Это означает, что `4.75` становится `4`, а `-3.9` становится `-3`.
 
-> Note: The rules for combining numeric constants and variables are different from
-> the rules for numeric literals.
-> The literal value `3` can be added directly to the literal value `0.14159`,
-> because number literals don't have an explicit type in and of themselves.
-> Their type is inferred only at the point that they're evaluated by the compiler.
+> Примечание: Правила для объединения числовых констант и переменных отличаются от
+> правил для числовых литералов.
+> Литеральное значение `3` можно добавить непосредственно к литеральному значению `0.14159`,
+> потому что числовые литералы сами по себе не имеют явного типа.
+> Их тип выводится только в тот момент, когда они оцениваются компилятором.
 
 <!--
-  NOTE: this section on explicit conversions could be included in the Operators section.
-  I think it's more appropriate here, however,
-  and helps to reinforce the “just use Int” message.
+  ПРИМЕЧАНИЕ: Этот раздел о явных преобразованиях может быть включен в раздел "Операторы".
+  Однако я считаю, что он более уместен здесь,
+  и помогает подчеркнуть сообщение "просто используйте Int".
 -->
 
-## Type Aliases
+## Псевдонимы типов
 
-*Type aliases* define an alternative name for an existing type.
-You define type aliases with the `typealias` keyword.
+*Псевдонимы типов* определяют альтернативное имя для существующего типа.
+Псевдонимы типов определяются с использованием ключевого слова `typealias`.
 
-Type aliases are useful when you want to refer to an existing type
-by a name that's contextually more appropriate,
-such as when working with data of a specific size from an external source:
+Псевдонимы типов полезны, когда вы хотите ссылаться на существующий тип
+более подходящим контекстным именем, например, 
+при работе с данными определенного размера из внешнего источника:
 
 ```swift
 typealias AudioSample = UInt16
@@ -949,12 +949,12 @@ typealias AudioSample = UInt16
   ```
 -->
 
-Once you define a type alias,
-you can use the alias anywhere you might use the original name:
+После определения псевдонима типа
+вы можете использовать его везде, где могли бы использовать оригинальное имя:
 
 ```swift
 var maxAmplitudeFound = AudioSample.min
-// maxAmplitudeFound is now 0
+// maxAmplitudeFound теперь равно 0
 ```
 
 <!--
@@ -962,23 +962,23 @@ var maxAmplitudeFound = AudioSample.min
 
   ```swifttest
   -> var maxAmplitudeFound = AudioSample.min
-  /> maxAmplitudeFound is now \(maxAmplitudeFound)
-  </ maxAmplitudeFound is now 0
+  /> maxAmplitudeFound теперь равно  \(maxAmplitudeFound)
+  </ maxAmplitudeFound теперь равно 0
   ```
 -->
 
-Here, `AudioSample` is defined as an alias for `UInt16`.
-Because it's an alias,
-the call to `AudioSample.min` actually calls `UInt16.min`,
-which provides an initial value of `0` for the `maxAmplitudeFound` variable.
+Здесь `AudioSample` определен как псевдоним для `UInt16`.
+Поскольку это псевдоним,
+вызов `AudioSample.min` фактически вызывает `UInt16.min`,
+что предоставляет начальное значение `0` для переменной `maxAmplitudeFound`.
 
-## Booleans
+## Логические значения
 
-Swift has a basic *Boolean* type, called `Bool`.
-Boolean values are referred to as *logical*,
-because they can only ever be true or false.
-Swift provides two Boolean constant values,
-`true` and `false`:
+Swift имеет базовый *логический* тип, называемый `Bool`.
+Логические значения называются *логическими*,
+потому что они могут быть только истинными или ложными.
+Swift предоставляет два константных значения типа `Bool`,
+`true` и `false`:
 
 ```swift
 let orangesAreOrange = true
@@ -994,17 +994,17 @@ let turnipsAreDelicious = false
   ```
 -->
 
-The types of `orangesAreOrange` and `turnipsAreDelicious`
-have been inferred as `Bool` from the fact that
-they were initialized with Boolean literal values.
-As with `Int` and `Double` above,
-you don't need to declare constants or variables as `Bool`
-if you set them to `true` or `false` as soon as you create them.
-Type inference helps make Swift code more concise and readable
-when it initializes constants or variables with other values whose type is already known.
+Типы `orangesAreOrange` и `turnipsAreDelicious`
+были выведены как `Bool` из-за того, что
+они были инициализированы логическими литеральными значениями.
+Как и в случае с `Int` и `Double` выше,
+вам не нужно объявлять константы или переменные как `Bool`,
+если вы устанавливаете их в `true` или `false` сразу при создании.
+Вывод типа помогает сделать код на Swift более лаконичным и читаемым,
+когда константы или переменные инициализируются значениями, тип которых уже известен.
 
-Boolean values are particularly useful when you work with conditional statements
-such as the `if` statement:
+Логические значения особенно полезны при работе с условными операторами,
+такими как оператор `if`:
 
 ```swift
 if turnipsAreDelicious {
@@ -1012,7 +1012,7 @@ if turnipsAreDelicious {
 } else {
     print("Eww, turnips are horrible.")
 }
-// Prints "Eww, turnips are horrible."
+// Вывод: "Eww, turnips are horrible."
 ```
 
 <!--
@@ -1028,15 +1028,15 @@ if turnipsAreDelicious {
   ```
 -->
 
-Conditional statements such as the `if` statement are covered in more detail in <doc:ControlFlow>.
+Условные операторы, такие как оператор `if`, рассматриваются более подробно в разделе <doc:ControlFlow>.
 
-Swift's type safety prevents non-Boolean values from being substituted for `Bool`.
-The following example reports a compile-time error:
+Типовая безопасность Swift предотвращает использование не логических значений вместо `Bool`.
+В следующем примере будет сообщена ошибка на этапе компиляции:
 
 ```swift
 let i = 1
 if i {
-    // this example will not compile, and will report an error
+    // этот пример не будет компилироваться и вызовет ошибку
 }
 ```
 
@@ -1046,21 +1046,21 @@ if i {
   ```swifttest
   -> let i = 1
   -> if i {
-        // this example will not compile, and will report an error
+        // этот пример не будет компилироваться и вызовет ошибку
      }
-  !$ error: type 'Int' cannot be used as a boolean; test for '!= 0' instead
+  !$ ошибка: тип 'Int' нельзя использовать как логическое значение; вместо этого используйте проверку на '!= 0'.
   !! if i {
   !!   ^
   !! ( != 0)
   ```
 -->
 
-However, the alternative example below is valid:
+Однако альтернативный пример ниже является допустимым:
 
 ```swift
 let i = 1
-if i == 1 {
-    // this example will compile successfully
+if i != 0 {
+    // этот пример будет компилироваться
 }
 ```
 
@@ -1070,32 +1070,32 @@ if i == 1 {
   ```swifttest
   -> let i = 1
   -> if i == 1 {
-        // this example will compile successfully
+        // этот пример будет компилироваться
      }
   ```
 -->
 
-The result of the `i == 1` comparison is of type `Bool`,
-and so this second example passes the type-check.
-Comparisons like `i == 1` are discussed in <doc:BasicOperators>.
+Результат сравнения `i == 1` имеет тип `Bool`,
+и поэтому этот второй пример успешно проходит проверку типов.
+Сравнения, такие как `i == 1`, рассматриваются в разделе <doc:BasicOperators>.
 
-As with other examples of type safety in Swift,
-this approach avoids accidental errors
-and ensures that the intention of a particular section of code is always clear.
+Как и в других примерах безопасности типов в Swift,
+этот подход предотвращает случайные ошибки
+и обеспечивает ясность намерений в конкретном участке кода.
 
-## Tuples
+## Кортежи
 
-*Tuples* group multiple values into a single compound value.
-The values within a tuple can be of any type
-and don't have to be of the same type as each other.
+*Кортежи* группируют несколько значений в единое сложное значение.
+Значения внутри кортежа могут иметь любой тип
+и не обязаны быть одного и того же типа.
 
-In this example, `(404, "Not Found")` is a tuple that describes an *HTTP status code*.
-An HTTP status code is a special value returned by a web server whenever you request a web page.
-A status code of `404 Not Found` is returned if you request a webpage that doesn't exist.
+В этом примере `(404, "Not Found")` - это кортеж, описывающий *код состояния HTTP*.
+Код состояния HTTP - это специальное значение, возвращаемое веб-сервером при запросе веб-страницы.
+Код состояния `404 Not Found` возвращается, если вы запрашиваете веб-страницу, которой не существует.
 
 ```swift
 let http404Error = (404, "Not Found")
-// http404Error is of type (Int, String), and equals (404, "Not Found")
+// http404Error имеет тип (Int, String) и равен (404, "Not Found")
 ```
 
 <!--
@@ -1103,31 +1103,31 @@ let http404Error = (404, "Not Found")
 
   ```swifttest
   -> let http404Error = (404, "Not Found")
-  /> http404Error is of type (Int, String), and equals (\(http404Error.0), \"\(http404Error.1)\")
-  </ http404Error is of type (Int, String), and equals (404, "Not Found")
+  /> http404Error имеет тип (Int, String) и равен (\(http404Error.0), \"\(http404Error.1)\")
+  </ http404Error имеет тип (Int, String) и равен (404, "Not Found")
   ```
 -->
 
-The `(404, "Not Found")` tuple groups together an `Int` and a `String`
-to give the HTTP status code two separate values:
-a number and a human-readable description.
-It can be described as “a tuple of type `(Int, String)`”.
+Кортеж (404, "Not Found") группирует вместе Int и String, 
+чтобы придать коду состояния HTTP два отдельных значения:
+число и понятное человеку описание. 
+Это можно описать как “кортеж типа (Int, String)”.
 
-You can create tuples from any permutation of types,
-and they can contain as many different types as you like.
-There's nothing stopping you from having
-a tuple of type `(Int, Int, Int)`, or `(String, Bool)`,
-or indeed any other permutation you require.
+Вы можете создавать кортежи из любой перестановки типов, 
+и они могут содержать столько различных типов, сколько вам нужно. 
+Ничто не мешает вам иметь кортеж типа `(Int, Int, Int)`, 
+`(String, Bool)` или любую другую перестановку, 
+которая вам нужна.
 
-You can *decompose* a tuple's contents into separate constants or variables,
-which you then access as usual:
+Вы можете *раскладывать* содержимое кортежа на отдельные константы или 
+переменные и затем использовать их как обычно:
 
 ```swift
 let (statusCode, statusMessage) = http404Error
-print("The status code is \(statusCode)")
-// Prints "The status code is 404"
-print("The status message is \(statusMessage)")
-// Prints "The status message is Not Found"
+print("Код состояния \(statusCode)")
+// Выводит "Код состояния 404"
+print("Сообщение состояния \(statusMessage)")
+// Выводит "Сообщение состояния Not Found"
 ```
 
 <!--
@@ -1142,14 +1142,14 @@ print("The status message is \(statusMessage)")
   ```
 -->
 
-If you only need some of the tuple's values,
-ignore parts of the tuple with an underscore (`_`)
-when you decompose the tuple:
+Если вам нужны только некоторые значения из кортежа, 
+вы можете игнорировать части кортежа, 
+поставив подчеркивание (`_`) при разложении кортежа:
 
 ```swift
 let (justTheStatusCode, _) = http404Error
-print("The status code is \(justTheStatusCode)")
-// Prints "The status code is 404"
+print("Код состояния \(justTheStatusCode)")
+// Выводит "Код состояния 404"
 ```
 
 <!--
@@ -1162,14 +1162,14 @@ print("The status code is \(justTheStatusCode)")
   ```
 -->
 
-Alternatively,
-access the individual element values in a tuple using index numbers starting at zero:
+В альтернативе, можно получить доступ к отдельным 
+значениям элементов в кортеже, используя индексы, начинающиеся с нуля:
 
 ```swift
-print("The status code is \(http404Error.0)")
-// Prints "The status code is 404"
-print("The status message is \(http404Error.1)")
-// Prints "The status message is Not Found"
+print("Код состояния \(http404Error.0)")
+// Выводит "Код состояния 404"
+print("Сообщение состояния \(http404Error.1)")
+// Выводит "Сообщение состояния Not Found"
 ```
 
 <!--
@@ -1183,7 +1183,7 @@ print("The status message is \(http404Error.1)")
   ```
 -->
 
-You can name the individual elements in a tuple when the tuple is defined:
+Вы можете называть отдельные элементы в кортеже при его определении:
 
 ```swift
 let http200Status = (statusCode: 200, description: "OK")
@@ -1197,14 +1197,14 @@ let http200Status = (statusCode: 200, description: "OK")
   ```
 -->
 
-If you name the elements in a tuple,
-you can use the element names to access the values of those elements:
+Если вы называете элементы в кортеже, 
+вы можете использовать имена элементов для доступа к их значениям:
 
 ```swift
-print("The status code is \(http200Status.statusCode)")
-// Prints "The status code is 200"
-print("The status message is \(http200Status.description)")
-// Prints "The status message is OK"
+print("Код состояния \(http200Status.statusCode)")
+// Выводит "Код состояния 200"
+print("Сообщение состояния \(http200Status.description)")
+// Выводит "Сообщение состояния OK"
 ```
 
 <!--
@@ -1218,41 +1218,41 @@ print("The status message is \(http200Status.description)")
   ```
 -->
 
-Tuples are particularly useful as the return values of functions.
-A function that tries to retrieve a web page might return the `(Int, String)` tuple type
-to describe the success or failure of the page retrieval.
-By returning a tuple with two distinct values,
-each of a different type,
-the function provides more useful information about its outcome
-than if it could only return a single value of a single type.
-For more information, see <doc:Functions#Functions-with-Multiple-Return-Values>.
+Кортежи особенно полезны в качестве возвращаемых значений функций. 
+Функция, которая пытается получить веб-страницу, 
+может вернуть тип кортежа `(Int, String)`, 
+чтобы описать успешность или неудачу получения страницы. 
+Возвращая кортеж с двумя различными значениями, 
+каждое из разных типов, функция предоставляет более полезную информацию о своем результате, 
+чем если бы она могла вернуть только одно значение одного типа. 
+Дополнительные сведения можно найти в разделе <doc:Functions#Functions-with-Multiple-Return-Values>.
 
-> Note: Tuples are useful for simple groups of related values.
-> They're not suited to the creation of complex data structures.
-> If your data structure is likely to be more complex,
-> model it as a class or structure, rather than as a tuple.
-> For more information, see <doc:ClassesAndStructures>.
+> Примечание: Кортежи удобны для простых групп связанных значений. 
+> Они не подходят для создания сложных структур данных. 
+> Если ваша структура данных, вероятно, будет более сложной, 
+> моделируйте ее как класс или структуру, а не как кортеж. 
+> Дополнительные сведения можно найти в разделе <doc:ClassesAndStructures>.
 
-## Optionals
+## Опционалы (Опциональные типы)
 
-You use *optionals* in situations where a value may be absent.
-An optional represents two possibilities:
-Either there *is* a value of a specified type,
-and you can unwrap the optional to access that value,
-or there *isn't* a value at all.
+Опционалы используются в ситуациях, когда значение может отсутствовать. 
+Опционал представляет две возможности: либо *есть* значение указанного типа, 
+и вы можете извлечь опционал, 
+чтобы получить это значение, 
+либо *нет* значения вообще.
 
-As an example of a value that might be missing,
-Swift's `Int` type has an initializer
-that tries to convert a `String` value into an `Int` value.
-However, only some strings can be converted into integers.
-The string `"123"` can be converted into the numeric value `123`,
-but the string `"hello, world"` doesn't have a corresponding numeric value.
-The example below uses the initializer to try to convert a `String` into an `Int`:
+Как пример значения, которое может отсутствовать, 
+у типа `Int` в Swift есть инициализатор, 
+который пытается преобразовать значение `String` в значение типа `Int`. 
+Однако только некоторые строки можно преобразовать в целые числа. 
+Строка `"123"` может быть преобразована в числовое значение `123`, 
+но строка `"hello, world"` не имеет соответствующего числового значения. 
+В приведенном ниже примере используется инициализатор для попытки преобразования `String` в `Int`:
 
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
-// The type of convertedNumber is "optional Int"
+// Тип convertedNumber - "optional Int"
 ```
 
 <!--
@@ -1267,27 +1267,27 @@ let convertedNumber = Int(possibleNumber)
   ```
 -->
 
-Because the initializer in the code above might fail,
-it returns an *optional* `Int`, rather than an `Int`.
+Поскольку инициализатор в приведенном выше коде может завершиться неудачей, 
+он возвращает *опциональное* `Int`, а не `Int`.
 
-To write an optional type,
-you write a question mark (`?`)
-after the name of the type that the optional contains ---
-for example, the type of an optional `Int` is `Int?`.
-An optional `Int` always contains
-either some `Int` value or no value at all.
-It can't contain anything else, like a `Bool` or `String` value.
+Чтобы указать тип опционала, после имени типа, который он содержит, 
+пишется вопросительный знак (`?`) --- 
+например, тип опционального `Int` - это `Int?`. 
+Опциональное `Int` всегда содержит либо некоторое значение `Int`, 
+либо совсем ничего. 
+В нем не может содержаться ничего другого, например, 
+значение `Bool` или `String`.
 
 ### nil
 
-You set an optional variable to a valueless state
-by assigning it the special value `nil`:
+Вы устанавливаете переменную опционала в состояние без значения, 
+присваивая ей специальное значение `nil`:
 
 ```swift
 var serverResponseCode: Int? = 404
-// serverResponseCode contains an actual Int value of 404
+// serverResponseCode содержит фактическое значение Int 404
 serverResponseCode = nil
-// serverResponseCode now contains no value
+// Теперь serverResponseCode не содержит значения
 ```
 
 <!--
@@ -1302,12 +1302,12 @@ serverResponseCode = nil
   ```
 -->
 
-If you define an optional variable without providing a default value,
-the variable is automatically set to `nil`:
+Если вы определяете переменную опционала без предоставления значения по умолчанию,
+переменная автоматически устанавливается в `nil`:
 
 ```swift
 var surveyAnswer: String?
-// surveyAnswer is automatically set to nil
+// surveyAnswer автоматически устанавливается в nil
 ```
 
 <!--
@@ -1319,21 +1319,21 @@ var surveyAnswer: String?
   ```
 -->
 
-You can use an `if` statement to find out whether an optional contains a value
-by comparing the optional against `nil`.
-You perform this comparison with the “equal to” operator (`==`)
-or the “not equal to” operator (`!=`).
+Вы можете использовать оператор `if`, чтобы определить, 
+содержит ли опционал значение, сравнивая его с `nil`. 
+Это сравнение выполняется с использованием оператора «равно» (`==`) 
+или оператора «не равно» (`!=`).
 
-If an optional has a value, it's considered as “not equal to” `nil`:
+Если опционал содержит значение, он считается «не равным» `nil`:
 
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
 
 if convertedNumber != nil {
-    print("convertedNumber contains some integer value.")
+    print("convertedNumber содержит какое-то целочисленное значение.")
 }
-// Prints "convertedNumber contains some integer value."
+// Выводит "convertedNumber содержит какое-то целочисленное значение."
 ```
 
 <!--
@@ -1341,63 +1341,63 @@ if convertedNumber != nil {
 
   ```swifttest
   -> if convertedNumber != nil {
-        print("convertedNumber contains some integer value.")
+        print("convertedNumber содержит какое-то целочисленное значение.")
      }
-  <- convertedNumber contains some integer value.
+  <- convertedNumber содержит какое-то целочисленное значение.
   ```
 -->
 
-You can't use `nil` with non-optional constants or variables.
-If a constant or variable in your code needs to work with
-the absence of a value under certain conditions,
-declare it as an optional value of the appropriate type.
-A constant or variable that's declared as a non-optional value
-is guaranteed to never contain a `nil` value.
-If you try to assign `nil` to a non-optional value,
-you'll get a compile-time error.
+Вы не можете использовать `nil` с неопциональными константами или переменными.
+Если константа или переменная в вашем коде должна работать с отсутствием 
+значения в определенных условиях, объявите ее в виде опционального значения
+соответствующего типа. 
+Константа или переменная, объявленная как неопциональное 
+значение, гарантированно никогда не содержит значения `nil`. 
+Если вы попытаетесь присвоить `nil` неопциональному значению, 
+вы получите ошибку на этапе компиляции.
 
-This separation of optional and non-optional values
-lets you explicitly mark what information can be missing,
-and makes it easier to write code that handle missing values.
-You can't accidentally treat an optional as if it were non-optional
-because this mistake produces an error at compile time.
-After you unwrap the value,
-none of the other code that works with that value needs to check for `nil`,
-so there's no need to repeatedly check the same value
-in different parts of your code.
+Это разделение на опциональные и неопциональные значения 
+позволяет явно обозначить, какая информация может отсутствовать, 
+и упрощает написание кода, обрабатывающего отсутствующие значения. 
+Вы не можете случайно обрабатывать опционал так, 
+как если бы он был неопционалом, потому что такая ошибка приведет к ошибке 
+на этапе компиляции. После извлечения значения, ни один из другого кода, 
+работающего с этим значением, не должен проверять `nil`, 
+поэтому нет необходимости многократно проверять одно и то же значение 
+в различных частях вашего кода.
 
-When you access an optional value,
-your code always handles both the `nil` and non-`nil` case.
-There are several things you can do when a value is missing,
-as described in the following sections:
+При доступе к опциональному значению ваш код всегда обрабатывает как случай с `nil`, 
+так и без `nil`. 
+Существует несколько вариантов действий, 
+когда значение отсутствует, как описано в следующих разделах:
 
-- Skip the code that operates on the value when it's `nil`.
+- Пропустить код, который выполняет операции с значением, когда оно `nil`.
 
-- Propagate the `nil` value,
-  by returning `nil`
-  or using the `?.` operator described in <doc:OptionalChaining>.
+- Распространить значение `nil`, 
+  возвращая `nil` или используя оператор `?.`, 
+  описанный в разделе <doc:OptionalChaining>.
 
-- Provide a fallback value, using the `??` operator.
+- Предоставить значение по умолчанию с использованием оператора `??`.
 
-- Stop program execution, using the `!` operator.
+- Остановить выполнение программы с использованием оператора `!`.
 
-> Note:
-> In Objective-C, `nil` is a pointer to a nonexistent object.
-> In Swift, `nil` isn't a pointer --- it's the absence of a value of a certain type.
-> Optionals of *any* type can be set to `nil`, not just object types.
+> Примечание:
+> В Objective-C `nil` - это указатель на несуществующий объект. 
+> В Swift `nil` не является указателем - это отсутствие значения определенного типа.
+> Опционалы любого типа могут быть установлены в `nil`, не только для объектных типов.
 
-### Optional Binding
+### Привязка опционала
 
-You use optional binding to find out whether an optional contains a value,
-and if so, to make that value available as a temporary constant or variable.
-Optional binding can be used with `if`, `guard`, and `while` statements
-to check for a value inside an optional,
-and to extract that value into a constant or variable,
-as part of a single action.
-For more information about `if`, `guard`, and `while` statements,
-see <doc:ControlFlow>.
+Привязка опционала используется для определения, содержит ли опционал значение, 
+и если да, чтобы сделать это значение доступным в виде временной константы или 
+переменной. 
+Привязка опционала может использоваться с операторами `if`, 
+`guard` и `while` для проверки значения внутри опционала и извлечения этого 
+значения в константу или переменную в рамках одного действия. 
+Дополнительные сведения о операторах `if`, `guard` и `while` можно найти 
+в разделе <doc:ControlFlow>.
 
-Write an optional binding for an `if` statement as follows:
+Пример использования привязки опционала в операторе `if`:
 
 ```swift
 if let <#constantName#> = <#someOptional#> {
@@ -1405,17 +1405,17 @@ if let <#constantName#> = <#someOptional#> {
 }
 ```
 
-You can rewrite the `possibleNumber` example from
-the <doc:TheBasics#Optionals> section
-to use optional binding rather than forced unwrapping:
+Вы можете переписать пример с `possibleNumber` из 
+раздела <doc:TheBasics#Optionals>, 
+используя привязку опционала вместо принудительного развертывания:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
-    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
+    print("Строка \"\(possibleNumber)\" имеет целочисленное значение \(actualNumber)")
 } else {
-    print("The string \"\(possibleNumber)\" couldn't be converted to an integer")
+    print("Строку \"\(possibleNumber)\" нельзя преобразовать в целое число")
 }
-// Prints "The string "123" has an integer value of 123"
+// Выводит "Строка "123" имеет целочисленное значение 123"
 ```
 
 <!--
@@ -1431,31 +1431,31 @@ if let actualNumber = Int(possibleNumber) {
   ```
 -->
 
-This code can be read as:
+Этот код можно прочитать так:
 
-“If the optional `Int` returned by `Int(possibleNumber)` contains a value,
-set a new constant called `actualNumber` to the value contained in the optional.”
+"Если опционал `Int`, возвращаемый `Int(possibleNumber)`, содержит значение, 
+то установит новую константу с именем `actualNumber` в значение, содержащееся в опционале."
 
-If the conversion is successful,
-the `actualNumber` constant becomes available for use within
-the first branch of the `if` statement.
-It has already been initialized with the value contained within the optional,
-and has the corresponding non-optional type.
-In this case, the type of `possibleNumber` is `Int?`,
-so the type of `actualNumber` is `Int`.
+Если преобразование прошло успешно, 
+константа `actualNumber` становится 
+доступной для использования внутри первой ветви оператора `if`. 
+Она уже была инициализирована значением, содержащимся в опционале, 
+и имеет соответствующий неопциональный тип. 
+В данном случае тип `possibleNumber` - это `Int?`, 
+поэтому тип `actualNumber` - это `Int`.
 
-If you don't need to refer to the original, optional constant or variable
-after accessing the value it contains,
-you can use the same name for the new constant or variable:
+Если вам не нужно ссылаться на исходный опциональный объект 
+после доступа к его значению, вы можете использовать то же 
+самое имя для новой константы или переменной:
 
 ```swift
 let myNumber = Int(possibleNumber)
-// Here, myNumber is an optional integer
+// Здесь myNumber является опциональным целым числом
 if let myNumber = myNumber {
-    // Here, myNumber is a non-optional integer
-    print("My number is \(myNumber)")
+    // Здесь myNumber является неопциональным целым числом
+    print("Моё число - \(myNumber)")
 }
-// Prints "My number is 123"
+// Выводит "Моё число - 123"
 ```
 
 <!--
@@ -1463,35 +1463,35 @@ if let myNumber = myNumber {
 
   ```swifttest
   -> let myNumber = Int(possibleNumber)
-  // Here, myNumber is an optional integer
+  // Здесь myNumber является опциональным целым числом
   -> if let myNumber = myNumber {
-         // Here, myNumber is a non-optional integer
-         print("My number is \(myNumber)")
+         // Здесь myNumber является неопциональным целым числом
+         print("Моё число - \(myNumber)")
      }
-  <- My number is 123
+  <- Моё число - 123
   ```
 -->
 
-This code starts by checking whether `myNumber` contains a value,
-just like the code in the previous example.
-If `myNumber` has a value,
-the value of a new constant named `myNumber` is set to that value.
-Inside the body of the `if` statement,
-writing `myNumber` refers to that new non-optional constant.
-Writing `myNumber` before or after the `if` statement
-refers to the original optional integer constant.
+Этот код начинается с проверки того, содержит ли `myNumber` значение, так же, 
+как и код в предыдущем примере. Если `myNumber` содержит значение, 
+значение новой константы с именем `myNumber`, 
+то устанавливается в это значение.
+Внутри тела оператора `if` запись `myNumber` обозначает эту новую неопциональную
+константу. 
+Запись `myNumber` до или после оператора `if` обозначает исходную 
+опциональную константу целого числа.
 
-Because this kind of code is so common,
-you can use a shorter spelling to unwrap an optional value:
-Write just the name of the constant or variable that you're unwrapping.
-The new, unwrapped constant or variable
-implicitly uses the same name as the optional value.
+Поскольку такой код весьма распространен, 
+можно использовать более короткую запись для развертывания опционального значения:
+написать только имя константы или переменной, которую вы разворачиваете. 
+Новая развернутая константа или переменная неявно использует то же имя, 
+что и опциональное значение.
 
 ```swift
 if let myNumber {
-    print("My number is \(myNumber)")
+    print("Моё число - \(myNumber)")
 }
-// Prints "My number is 123"
+// Выводит "Моё число - 123"
 ```
 
 <!--
@@ -1499,36 +1499,36 @@ if let myNumber {
 
   ```swifttest
   -> if let myNumber {
-         print("My number is \(myNumber)")
+         print("Моё число - \(myNumber)")
      }
-  <- My number is 123
+  <- Моё число - 123
   ```
 -->
 
-You can use both constants and variables with optional binding.
-If you wanted to manipulate the value of `myNumber`
-within the first branch of the `if` statement,
-you could write `if var myNumber` instead,
-and the value contained within the optional
-would be made available as a variable rather than a constant.
-Changes you make to `myNumber` inside the body of the `if` statement
-apply only to that local variable,
-*not* to the original, optional constant or variable that you unwrapped.
+Вы можете использовать как константы, 
+так и переменные с привязкой опционала. 
+Если вы хотите изменить значение `myNumber` внутри первой ветви оператора `if`, 
+вы можете написать `if var myNumber` вместо этого, 
+и значение, содержащееся в опционале, 
+будет доступно в виде переменной, 
+а не константы. 
+Изменения, внесенные в `myNumber` внутри тела оператора `if`, 
+применяются только к этой локальной переменной, 
+а *не* к исходному опциональному значению. 
 
-You can include as many optional bindings and Boolean conditions
-in a single `if` statement as you need to,
-separated by commas.
-If any of the values in the optional bindings are `nil`
-or any Boolean condition evaluates to `false`,
-the whole `if` statement's condition
-is considered to be `false`.
-The following `if` statements are equivalent:
+Вы можете включить в один оператор `if` 
+столько привязок опционала и логических 
+условий, сколько вам нужно, разделяя их запятыми. 
+Если хотя бы одно из значений в привязках опционала равно `nil` или любое 
+логическое условие оценивается как `false`, условие всего оператора `if` 
+считается ложным. 
+Следующие операторы `if` эквивалентны:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
     print("\(firstNumber) < \(secondNumber) < 100")
 }
-// Prints "4 < 42 < 100"
+// Выводит "4 < 42 < 100"
 
 if let firstNumber = Int("4") {
     if let secondNumber = Int("42") {
@@ -1537,7 +1537,7 @@ if let firstNumber = Int("4") {
         }
     }
 }
-// Prints "4 < 42 < 100"
+// Выводит "4 < 42 < 100"
 ```
 
 <!--
@@ -1561,36 +1561,36 @@ if let firstNumber = Int("4") {
 -->
 
 <!--
-  The example above uses multiple optional bindings
-  to show that you can have more than one
-  and to show the short-circuiting behavior.
-  It has multiple Boolean conditions
-  to show that you should join logically related conditions
-  using the && operator instead of a comma.
+  Приведенный выше пример использует несколько привязок опционала,
+  чтобы показать, что их может быть больше одной,
+  и чтобы показать поведение короткого замыкания.
+  В нем также используются несколько логических условий,
+  чтобы показать, что лучше объединять логически связанные условия
+  с использованием оператора && вместо запятой.
 -->
 
-Constants and variables created with optional binding in an `if` statement
-are available only within the body of the `if` statement.
-In contrast, the constants and variables created with a `guard` statement
-are available in the lines of code that follow the `guard` statement,
-as described in <doc:ControlFlow#Early-Exit>.
+Константы и переменные, созданные с использованием привязки опционала в 
+операторе `if`, доступны только внутри тела оператора `if`. 
+В отличие от этого константы и переменные, 
+созданные с использованием оператора `guard`, доступны в строках кода, следующих 
+за оператором `guard`, как описано в разделе <doc:ControlFlow#Early-Exit>.
 
-### Providing a Fallback Value
+### Предоставление значений по умолчанию
 
-Another way to handle a missing value is to supply
-a default value using the nil-coalescing operator (`??`).
-If the optional on the left of the `??` isn't `nil`,
-that value is unwrapped and used.
-Otherwise, the value on the right of `??` is used.
-For example,
-the code below greets someone by name if one is specified,
-and uses a generic greeting when the name is `nil`.
+Еще один способ обработки отсутствующего значения - предоставление значения по 
+умолчанию с использованием оператора объединения по нулю (`??`). 
+Если опционал слева от `??` не является `nil`, 
+то это значение извлекается и используется. 
+В противном случае используется значение справа от `??`. 
+Например, 
+приведенный ниже код приветствует человека по имени, если имя указано, 
+и использует обобщенное приветствие, когда имя равно `nil`.
 
 ```swift
 let name: String? = nil
 let greeting = "Hello, " + (name ?? "friend") + "!"
 print(greeting)
-// Prints "Hello, friend!"
+// Выводит "Hello, friend!"
 ```
 
 <!--
@@ -1604,8 +1604,8 @@ print(greeting)
    ```
 -->
 
-For more information about using `??` to provide a fallback value,
-see <doc:BasicOperators#Nil-Coalescing-Operator>.
+Дополнительную информацию о использовании `??` для предоставления значения 
+по умолчанию см. в разделе <doc:BasicOperators#Nil-Coalescing-Operator>.
 
 ### Force Unwrapping
 
