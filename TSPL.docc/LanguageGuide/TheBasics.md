@@ -1607,19 +1607,19 @@ print(greeting)
 Дополнительную информацию о использовании `??` для предоставления значения 
 по умолчанию см. в разделе <doc:BasicOperators#Nil-Coalescing-Operator>.
 
-### Force Unwrapping
+### Принудительное извлечение
 
-When `nil` represents an unrecoverable failure,
-such as a programmer error or corrupted state,
-you can access the underlying value
-by adding an exclamation mark (`!`) to the end of the optional's name.
-This is known as *force unwrapping* the optional's value.
-When you force unwrap a non-`nil` value,
-the result is its unwrapped value.
-Force unwrapping a `nil` value triggers a runtime error.
+Когда `nil` представляет собой неустранимую ошибку, 
+такую как ошибка программиста или поврежденное состояние, 
+можно получить доступ к базовому значению, 
+добавив восклицательный знак (`!`) в конец имени опционала. 
+Это известно как *принудительное извлечение* значения опционала. 
+Когда вы принудительно извлекаете значение, не являющееся `nil`, 
+результатом является его извлеченное значение. 
+Принудительное извлечение значения `nil` вызывает ошибку времени выполнения.
 
-The `!` is, effectively, a shorter spelling of [`fatalError(_:file:line:)`][].
-For example, the code below shows two equivalent approaches:
+Символ `!` является, по сути, более короткой записью [`fatalError(_:file:line:)`][].
+Например, приведенный ниже код показывает два эквивалентных подхода:
 
 [`fatalError(_:file:line:)`]: https://developer.apple.com/documentation/swift/fatalerror(_:file:line:)
 
@@ -1634,60 +1634,60 @@ guard let number = convertedNumber else {
 }
 ```
 
-Both versions of the code above depend on `convertedNumber`
-always containing a value.
-Writing that requirement as part of the code,
-using either of the approaches above,
-lets your code check that the requirement is true at runtime.
+Обе версии кода выше зависят от того, 
+что `convertedNumber` всегда содержит значение. 
+Запись этого требования в коде с использованием 
+любого из приведенных выше подходов позволяет 
+вашему коду проверять, что требование выполняется на этапе выполнения.
 
-For more information about enforcing data requirements
-and checking assumptions at runtime,
-see <doc:TheBasics#Assertions-and-Preconditions>.
+Дополнительную информацию о обеспечении требований к 
+данным и проверке предположений на этапе выполнения 
+см. в разделе <doc:TheBasics#Assertions-and-Preconditions>.
 
-### Implicitly Unwrapped Optionals
+### Неявно извлеченные опционалы
 
-As described above,
-optionals indicate that a constant or variable is allowed to have “no value”.
-Optionals can be checked with an `if` statement to see if a value exists,
-and can be conditionally unwrapped with optional binding
-to access the optional's value if it does exist.
+Как описано выше, опционалы указывают, что константа или переменная может иметь
+«нет значения». Опционалы могут быть проверены с использованием оператора `if`, 
+чтобы увидеть, существует ли значение, и могут быть условно распакованы с 
+использованием привязки опционала для доступа к значению опционала, 
+если оно существует.
 
-Sometimes it's clear from a program's structure that an optional will *always* have a value,
-after that value is first set.
-In these cases, it's useful to remove the need
-to check and unwrap the optional's value every time it's accessed,
-because it can be safely assumed to have a value all of the time.
+Иногда из структуры программы ясно, что опционал *всегда* будет содержать 
+значение после того, как это значение будет установлено в первый раз. 
+В этих случаях полезно избавиться от необходимости проверки и распаковки значения
+опционала при каждом его доступе, потому что можно безопасно предположить, 
+что значение всегда существует.
 
-These kinds of optionals are defined as *implicitly unwrapped optionals*.
-You write an implicitly unwrapped optional by placing an exclamation point (`String!`)
-rather than a question mark (`String?`) after the type that you want to make optional.
-Rather than placing an exclamation point after the optional's name when you use it,
-you place an exclamation point after the optional's type when you declare it.
+Такие опционалы определяются как *неявно извлеченные опционалы*. Вы создаете 
+неявно извлеченный опционал, поместив восклицательный знак (`String!`) вместо
+вопросительного знака (`String?`) после типа, который вы хотите сделать опциональным. 
+Вместо того чтобы помещать восклицательный знак после имени опционала при его
+использовании, вы помещаете восклицательный знак после типа опционала при его объявлении.
 
-Implicitly unwrapped optionals are useful when
-an optional's value is confirmed to exist immediately after the optional is first defined
-and can definitely be assumed to exist at every point thereafter.
-The primary use of implicitly unwrapped optionals in Swift is during class initialization,
-as described in <doc:AutomaticReferenceCounting#Unowned-References-and-Implicitly-Unwrapped-Optional-Properties>.
+Неявно извлеченные опционалы полезны, когда значение опционала подтверждается 
+наличием сразу после того, как опционал впервые определен, и можно определенно
+предположить, что оно существует на любом этапе дальнейшего выполнения.
+Основное использование неявно распакованных опционалов в Swift - во время инициализации класса, как описано 
+в разделе <doc:AutomaticReferenceCounting#Unowned-References-and-Implicitly-Unwrapped-Optional-Properties>.
 
-Don't use an implicitly unwrapped optional when there's a possibility of
-a variable becoming `nil` at a later point.
-Always use a normal optional type if you need to check for a `nil` value
-during the lifetime of a variable.
+Не используйте неявно извлеченный опционал, если есть возможность того, 
+что переменная станет равной `nil` позже. 
+Всегда используйте обычный тип опционала, если вам нужно проверить наличие 
+значения `nil` в течение времени жизни переменной.
 
-An implicitly unwrapped optional is a normal optional behind the scenes,
-but can also be used like a non-optional value,
-without the need to unwrap the optional value each time it's accessed.
-The following example shows the difference in behavior between
-an optional string and an implicitly unwrapped optional string
-when accessing their wrapped value as an explicit `String`:
+Неявно извлеченный опционал - это обычный опционал на уровне реализации, 
+но также может использоваться как обычное значение без необходимости 
+распаковывать значение опционала при каждом доступе. 
+В следующем примере показано различие в поведении между опциональной строкой и 
+неявно распакованной опциональной строкой при доступе к их упакованному значению 
+как явному `String`:
 
 ```swift
 let possibleString: String? = "An optional string."
-let forcedString: String = possibleString! // Requires explicit unwrapping
+let forcedString: String = possibleString! // Требуется явное извлечение
 
 let assumedString: String! = "An implicitly unwrapped optional string."
-let implicitString: String = assumedString // Unwrapped automatically
+let implicitString: String = assumedString // Автоматическое извлечение
 ```
 
 <!--
@@ -1695,29 +1695,29 @@ let implicitString: String = assumedString // Unwrapped automatically
 
   ```swifttest
   -> let possibleString: String? = "An optional string."
-  -> let forcedString: String = possibleString! // requires an exclamation point
+  -> let forcedString: String = possibleString! // требуется восклицательный знак
   ---
   -> let assumedString: String! = "An implicitly unwrapped optional string."
-  -> let implicitString: String = assumedString // no need for an exclamation point
+  -> let implicitString: String = assumedString // восклицательный знак не требуется
   ```
 -->
 
-You can think of an implicitly unwrapped optional as
-giving permission for the optional to be force-unwrapped if needed.
-When you use an implicitly unwrapped optional value,
-Swift first tries to use it as an ordinary optional value;
-if it can't be used as an optional, Swift force-unwraps the value.
-In the code above,
-the optional value `assumedString` is force-unwrapped
-before assigning its value to `implicitString`
-because `implicitString` has an explicit, non-optional type of `String`.
-In code below,
-`optionalString` doesn't have an explicit type
-so it's an ordinary optional.
+Вы можете рассматривать неявно развернутый опционал как разрешение для опционала
+быть принудительно развернутым, если это необходимо. 
+Когда вы используете значение неявно извлеченного опционала, 
+Swift сначала пытается использовать его как обычное опциональное значение; 
+если его нельзя использовать как опционал, Swift принудительно извлекает 
+значение. 
+В приведенном выше коде опциональное значение `assumedString` 
+принудительно извлекается перед присвоением его значения `implicitString`, 
+потому что `implicitString` имеет явный, 
+неопциональный тип `String`. 
+В коде ниже `optionalString` не имеет явного типа, 
+поэтому это обычный опционал.
 
 ```swift
 let optionalString = assumedString
-// The type of optionalString is "String?" and assumedString isn't force-unwrapped.
+// Тип optionalString - "String?", и assumedString не принудительно развёрнут.
 ```
 
 <!--
@@ -1725,25 +1725,25 @@ let optionalString = assumedString
 
   ```swifttest
   -> let optionalString = assumedString
-  // The type of optionalString is "String?" and assumedString isn't force-unwrapped.
+  // Тип optionalString - "String?", и assumedString не принудительно развёрнут.
   >> print(type(of: optionalString))
   << Optional<String>
   ```
 -->
 
-If an implicitly unwrapped optional is `nil` and you try to access its wrapped value,
-you'll trigger a runtime error.
-The result is exactly the same as if you write an exclamation point
-to force unwrap a normal optional that doesn't contain a value.
+Если неявно извлеченный опционал равен `nil`, и вы пытаетесь получить доступ к его извлеченому значению,
+вы вызовете ошибку времени выполнения.
+Результат будет таким же, как если бы вы написали восклицательный знак,
+принудительно извелекая обычный опционал, который не содержит значения.
 
-You can check whether an implicitly unwrapped optional is `nil`
-the same way you check a normal optional:
+Вы можете проверить, является ли неявно извлеченный опционал `nil`,
+так же, как и обычный опционал:
 
 ```swift
 if assumedString != nil {
     print(assumedString!)
 }
-// Prints "An implicitly unwrapped optional string."
+// Вывод: "An implicitly unwrapped optional string."
 ```
 
 <!--
@@ -1757,14 +1757,14 @@ if assumedString != nil {
   ```
 -->
 
-You can also use an implicitly unwrapped optional with optional binding,
-to check and unwrap its value in a single statement:
+Также можно использовать неявно извлеченный опционал с опциональным связыванием,
+чтобы проверить и развернуть его значение в единственном выражении:
 
 ```swift
 if let definiteString = assumedString {
     print(definiteString)
 }
-// Prints "An implicitly unwrapped optional string."
+// Вывод: "An implicitly unwrapped optional string."
 ```
 
 <!--
@@ -1778,23 +1778,23 @@ if let definiteString = assumedString {
   ```
 -->
 
-## Error Handling
+## Обработка ошибок
 
-You use *error handling* to respond to error conditions
-your program may encounter during execution.
+Вы используете *обработку ошибок* для реагирования на условия ошибок, 
+которые ваша программа может встретить во время выполнения.
 
-In contrast to optionals,
-which can use the presence or absence of a value
-to communicate success or failure of a function,
-error handling allows you to determine the underlying cause of failure,
-and, if necessary, propagate the error to another part of your program.
+В отличие от опционалов, 
+которые могут использовать наличие или отсутствие значения для передачи 
+успешного или неудачного выполнения функции, 
+обработка ошибок позволяет вам определить основную причину ошибки и, 
+при необходимости, передавать ошибку в другую часть вашей программы.
 
-When a function encounters an error condition, it *throws* an error.
-That function's caller can then *catch* the error and respond appropriately.
+Когда функция сталкивается с условием ошибки, она *вызывает* ошибку. 
+Затем вызывающая функция может *перехватить* ошибку и соответственно отреагировать.
 
 ```swift
 func canThrowAnError() throws {
-    // this function may or may not throw an error
+    // Эта функция может вызвать ошибку или не вызвать
 }
 ```
 
@@ -1807,7 +1807,7 @@ func canThrowAnError() throws {
   >> }
   >> let condition = true
   -> func canThrowAnError() throws {
-        // this function may or may not throw an error
+        // Эта функция может вызвать ошибку или не вызвать
   >>    if condition {
   >>       throw SimpleError.someError
   >>    }
@@ -1815,20 +1815,20 @@ func canThrowAnError() throws {
   ```
 -->
 
-A function indicates that it can throw an error
-by including the `throws` keyword in its declaration.
-When you call a function that can throw an error,
-you prepend the `try` keyword to the expression.
+Функция указывает, что она может вызвать ошибку, включив ключевое слово `throws`
+в своем объявлении. 
+При вызове функции, которая может вызвать ошибку, вы добавляете ключевое слово 
+`try` перед выражением.
 
-Swift automatically propagates errors out of their current scope
-until they're handled by a `catch` clause.
+Swift автоматически передает ошибки из их текущей области видимости до тех пор, 
+пока они не будут обработаны в блоке `catch`.
 
 ```swift
 do {
     try canThrowAnError()
-    // no error was thrown
+    // Ошибки не возникло
 } catch {
-    // an error was thrown
+    // Была вызвана ошибка
 }
 ```
 
@@ -1839,20 +1839,20 @@ do {
   -> do {
   ->    try canThrowAnError()
   >>    print("No Error")
-  ->    // no error was thrown
+  ->    // Ошибки не возникло
   -> } catch {
   >>    print("Error")
-  ->    // an error was thrown
+  ->    // Была вызвана ошибка
   -> }
   << Error
   ```
 -->
 
-A `do` statement creates a new containing scope,
-which allows errors to be propagated to one or more `catch` clauses.
+Оператор `do` создает новую область видимости, что позволяет ошибкам 
+передаваться в один или несколько блоков `catch`.
 
-Here's an example of how error handling can be used
-to respond to different error conditions:
+Вот пример того, как обработка ошибок может быть использована для реагирования 
+на различные условия ошибок:
 
 ```swift
 func makeASandwich() throws {
@@ -1895,106 +1895,106 @@ do {
   ```
 -->
 
-In this example, the `makeASandwich()` function will throw an error
-if no clean dishes are available
-or if any ingredients are missing.
-Because `makeASandwich()` can throw an error,
-the function call is wrapped in a `try` expression.
-By wrapping the function call in a `do` statement,
-any errors that are thrown will be propagated
-to the provided `catch` clauses.
+В этом примере функция `makeASandwich()` будет вызывать ошибку, 
+если нет чистой посуды или если какие-то ингредиенты отсутствуют. 
+Поскольку `makeASandwich()` 
+может вызвать ошибку, 
+вызов функции обернут в выражение `try`. 
+Обернув вызов функции в оператор `do`, 
+любые ошибки, которые возникнут, 
+будут переданы в предоставленные блоки `catch`.
 
-If no error is thrown, the `eatASandwich()` function is called.
-If an error is thrown and it matches the `SandwichError.outOfCleanDishes` case,
-then the `washDishes()` function will be called.
-If an error is thrown and it matches the `SandwichError.missingIngredients` case,
-then the `buyGroceries(_:)` function is called
-with the associated `[String]` value captured by the `catch` pattern.
+Если ошибок не возникло, вызывается функция `eatASandwich()`. 
+Если произошла ошибка и она соответствует случаю `SandwichError.outOfCleanDishes`, 
+то вызывается функция `washDishes()`. 
+Если произошла ошибка и она соответствует случаю `SandwichError.missingIngredients`, 
+то вызывается функция `buyGroceries(_:)` с ассоциированным значением `[String]`,
+полученным сопоставлением с шаблоном `catch`.
 
-Throwing, catching, and propagating errors is covered in greater detail in
-<doc:ErrorHandling>.
+Генерация, перехват и передача ошибок подробно описаны 
+в разделе <doc:ErrorHandling>.
 
-## Assertions and Preconditions
+## Утверждения и предусловия
 
-*Assertions* and *preconditions*
-are checks that happen at runtime.
-You use them to make sure an essential condition is satisfied
-before executing any further code.
-If the Boolean condition in the assertion or precondition
-evaluates to `true`,
-code execution continues as usual.
-If the condition evaluates to `false`,
-the current state of the program is invalid;
-code execution ends, and your app is terminated.
+*Утверждения* и *предусловия* - 
+это проверки, выполняемые во время выполнения. 
+Вы используете их, чтобы удостовериться, 
+что существенное условие выполнено перед выполнением дальнейшего кода. 
+Если булево условие в утверждении или 
+предусловии оценивается как `true`, 
+выполнение кода продолжается как обычно. 
+Если условие оценивается как `false`, 
+текущее состояние программы недействительно; 
+выполнение кода завершается, и ваше приложение завершается.
 
-You use assertions and preconditions
-to express the assumptions you make
-and the expectations you have
-while coding,
-so you can include them as part of your code.
-Assertions help you find mistakes and incorrect assumptions during development,
-and preconditions help you detect issues in production.
+Вы используете утверждения и предусловия, 
+чтобы выражать предположения и ожидания, 
+которые у вас есть при написании кода, 
+поэтому их можно включать в состав вашего кода. 
+Утверждения помогают выявлять ошибки и неверные 
+предположения во время разработки, 
+а предусловия помогают выявлять проблемы в производстве.
 
-In addition to verifying your expectations at runtime,
-assertions and preconditions also become a useful form of documentation
-within the code.
-Unlike the error conditions discussed in <doc:TheBasics#Error-Handling> above,
-assertions and preconditions aren't used
-for recoverable or expected errors.
-Because a failed assertion or precondition
-indicates an invalid program state,
-there's no way to catch a failed assertion.
-Recovering from an invalid state is impossible.
-When an assertion fails,
-at least one piece of the program's data is invalid ---
-but you don't know why it's invalid
-or whether an additional state is also invalid.
+Помимо проверки ожиданий во время выполнения, 
+утверждения и предусловия также становятся полезной формой 
+документации в коде. 
+В отличие от условий ошибок, рассмотренных в разделе выше
+<doc:TheBasics#Обработка-ошибок> , утверждения и предусловия не используются для
+восстановимых или ожидаемых ошибок. 
+Поскольку неудачное утверждение или 
+предусловие указывает на недействительное 
+состояние программы, нет способа перехватить неудавшееся утверждение. 
+Восстановление из недействительного состояния невозможно. 
+Когда утверждение не выполняется, 
+хотя бы один элемент данных программы является
+недействительным, но вы не знаете, 
+почему он недействителен или является ли еще какое-то состояние недействительным.
 
-Using assertions and preconditions
-isn't a substitute for designing your code in such a way
-that invalid conditions are unlikely to arise.
-However,
-using them to enforce valid data and state
-causes your app to terminate more predictably
-if an invalid state occurs,
-and helps make the problem easier to debug.
-When assumptions aren't checked,
-you might not notice this kind problem until much later
-when code elsewhere starts failing visibly,
-and after user data has been silently corrupted.
-Stopping execution as soon as an invalid state is detected
-also helps limit the damage caused by that invalid state.
+Использование утверждений и предусловия
+не заменяет разработку вашего кода таким образом, 
+чтобы маловероятно возникновение недопустимых условий.  
+Однако 
+использование их для обеспечения действительных данных и состояния 
+приводит к более предсказуемому завершению вашего приложения, 
+если возникает недействительное состояние, 
+и помогает упростить отладку проблемы. 
+Когда предположения не проверяются, 
+вы можете не заметить эту 
+проблему до гораздо позднего времени, 
+когда код в другом месте начнет вызывать заметные сбои, 
+и после того, 
+как пользовательские данные будут молча повреждены.
 
-The difference between assertions and preconditions is in when they're checked:
-Assertions are checked only in debug builds,
-but preconditions are checked in both debug and production builds.
-In production builds,
-the condition inside an assertion isn't evaluated.
-This means you can use as many assertions as you want
-during your development process,
-without impacting performance in production.
+Различие между утверждениями и предусловиями заключается в том, когда они проверяются:
+утверждения проверяются только в отладочных сборках, 
+а предусловия проверяются как в отладочных, 
+так и в продукционных сборках. 
+В продукционных сборках условие внутри утверждения не оценивается. 
+Это означает, 
+что вы можете использовать столько утверждений, сколько хотите, 
+в процессе разработки, не влияя на производительность в продакшене.
 
-### Debugging with Assertions
+### Отладка с использованием утверждений
 
 <!--
-  If your code triggers an assertion while running in a debug environment,
-  such as when you build and run an app in Xcode,
-  you can see exactly where the invalid state occurred
-  and query the state of your app at the time that the assertion was triggered.
-  An assertion also lets you provide a suitable debug message as to the nature of the assert.
+  Если ваш код вызывает утверждение во время выполнения в отладочной среде,
+  например, при построении и запуске приложения в Xcode,
+  вы можете точно узнать, где произошло недействительное состояние,
+  и проверить состояние вашего приложения в момент срабатывания утверждения.
+  Утверждение также позволяет предоставить подходящее отладочное сообщение о характере утверждения.
 -->
 
-You write an assertion by calling the
-[`assert(_:_:file:line:)`](https://developer.apple.com/documentation/swift/1541112-assert) function
-from the Swift standard library.
-You pass this function an expression that evaluates to `true` or `false`
-and a message to display if the result of the condition is `false`.
-For example:
+Утверждение создается с помощью вызова функции
+[`assert(_:_:file:line:)`](https://developer.apple.com/documentation/swift/1541112-assert) 
+из стандартной библиотеки Swift. 
+Вы передаете этой функции выражение, которое оценивается как `true` или `false`,
+и сообщение для отображения в случае, если результат условия - `false`. 
+Например:
 
 ```swift
 let age = -3
-assert(age >= 0, "A person's age can't be less than zero.")
-// This assertion fails because -3 isn't >= 0.
+assert(age >= 0, "Возраст человека не может быть меньше нуля.")
+// Это утверждение не выполняется, потому что -3 не >= 0.
 ```
 
 <!--
@@ -2002,20 +2002,20 @@ assert(age >= 0, "A person's age can't be less than zero.")
 
   ```swifttest
   -> let age = -3
-  -> assert(age >= 0, "A person's age can't be less than zero.")
+  -> assert(age >= 0, "Возраст человека не может быть меньше нуля.")
   xx assert
-  // This assertion fails because -3 isn't >= 0.
+  // Это утверждение не выполняется, потому что -3 не >= 0.
   ```
 -->
 
-In this example, code execution continues if `age >= 0` evaluates to `true`,
-that is, if the value of `age` is nonnegative.
-If the value of `age` is negative, as in the code above,
-then `age >= 0` evaluates to `false`,
-and the assertion fails, terminating the application.
+В этом примере выполнение кода продолжается, если `age >= 0` оценивается как `true`, 
+то есть, если значение `age` неотрицательно. 
+Если значение `age` отрицательно, как в приведенном выше коде, 
+то `age >= 0` оценивается как `false`, 
+и утверждение не выполняется, завершая приложение.
 
-You can omit the assertion message ---
-for example, when it would just repeat the condition as prose.
+Вы можете опустить сообщение утверждения --- 
+например, когда оно просто повторяет условие в виде текста.
 
 ```swift
 assert(age >= 0)
@@ -2041,19 +2041,19 @@ assert(age >= 0)
   ```
 -->
 
-If the code already checks the condition,
-you use the
-[`assertionFailure(_:file:line:)`](https://developer.apple.com/documentation/swift/1539616-assertionfailure) function
-to indicate that an assertion has failed.
-For example:
+Если код уже проверяет условие, 
+вы используете функцию
+[`assertionFailure(_:file:line:)`](https://developer.apple.com/documentation/swift/1539616-assertionfailure), 
+чтобы указать, что утверждение не выполнено. 
+Например:
 
 ```swift
 if age > 10 {
-    print("You can ride the roller-coaster or the ferris wheel.")
+    print("Вы можете поехать на американские горки или колесо обозрения.")
 } else if age >= 0 {
-    print("You can ride the ferris wheel.")
+    print("Вы можете поехать на колесо обозрения.")
 } else {
-    assertionFailure("A person's age can't be less than zero.")
+    assertionFailure("Возраст человека не может быть меньше нуля.")
 }
 ```
 
@@ -2063,32 +2063,32 @@ if age > 10 {
   ```swifttest
   >> let age = -3
   -> if age > 10 {
-         print("You can ride the roller-coaster or the ferris wheel.")
+         print("Вы можете поехать на американские горки или колесо обозрения.")
      } else if age >= 0 {
-         print("You can ride the ferris wheel.")
+         print("Вы можете поехать на колесо обозрения.")
      } else {
-         assertionFailure("A person's age can't be less than zero.")
+         assertionFailure("Возраст человека не может быть меньше нуля.")
      }
   xx assert
   ```
 -->
 
-### Enforcing Preconditions
+### Соблюдение предусловий
 
-Use a precondition whenever a condition has the potential to be false,
-but must *definitely* be true for your code to continue execution.
-For example, use a precondition to check that a subscript isn't out of bounds,
-or to check that a function has been passed a valid value.
+Используйте предусловие, когда условие может быть ложным, 
+но *обязательно* должно быть истинным для продолжения выполнения вашего кода. 
+Например, используйте предусловие для проверки того, что индекс не выходит за 
+пределы массива, или для проверки того, что функции передано допустимое значение.
 
-You write a precondition by calling the
-[`precondition(_:_:file:line:)`](https://developer.apple.com/documentation/swift/1540960-precondition) function.
-You pass this function an expression that evaluates to `true` or `false`
-and a message to display if the result of the condition is `false`.
-For example:
+Предусловие создается с использованием функции
+[`precondition(_:_:file:line:)`](https://developer.apple.com/documentation/swift/1540960-precondition). 
+Вы передаете этой функции выражение, которое оценивается как `true` или `false`, 
+и сообщение для отображения в случае, если результат условия - `false`. 
+Например:
 
 ```swift
-// In the implementation of a subscript...
-precondition(index > 0, "Index must be greater than zero.")
+// В реализации подскрипта...
+precondition(index > 0, "Индекс должен быть больше нуля.")
 ```
 
 <!--
@@ -2096,63 +2096,63 @@ precondition(index > 0, "Index must be greater than zero.")
 
   ```swifttest
   >> let index = -1
-  // In the implementation of a subscript...
-  -> precondition(index > 0, "Index must be greater than zero.")
+  // В реализации подскрипта...
+  -> precondition(index > 0, "Индекс должен быть больше нуля.")
   xx assert
   ```
 -->
 
-You can also call the
-[`preconditionFailure(_:file:line:)`](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) function
-to indicate that a failure has occurred ---
-for example, if the default case of a switch was taken,
-but all valid input data should have been handled
-by one of the switch's other cases.
+Вы также можете вызвать функцию
+[`preconditionFailure(_:file:line:)`](https://developer.apple.com/documentation/swift/1539374-preconditionfailure), 
+чтобы указать, что произошел сбой --- 
+например, если был взят дефолтный случай `switch`, 
+но все допустимые входные данные должны были быть 
+обработаны одним из других случаев `switch`.
 
-> Note: If you compile in unchecked mode (`-Ounchecked`),
-> preconditions aren't checked.
-> The compiler assumes that preconditions are always true,
-> and it optimizes your code accordingly.
-> However, the `fatalError(_:file:line:)` function always halts execution,
-> regardless of optimization settings.
->
-> You can use the `fatalError(_:file:line:)` function
-> during prototyping and early development
-> to create stubs for functionality that hasn't been implemented yet,
-> by writing `fatalError("Unimplemented")` as the stub implementation.
-> Because fatal errors are never optimized out,
-> unlike assertions or preconditions,
-> you can be sure that execution always halts
-> if it encounters a stub implementation.
+> Примечание: Если вы компилируете в режиме без проверок (`-Ounchecked`), 
+> предусловия не проверяются. Компилятор предполагает, 
+> что предусловия всегда истинны, 
+> и оптимизирует ваш код соответственно. 
+> Однако функция `fatalError(_:file:line:)` всегда завершает выполнение, 
+> независимо от настроек оптимизации. 
+
+> Вы можете использовать функцию
+> `fatalError(_:file:line:)` во время прототипирования и ранней разработки для
+> создания заглушек для функциональности, 
+> которая еще не реализована, 
+> написав `fatalError("Не реализовано")` в качестве заглушки. 
+> Поскольку фатальные ошибки никогда не устраняются, 
+> в отличие от утверждений или предусловий, вы можете быть уверены, 
+> что выполнение всегда прекратится, если встретится заглушка.
 
 <!--
-  "\ " in the first cell below lets it be empty.
-  Otherwise RST treats the row as a continuation.
+  "\ " в первой ячейке ниже позволяет оставить ее пустой.
+  В противном случае RST рассматривает строку как продолжение.
 
   ============ =====  ==========  ===============================
   \            Debug  Production  Production with ``-Ounchecked``
   ============ =====  ==========  ===============================
-  Assertion    Yes    No          No
+  Assertion    Да     Нет         Нет
   ------------ -----  ----------  -------------------------------
-  Precondition Yes    Yes         No
+  Precondition Да     Да          Нет
   ------------ -----  ----------  -------------------------------
-  Fatal Error  Yes    Yes         Yes
+  Fatal Error  Да     Да          Да
   ============ =====  ==========  ===============================
 -->
 
 <!--
-  TODO: In Xcode, can you set a breakpoint on assertion/precondition failure?
-  If so, mention that fact and give a link to a guide that shows you how.
-  In LLDB, 'breakpoint set -E swift' catches when errors are thrown,
-  but doesn't stop at assertions.
+  TODO: В Xcode можно установить точку останова на сбое утверждения/предусловия?
+  Если да, укажите на это и предоставьте ссылку на руководство, которое покажет 
+  вам, как это сделать. В LLDB 'breakpoint set -E swift' перехватывает ошибки, 
+  но не останавливается на утверждениях.
 -->
 
 <!--
-This source file is part of the Swift.org open source project
+Этот исходный файл является частью проекта с открытым исходным кодом Swift.org
 
-Copyright (c) 2014 - 2022 Apple Inc. and the Swift project authors
-Licensed under Apache License v2.0 with Runtime Library Exception
+Copyright (c) 2014 - 2022 Apple Inc. и авторы проекта Swift
+Лицензия Apache License v2.0 с исключением из библиотеки времени выполнения
 
-See https://swift.org/LICENSE.txt for license information
-See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+См. https://swift.org/LICENSE.txt для информации о лицензии
+См. https://swift.org/CONTRIBUTORS.txt для списка авторов проекта Swift
 -->
