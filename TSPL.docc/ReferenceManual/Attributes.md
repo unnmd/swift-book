@@ -119,7 +119,7 @@ The value for that argument is a list of one or more of the following:
   where *prefix* is prepended to the symbol name,
   for a name that starts with a fixed string.
 
-- `suffixed(<#suffix#>`
+- `suffixed(<#suffix#>)`
   where *suffix* is appended to the symbol name,
   for a name that ends with a fixed string.
 
@@ -938,7 +938,7 @@ The compiler is allowed to replace calls to an inlinable symbol
 with a copy of the symbol's implementation at the call site.
 
 Inlinable code
-can interact with `public` symbols declared in any module,
+can interact with `open` and `public` symbols declared in any module,
 and it can interact with `internal` symbols
 declared in the same module
 that are marked with the `usableFromInline` attribute.
@@ -1122,8 +1122,14 @@ for a method marked with the `objc` attribute.
 
 ### NSApplicationMain
 
+> Deprecated:
+> This attribute is deprecated;
+> use the <doc:Attributes#main> attribute instead.
+> In Swift 6,
+> using this attribute will be an error.
+
 Apply this attribute to a class
-to indicate that it's the application delegate.
+to indicate that it's the app delegate.
 Using this attribute is equivalent to calling the
 `NSApplicationMain(_:_:)` function.
 
@@ -1297,6 +1303,60 @@ can increase your binary size and adversely affect performance.
   The performance of linking and launch are slower
   because of the larger symbol table slowing dyld down.
 -->
+
+### preconcurrency
+
+Apply this attribute to a declaration,
+to suppress strict concurrency checking.
+You can apply this attribute
+to the following kinds of declarations:
+
+- Imports
+- Structures, classes, and actors
+- Enumerations and enumeration cases
+- Protocols
+- Variables and constants
+- Subscripts
+- Initializers
+- Functions
+
+On an import declaration,
+this attribute reduces the strictness of concurrency checking
+for code that uses types from the imported module.
+Specifically,
+types from the imported module
+that aren't explicitly marked as nonsendable
+can be used in a context that requires sendable types.
+
+On other declarations,
+this attribute reduces the strictness of concurrency checking
+for code that uses the symbol being declared.
+When you use this symbol in a scope that has minimal concurrency checking,
+concurrency-related constraints specified by that symbol,
+such as `Sendable` requirements or global actors,
+aren't checked.
+
+You can use this attribute as follows,
+to aid in migrating code to strict concurrency checking:
+
+1. Enable strict checking.
+1. Annotate imports with the `preconcurrency` attribute
+   for modules that haven't enabled strict checking.
+1. After migrating a module to strict checking,
+   remove the `preconcurrency` attribute.
+   The compiler warns you about
+   any places where the `preconcurrency` attribute on an import
+   no longer has an effect and should be removed.
+
+For other declarations,
+add the `preconcurrency` attribute
+when you add concurrency-related constraints to the declaration,
+if you still have clients
+that haven't migrated to strict checking.
+Remove the `preconcurrency` attribute after all your clients have migrated.
+
+Declarations from Objective-C are always imported
+as if they were marked with the `preconcurrency` attribute.
 
 ### propertyWrapper
 
@@ -1634,11 +1694,10 @@ The additional result-building methods are as follows:
   or to perform other postprocessing on a result before returning it.
 
 - term `static func buildLimitedAvailability(_ component: Component) -> Component`:
-  Builds a partial result that propagates or erases type information
-  outside a compiler-control statement
+  Builds a partial result that erases type information.
+  You can implement this method to prevent type information
+  from propagating outside a compiler-control statement
   that performs an availability check.
-  You can use this to erase type information
-  that varies between the conditional branches.
 
 For example, the code below defines a simple result builder
 that builds an array of integers.
@@ -1737,9 +1796,14 @@ into code that calls the static methods of the result builder type:
   You can define an overload of `buildExpression(_:)`
   that takes an argument of type `()` to handle assignments specifically.
 - A branch statement that checks an availability condition
-  becomes a call to the `buildLimitedAvailability(_:)` method.
+  becomes a call to the `buildLimitedAvailability(_:)` method,
+  if that method is implemented.
+  If you don't implement `buildLimitedAvailability(_:)`,
+  then branch statements that check availability
+  use the same transformations as other branch statements.
   This transformation happens before the transformation into a call to
   `buildEither(first:)`, `buildEither(second:)`, or `buildOptional(_:)`.
+
   You use the `buildLimitedAvailability(_:)` method to erase type information
   that changes depending on which branch is taken.
   For example,
@@ -1814,7 +1878,7 @@ into code that calls the static methods of the result builder type:
 
   To solve this problem,
   implement a `buildLimitedAvailability(_:)` method
-  to erase type information.
+  to erase type information by returning a type that's always available.
   For example, the code below builds an `AnyDrawable` value
   from its availability check.
 
@@ -1824,7 +1888,7 @@ into code that calls the static methods of the result builder type:
       func draw() -> String { return content.draw() }
   }
   extension DrawingBuilder {
-      static func buildLimitedAvailability(_ content: Drawable) -> AnyDrawable {
+      static func buildLimitedAvailability(_ content: some Drawable) -> AnyDrawable {
           return AnyDrawable(content: content)
       }
   }
@@ -2216,7 +2280,7 @@ into code that calls the static methods of the result builder type:
          func draw() -> String { return content.draw() }
      }
   -> extension DrawingBuilder {
-         static func buildLimitedAvailability(_ content: Drawable) -> AnyDrawable {
+         static func buildLimitedAvailability(_ content: some Drawable) -> AnyDrawable {
              return AnyDrawable(content: content)
          }
      }
@@ -2342,8 +2406,14 @@ The imported module must be compiled with testing enabled.
 
 ### UIApplicationMain
 
+> Deprecated:
+> This attribute is deprecated;
+> use the <doc:Attributes#main> attribute instead.
+> In Swift 6,
+> using this attribute will be an error.
+
 Apply this attribute to a class
-to indicate that it's the application delegate.
+to indicate that it's the app delegate.
 Using this attribute is equivalent to calling the
 `UIApplicationMain` function and
 passing this class's name as the name of the delegate class.
@@ -2554,6 +2624,12 @@ see <doc:Statements#Switching-Over-Future-Enumeration-Cases>.
 > *balanced-token* → **`{`** *balanced-tokens*_?_ **`}`** \
 > *balanced-token* → Any identifier, keyword, literal, or operator \
 > *balanced-token* → Any punctuation except  **`(`**,  **`)`**,  **`[`**,  **`]`**,  **`{`**, or  **`}`**
+
+> Beta Software:
+>
+> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
+>
+> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
 
 <!--
 This source file is part of the Swift.org open source project

@@ -3,10 +3,11 @@
 Define types inside the scope of another type.
 
 Enumerations are often created to support a specific class or structure's functionality.
-Similarly, it can be convenient to define utility classes and structures
-purely for use within the context of a more complex type.
+Similarly, it can be convenient to define utility structures
+purely for use within the context of a more complex type,
+and protocols that are normally used in conjunction with a specific type.
 To accomplish this, Swift enables you to define *nested types*,
-whereby you nest supporting enumerations, classes, and structures
+whereby you nest supporting types like enumerations, structures, and protocols
 within the definition of the type they support.
 
 To nest a type within another type,
@@ -190,6 +191,12 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 For the example above,
 this enables the names of `Suit`, `Rank`, and `Values` to be kept deliberately short,
 because their names are naturally qualified by the context in which they're defined.
+
+> Beta Software:
+>
+> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
+>
+> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
 
 <!--
 This source file is part of the Swift.org open source project

@@ -274,7 +274,7 @@ public macro OptionSet<RawType>() =
 ```
 
 In the declaration above,
-the `@attached(member)` macro includes arguments after the `named:` label
+the `@attached(member)` macro includes arguments after the `names:` label
 for each of the symbols that the `@OptionSet` macro generates.
 The macro adds declarations for symbols named
 `RawValue`, `rawValue`, and `init` ---
@@ -764,6 +764,12 @@ in no particular order:
 
 - `TokenSyntax`
 -->
+
+> Beta Software:
+>
+> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
+>
+> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
 
 <!--
 This source file is part of the Swift.org open source project

@@ -247,7 +247,9 @@ so they must be escaped with backticks in that context.
 
 - Keywords used in declarations:
   `associatedtype`,
+  `borrowing`,
   `class`,
+  `consuming`,
   `deinit`,
   `enum`,
   `extension`,
@@ -258,6 +260,7 @@ so they must be escaped with backticks in that context.
   `inout`,
   `internal`,
   `let`,
+  `nonisolated`,
   `open`,
   `operator`,
   `private`,
@@ -384,6 +387,7 @@ so they must be escaped with backticks in that context.
   `nonmutating`,
   `optional`,
   `override`,
+  `package`,
   `postfix`,
   `precedence`,
   `prefix`,
@@ -1246,6 +1250,12 @@ see <doc:AdvancedOperators#Operator-Methods>.
 > *infix-operator* → *operator* \
 > *prefix-operator* → *operator* \
 > *postfix-operator* → *operator*
+
+> Beta Software:
+>
+> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
+>
+> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
 
 <!--
 This source file is part of the Swift.org open source project

@@ -45,12 +45,6 @@ Swift продолжает развиваться с новыми продума
 возможностями. Цели для Swift амбициозны. 
 Мы не можем дождаться, чтобы увидеть, что вы создадите с его помощью.
 
-> Beta Software:
->
-> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
->
-> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
-
 <!--
 Этот исходный файл является частью проекта с открытым исходным кодом Swift.org
 

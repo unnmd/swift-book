@@ -21,7 +21,6 @@ in the sections below.
 > Grammar of an expression:
 >
 > *expression* → *try-operator*_?_ *await-operator*_?_ *prefix-expression* *infix-expressions*_?_ \
-> *expression-list* → *expression* | *expression* **`,`** *expression-list*
 
 ## Prefix Expressions
 
@@ -923,9 +922,13 @@ explicitly marks a closure as throwing or asynchronous.
 }
 ```
 
-If the body of a closure includes a try expression,
+If the body of a closure includes a `throws` statement or a `try` expression
+that isn't nested inside of a `do` statement with exhaustive error handling,
 the closure is understood to be throwing.
-Likewise, if it includes an await expression,
+If a throwing closure throws errors of only a single type,
+the closure is understood as throwing that error type;
+otherwise, it's understood as throwing `any Error`.
+Likewise, if the body includes an `await` expression,
 it's understood to be asynchronous.
 
 There are several special forms
@@ -1246,7 +1249,7 @@ see <doc:AutomaticReferenceCounting#Resolving-Strong-Reference-Cycles-for-Closur
 >
 > *closure-expression* → **`{`** *attributes*_?_ *closure-signature*_?_ *statements*_?_ **`}`**
 >
-> *closure-signature* → *capture-list*_?_ *closure-parameter-clause* **`async`**_?_ **`throws`**_?_ *function-result*_?_ **`in`** \
+> *closure-signature* → *capture-list*_?_ *closure-parameter-clause* **`async`**_?_ *throws-clause*_?_ *function-result*_?_ **`in`** \
 > *closure-signature* → *capture-list* **`in`**
 >
 > *closure-parameter-clause* → **`(`** **`)`** | **`(`** *closure-parameter-list* **`)`** | *identifier-list* \
@@ -3247,6 +3250,12 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 > Grammar of an optional-chaining expression:
 >
 > *optional-chaining-expression* → *postfix-expression* **`?`**
+
+> Beta Software:
+>
+> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
+>
+> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
 
 <!--
 This source file is part of the Swift.org open source project

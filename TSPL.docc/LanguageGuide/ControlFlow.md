@@ -2159,7 +2159,7 @@ the body of the `if` executes on the minimum deployment target specified by your
 
 In its general form,
 the availability condition takes a list of platform names and versions.
-You use platform names such as `iOS`, `macOS`, `watchOS`, and `tvOS` ---
+You use platform names such as `iOS`, `macOS`, `watchOS`, `tvOS`, and `visionOS` ---
 for the full list, see <doc:Attributes#Declaration-Attributes>.
 In addition to specifying major version numbers like iOS 8 or macOS 10.10,
 you can specify minor versions numbers like iOS 11.2.6 and macOS 10.13.3.
@@ -2258,6 +2258,12 @@ when the check contains only fallback code.
   Not a general purpose condition; can't combine with &&, etc.
   You can use it with if-let, and other Boolean conditions, using a comma
 -->
+
+> Beta Software:
+>
+> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
+>
+> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
 
 <!--
 This source file is part of the Swift.org open source project

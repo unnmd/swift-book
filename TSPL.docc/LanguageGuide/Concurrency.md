@@ -334,9 +334,9 @@ from nonthrowing code.
 For example:
 
 ```swift
-func getRainyWeekendPhotos() async -> Result<[String]> {
+func availableRainyWeekendPhotos() -> Result<[String], Error> {
     return Result {
-        try await listPhotos(inGallery: "A Rainy Weekend")
+        try listDownloadedPhotos(inGallery: "A Rainy Weekend")
     }
 }
 ```
@@ -695,8 +695,8 @@ To let the user stop this work,
 without waiting for all of the tasks to complete,
 the tasks need check for cancellation and stop running if they are canceled.
 There are two ways a task can do this:
-by calling the [`Task.checkCancellation()`][] method,
-or by reading the [`Task.isCancelled`][] property.
+by calling the [`Task.checkCancellation()`][] type method,
+or by reading the [`Task.isCancelled`][`Task.isCancelled` type] type property.
 Calling `checkCancellation()` throws an error if the task is canceled;
 a throwing task can propagate the error out of the task,
 stopping all of the task's work.
@@ -706,16 +706,17 @@ which lets you perform clean-up work as part of stopping the task,
 like closing network connections and deleting temporary files.
 
 [`Task.checkCancellation()`]: https://developer.apple.com/documentation/swift/task/3814826-checkcancellation
-[`Task.isCancelled`]: https://developer.apple.com/documentation/swift/task/3814832-iscancelled
+[`Task.isCancelled` type]: https://developer.apple.com/documentation/swift/task/iscancelled-swift.type.property
 
 ```
 let photos = await withTaskGroup(of: Optional<Data>.self) { group in
     let photoNames = await listPhotos(inGallery: "Summer Vacation")
     for name in photoNames {
-        group.addTaskUnlessCancelled {
-            guard isCancelled == false else { return nil }
+        let added = group.addTaskUnlessCancelled {
+            guard !Task.isCancelled else { return nil }
             return await downloadPhoto(named: name)
         }
+        guard added else { break }
     }
 
     var results: [Data] = []
@@ -732,6 +733,11 @@ The code above makes several changes from the previous version:
   [`TaskGroup.addTaskUnlessCancelled(priority:operation:)`][] method,
   to avoid starting new work after cancellation.
 
+- After each call to `addTaskUnlessCancelled(priority:operation:)`,
+  the code confirms that the new child task was added.
+  If the group is canceled, the value of `added` is `false` ---
+  in that case, the code stops trying to download additional photos.
+
 - Each task checks for cancellation
   before starting to download the photo.
   If it has been canceled, the task returns `nil`.
@@ -744,6 +750,13 @@ The code above makes several changes from the previous version:
   instead of discarding that completed work.
 
 [`TaskGroup.addTaskUnlessCancelled(priority:operation:)`]: https://developer.apple.com/documentation/swift/taskgroup/addtaskunlesscancelled(priority:operation:)
+
+> Note:
+> To check whether a task has been canceled from outside that task,
+> use the [`Task.isCancelled`][`Task.isCancelled` instance] instance property
+> instead of the type property.
+
+[`Task.isCancelled` instance]: https://developer.apple.com/documentation/swift/task/iscancelled-swift.property
 
 For work that needs immediate notification of cancellation,
 use the [`Task.withTaskCancellationHandler(operation:onCancel:)`][] method.
@@ -1090,7 +1103,7 @@ the code below converts measured temperatures from Fahrenheit to Celsius:
 
 ```swift
 extension TemperatureLogger {
-    func convertFarenheitToCelsius() {
+    func convertFahrenheitToCelsius() {
         measurements = measurements.map { measurement in
             (measurement - 32) * 5 / 9
         }
@@ -1113,7 +1126,7 @@ while unit conversion is in progress.
 In addition to writing code in an actor
 that protects temporary invalid state by omitting potential suspension points,
 you can move that code into a synchronous method.
-The `convertFarenheitToCelsius()` method above is a synchronous method,
+The `convertFahrenheitToCelsius()` method above is a synchronous method,
 so it's guaranteed to *never* contain potential suspension points.
 This function encapsulates the code
 that temporarily makes the data model inconsistent,
@@ -1417,6 +1430,12 @@ preventing the type from being sendable.
   Probably don't cover unsafe continuations (SE-0300) in TSPL,
   but maybe link to them?
 -->
+
+> Beta Software:
+>
+> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
+>
+> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
 
 <!--
 This source file is part of the Swift.org open source project

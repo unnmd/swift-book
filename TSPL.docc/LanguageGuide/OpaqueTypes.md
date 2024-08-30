@@ -1,4 +1,4 @@
-# Opaque and Boxed Types
+# Opaque and Boxed Protocol Types
 
 Hide implementation details about a value's type.
 
@@ -121,8 +121,8 @@ print(flippedTriangle.draw())
 
 This approach to defining a `JoinedShape<T: Shape, U: Shape>` structure
 that joins two shapes together vertically, like the code below shows,
-results in types like `JoinedShape<FlippedShape<Triangle>, Triangle>`
-from joining a flipped triangle with another triangle.
+results in types like `JoinedShape<Triangle, FlippedShape<Triangle>>`
+from joining a triangle with a flipped triangle.
 
 ```swift
 struct JoinedShape<T: Shape, U: Shape>: Shape {
@@ -920,6 +920,12 @@ which means that the type of `twelve` is also inferred to be `Int`.
       return AnyP(p: result)
   }
 -->
+
+> Beta Software:
+>
+> This documentation contains preliminary information about an API or technology in development. This information is subject to change, and software implemented according to this documentation should be tested with final operating system software.
+>
+> Learn more about using [Apple's beta software](https://developer.apple.com/support/beta-software/).
 
 <!--
 This source file is part of the Swift.org open source project
