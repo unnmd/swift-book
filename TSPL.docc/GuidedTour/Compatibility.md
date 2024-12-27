@@ -1,54 +1,54 @@
-# Version Compatibility
+# Совместимость версий
 
-Learn what functionality is available in older language modes.
+Узнайте, какие функции доступны в старых режимах языка.
 
-This book describes Swift 6,
-the default version of Swift that's included in Xcode 16.
-You can use the Swift 6 compiler to build code
-that's written in Swift 6, Swift 5, Swift 4.2, or Swift 4.
+Эта книга описывает Swift 6,
+версию по умолчанию, которая включена в Xcode 16.
+Вы можете использовать компилятор Swift 6 для компиляции кода,
+написанного на Swift 6, Swift 5, Swift 4.2 или Swift 4.
 
-When you use the Swift 6 compiler
-to build code that uses the Swift 5 language mode,
-you can use the new features from Swift 6 ---
-they're enabled either by default or by an upcoming feature flag.
-However, to enable strict concurrency checking,
-you need to upgrade to the Swift 6 language mode.
+Когда вы используете компилятор Swift 6
+для компиляции кода, использующего режим языка Swift 5,
+вы можете использовать новые функции из Swift 6 —
+они включены либо по умолчанию, либо с помощью флага "Новые функции". 
+Однако, чтобы включить строгую проверку concurrency, 
+вам нужно перейти на режим языка Swift 6.
 
-In addition,
-when you use Xcode 15.3 to build Swift 4 and Swift 4.2 code,
-most Swift 5 functionality is still available.
-That said,
-the following changes are available only to code
-that uses the Swift 5 language mode:
+Кроме того,
+когда вы используете Xcode 15.3 для компиляции кода на Swift 4 и Swift 4.2, 
+большинство функций Swift 5 всё ещё доступны. 
+Тем не менее, 
+следующие изменения доступны только для кода, 
+использующего режим языка Swift 5:
 
-- Functions that return an opaque type require the Swift 5.1 runtime.
-- The `try?` expression doesn't introduce an extra level of optionality
-  to expressions that already return optionals.
-- Large integer literal initialization expressions are inferred
-  to be of the correct integer type.
-  For example, `UInt64(0xffff_ffff_ffff_ffff)` evaluates to the correct value
-  rather than overflowing.
+- Функции, возвращающие непрозрачный тип, требуется среда выполнения Swift 5.1.
+- Выражение `try?` не вводит дополнительный уровень опциональности для выражений, 
+  которые уже возвращают опционалы.
+- Инициализирующие выражения больших целочисленных литералов выводятся как 
+  правильный целочисленный тип. 
+  Например, `UInt64(0xffff_ffff_ffff_ffff)` вычисляется до правильного значения,
+  а не вызывает переполнение.
 
-Concurrency requires the Swift 5 language mode
-and a version of the Swift standard library
-that provides the corresponding concurrency types.
-On Apple platforms, set a deployment target
-of at least iOS 13, macOS 10.15, tvOS 13, watchOS 6, or visionOS 1.
+Concurrency требует режима языка Swift 5 
+и версии стандартной библиотеки Swift, 
+которая предоставляет соответствующие типы для concurrency. 
+На платформах Apple установите целевую платформу как минимум iOS 13, 
+macOS 10.15, tvOS 13, watchOS 6 или visionOS 1.
 
-A target written in Swift 6 can depend on
-a target that's written in Swift 5, Swift 4.2 or Swift 4,
-and vice versa.
-This means, if you have a large project
-that's divided into multiple frameworks,
-you can migrate your code to a newer language version
-one framework at a time.
+Модуль, написанный на Swift 6,
+может зависеть от модуля, написанного на Swift 5, Swift 4.2 или Swift 4, 
+и наоборот. 
+Это означает, что если у вас есть крупный проект, 
+разделённый на несколько фреймворков, 
+вы можете мигрировать свой код на более новую версию языка 
+по одному фреймворку за раз.
 
 <!--
-This source file is part of the Swift.org open source project
+Этот исходный файл является частью проекта с открытым исходным кодом Swift.org
 
-Copyright (c) 2014 - 2022 Apple Inc. and the Swift project authors
-Licensed under Apache License v2.0 with Runtime Library Exception
+Авторские права (c) 2014 - 2022 Apple Inc. и авторы проекта Swift
+Лицензировано по лицензии Apache License версии 2.0 с исключением для библиотеки времени выполнения
 
-See https://swift.org/LICENSE.txt for license information
-See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+Смотрите https://swift.org/LICENSE.txt для получения информации о лицензии
+Смотрите https://swift.org/CONTRIBUTORS.txt для получения списка авторов проекта Swift
 -->

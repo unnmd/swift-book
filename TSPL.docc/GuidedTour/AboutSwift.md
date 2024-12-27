@@ -1,56 +1,56 @@
-# About Swift
+# О Swift
 
-Understand the high-level goals of the language.
+Понимание высокоуровневых целей языка.
 
-Swift is a fantastic way to write software
-for phones, tablets, desktops, servers,
-or anything else that runs code.
-It's a safe and fast programming language
-that combines the best in modern language thinking
-with wisdom from a diverse open source community.
+Swift - это фантастический способ написания программного обеспечения для 
+телефонов, планшетов, настольных компьютеров, серверов или чего-либо еще, что 
+выполняет код.  Это безопасный и быстрый язык программирования, который 
+объединяет лучшие аспекты современного мышления 
+в языках программирования с мудростью разнообразного 
+сообщества открытого исходного кода.
 
-Swift is friendly to new programmers,
-without sacrificing the power and flexibility
-that experienced programmers need.
-It's an industrial-quality programming language
-that's as expressive and enjoyable as a scripting language.
-The compiler is optimized for performance
-and the language is optimized for development,
-without compromising on either.
+Swift дружелюбен к новым программистам, 
+не жертвуя мощью и гибкостью, 
+необходимыми опытным программистам. 
+Это язык программирования высокого качества, 
+выразительный и приятный, как язык сценариев. 
+Компилятор оптимизирован для производительности, 
+а язык оптимизирован для разработки, 
+не жертвуя ни тем, ни другим.
 
-Swift defines away large classes of common programming errors
-by adopting modern programming patterns:
+Swift устраняет множество распространенных ошибок программирования, 
+принимая современные шаблоны программирования:
 
-- Variables are always initialized before use.
-- Array indices are checked for out-of-bounds errors.
-- Integers are checked for overflow.
-- Optionals ensure that `nil` values are handled explicitly.
-- Memory is managed automatically.
-- Error handling allows controlled recovery from unexpected failures.
+- Переменные всегда инициализируются перед использованием.
+- Индексы массивов проверяются на ошибки выхода за пределы.
+- Целые числа проверяются на переполнение.
+- Опционалы обеспечивают явное обращение с `nil` значениями.
+- Память управляется автоматически.
+- Обработка ошибок позволяет контролировать восстановление после неожиданных сбоев.
 
-Swift code is compiled and optimized to get the most out of modern hardware.
-The syntax and standard library have been designed
-based on the guiding principle that
-the obvious way to write your code should also perform the best.
-Its combination of safety and speed make Swift an excellent choice for
-everything from "Hello, world!" to an entire operating system.
+Код на Swift компилируется и оптимизируется для получения максимальной 
+производительности современного оборудования. Синтаксис и стандартная библиотека
+разработаны с учетом принципа, что очевидный способ написания кода должен 
+также давать лучшую производительность. Его сочетание безопасности и скорости 
+делает Swift отличным выбором для всего, начиная от "Привет, мир!" до целой 
+операционной системы.
 
-Swift combines a modern, lightweight syntax
-that's familiar for developers coming from other popular languages
-with powerful features like type inference and pattern matching,
-allowing complex ideas to be expressed in a clear and concise manner.
-As a result, code is easier to read, write, and maintain.
+Swift объединяет современный, легкий синтаксис, знакомый 
+разработчикам из других популярных языков, с мощными функциями,
+такими как вывод типов и сопоставление шаблонов, 
+позволяя выражать сложные идеи четким и кратким образом. 
+В результате код легче читать, писать и поддерживать.
 
-Swift continues to evolve with thoughtful new features and powerful capabilities.
-The goals for Swift are ambitious.
-We can’t wait to see what you create with it.
+Swift продолжает развиваться с новыми продуманными функциями и мощными 
+возможностями. Цели для Swift амбициозны. 
+Мы не можем дождаться, чтобы увидеть, что вы создадите с его помощью.
 
 <!--
-This source file is part of the Swift.org open source project
+Этот исходный файл является частью проекта с открытым исходным кодом Swift.org
 
-Copyright (c) 2014 - 2022 Apple Inc. and the Swift project authors
-Licensed under Apache License v2.0 with Runtime Library Exception
+Авторские права (c) 2014 - 2022 Apple Inc. и авторы проекта Swift
+Лицензировано по Apache License v2.0 с исключением из библиотеки выполнения
 
-See https://swift.org/LICENSE.txt for license information
-See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+См. https://swift.org/LICENSE.txt для информации о лицензии
+См. https://swift.org/CONTRIBUTORS.txt для списка авторов проекта Swift
 -->
