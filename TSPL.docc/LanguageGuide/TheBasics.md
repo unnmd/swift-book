@@ -1,56 +1,56 @@
-# The Basics
+# Основы
 
-Work with common kinds of data and write basic syntax.
+Работайте с общими видами данных и пишите базовый синтаксис.
 
-Swift provides many fundamental data types,
-including `Int` for integers,
-`Double` for floating-point values,
-`Bool` for Boolean values,
-and `String` for text.
-Swift also provides powerful versions of the three primary collection types,
-`Array`, `Set`, and `Dictionary`,
-as described in <doc:CollectionTypes>.
+Swift предоставляет множество фундаментальных типов данных,
+включая `Int` для целых чисел,
+`Double` для чисел с плавающей запятой,
+`Bool` для булевых значений,
+и `String` для текста.
+Swift также предоставляет мощные версии трех основных типов коллекций,
+`Array`, `Set` и `Dictionary`,
+как описано в <doc:CollectionTypes>.
 
-Swift uses variables to store and refer to values by an identifying name.
-Swift also makes extensive use of variables whose values can't be changed.
-These are known as constants, and are used throughout Swift to make code safer and clearer in intent
-when you work with values that don't need to change.
+Swift использует переменные для хранения и ссылки на значения по идентификационному 
+имени. Swift также широко использует переменные, значения которых не могут быть 
+изменены. Эти переменные известны как константы и используются во всем Swift для
+обеспечения безопасности кода и ясности намерений при работе с значениями, которые не должны изменяться.
 
-In addition to familiar types,
-Swift introduces advanced types such as tuples.
-Tuples enable you to create and pass around groupings of values.
-You can use a tuple to return multiple values from a function as a single compound value.
+Помимо знакомых типов, Swift представляет продвинутые типы, такие как кортежи. 
+Кортежи позволяют вам создавать и передавать группировки значений. Вы можете 
+использовать кортеж для возврата нескольких значений из функции как единого 
+составного значения.
 
-Swift also introduces optional types,
-which handle the absence of a value.
-Optionals say either “there *is* a value, and it equals *x*”
-or “there *isn't* a value at all”.
+Swift также вводит опциональные типы, 
+которые обрабатывают отсутствие значения. 
+Опционалы говорят либо "здесь *есть* значение, 
+и оно равно *x*", либо "здесь *нет* значения вообще".
 
-Swift is a *type-safe* language,
-which means the language helps you to be clear about the types of values your code can work with.
-If part of your code requires a `String`,
-type safety prevents you from passing it an `Int` by mistake.
-Likewise, type safety prevents you from
-accidentally passing an optional `String`
-to a piece of code that requires a non-optional `String`.
-Type safety helps you catch and fix errors as early as possible in the development process.
+Swift является *типобезопасным* языком, что означает, что язык помогает вам быть
+ясным относительно типов значений, с которыми ваш код может работать. 
+Если часть вашего кода требует `String`, типовая безопасность предотвращает 
+передачу ей по ошибке `Int`. Точно так же типовая безопасность мешает вам 
+случайно передавать опциональную `String` в участок кода, который требует 
+неопциональную `String`. 
+Типовая безопасность помогает вам выявлять и устранять 
+ошибки как можно раньше впроцессе разработки.
 
-## Constants and Variables
+## Константы и Переменные
 
-Constants and variables associate a name
-(such as `maximumNumberOfLoginAttempts` or `welcomeMessage`)
-with a value of a particular type
-(such as the number `10` or the string `"Hello"`).
-The value of a *constant* can't be changed once it's set,
-whereas a *variable* can be set to a different value in the future.
+Константы и переменные связывают имя
+(например, `maximumNumberOfLoginAttempts` или `welcomeMessage`)
+со значением определенного типа
+(например, число `10` или строка `"Hello"`).
+Значение *константы* не может быть изменено после установки,
+в то время как *переменная* может быть установлена на другое значение в будущем.
 
-### Declaring Constants and Variables
+### Объявление Констант и Переменных
 
-Constants and variables must be declared before they're used.
-You declare constants with the `let` keyword
-and variables with the `var` keyword.
-Here's an example of how constants and variables can be used
-to track the number of login attempts a user has made:
+Константы и переменные должны быть объявлены перед их использованием.
+Константы объявляются с использованием ключевого слова `let`,
+а переменные — с использованием ключевого слова `var`.
+Вот пример того, как константы и переменные могут быть использованы
+для отслеживания количества попыток входа пользователя:
 
 ```swift
 let maximumNumberOfLoginAttempts = 10
@@ -66,42 +66,42 @@ var currentLoginAttempt = 0
   ```
 -->
 
-This code can be read as:
+Этот код можно прочитать следующим образом:
 
-“Declare a new constant called `maximumNumberOfLoginAttempts`,
-and give it a value of `10`.
-Then, declare a new variable called `currentLoginAttempt`,
-and give it an initial value of `0`.”
+"Объявить новую константу с именем `maximumNumberOfLoginAttempts`
+и присвоить ей значение `10`.
+Затем объявить новую переменную с именем `currentLoginAttempt`
+и присвоить ей начальное значение `0`."
 
-In this example,
-the maximum number of allowed login attempts is declared as a constant,
-because the maximum value never changes.
-The current login attempt counter is declared as a variable,
-because this value must be incremented after each failed login attempt.
+В этом примере
+максимальное количество разрешенных попыток входа объявлено как константа,
+поскольку максимальное значение никогда не изменяется.
+Счетчик текущей попытки входа объявлен как переменная,
+потому что это значение должно увеличиваться после каждой неудачной попытки входа.
 
-If a stored value in your code won't change,
-always declare it as a constant with the `let` keyword.
-Use variables only for storing values that change.
+Если сохраненное значение в вашем коде не будет изменяться,
+всегда объявляйте его как константу с использованием ключевого слова `let`.
+Используйте переменные только для хранения значений, которые изменяются.
 
-When you declare a constant or a variable,
-you can give it a value as part of that declaration,
-like the examples above.
-Alternatively,
-you can assign its initial value later in the program,
-as long as it's guaranteed to have a value
-before the first time you read from it.
+При объявлении константы или переменной
+вы можете присвоить ей значение как часть этого объявления,
+как показано в приведенных выше примерах.
+В качестве альтернативы
+вы можете присвоить ей начальное значение позже в программе,
+при условии, что гарантируется, что у нее будет значение
+перед первым чтением из нее.
 
 ```swift
 var environment = "development"
 let maximumNumberOfLoginAttempts: Int
-// maximumNumberOfLoginAttempts has no value yet.
+// Переменной maximumNumberOfLoginAttempts ещё не присвоено значение.
 
 if environment == "development" {
     maximumNumberOfLoginAttempts = 100
 } else {
     maximumNumberOfLoginAttempts = 10
 }
-// Now maximumNumberOfLoginAttempts has a value, and can be read.
+// Теперь у переменной maximumNumberOfLoginAttempts есть значение и его можно прочитать.
 ```
 
 <!--
@@ -120,21 +120,21 @@ if environment == "development" {
   ```
 -->
 
-In this example,
-the maximum number of login attempts is constant,
-and its value depends on the environment.
-In the development environment,
-it has a value of 100;
-in any other environment, its value is 10.
-Both branches of the `if` statement
-initialize `maximumNumberOfLoginAttempts` with some value,
-guaranteeing that the constant always gets a value.
-For information about how Swift checks your code
-when you set an initial value this way,
-see <doc:Declarations#Constant-Declaration>.
+В этом примере максимальное количество 
+попыток входа является константой, 
+и его значение зависит от окружения. 
+В среде разработки у него значение 100; 
+в любой другой среде его значение равно 10. 
+Обе ветви оператора `if` инициализируют `maximumNumberOfLoginAttempts` 
+какое-то значение, гарантируя, 
+что константе всегда присваивается значение. 
+Для получения информации о том, 
+как Swift проверяет ваш код 
+при установке начального значения, таким образом, 
+см. <doc:Declarations#Constant-Declaration>.
 
-You can declare multiple constants or multiple variables on a single line,
-separated by commas:
+Вы можете объявить несколько констант или переменных в одной строке, 
+разделяя их запятыми:
 
 ```swift
 var x = 0.0, y = 0.0, z = 0.0
@@ -150,15 +150,15 @@ var x = 0.0, y = 0.0, z = 0.0
   ```
 -->
 
-### Type Annotations
+### Аннотации Типов
 
-You can provide a *type annotation* when you declare a constant or variable,
-to be clear about the kind of values the constant or variable can store.
-Write a type annotation by placing a colon after the constant or variable name,
-followed by a space, followed by the name of the type to use.
+Вы можете предоставить *аннотацию типа* при объявлении константы или переменной,
+чтобы явно указать тип значений, которые может хранить константа или переменная.
+Напишите аннотацию типа, разместив двоеточие после имени константы или 
+переменной, за которым следует пробел, а затем имя типа для использования.
 
-This example provides a type annotation for a variable called `welcomeMessage`,
-to indicate that the variable can store `String` values:
+В этом примере предоставлена аннотация типа для переменной с именем `welcomeMessage`,
+чтобы указать, что переменная может хранить значения типа `String`:
 
 ```swift
 var welcomeMessage: String
@@ -172,15 +172,15 @@ var welcomeMessage: String
   ```
 -->
 
-The colon in the declaration means “…of type…,”
-so the code above can be read as:
+Двоеточие в объявлении означает "...типа...", 
+поэтому код выше можно прочитать как:
 
-“Declare a variable called `welcomeMessage` that's of type `String`.”
+"Объявить переменную с именем `welcomeMessage` типа `String`."
 
-The phrase “of type `String`” means “can store any `String` value.”
-Think of it as meaning “the type of thing” (or “the kind of thing”) that can be stored.
+Фраза "типа `String`" означает "может хранить любое значение типа `String`". 
+Представьте себе это как описание "типа вещи" (или "вида вещи"), которую можно хранить.
 
-The `welcomeMessage` variable can now be set to any string value without error:
+Переменной `welcomeMessage` теперь можно присвоить любое строковое значение без ошибок:
 
 ```swift
 welcomeMessage = "Hello"
@@ -196,8 +196,8 @@ welcomeMessage = "Hello"
   ```
 -->
 
-You can define multiple related variables of the same type on a single line,
-separated by commas, with a single type annotation after the final variable name:
+Вы можете определить несколько связанных переменных одного типа в одной строке, 
+разделяя их запятыми, с одной аннотацией типа после последнего имени переменной:
 
 ```swift
 var red, green, blue: Double
@@ -211,18 +211,18 @@ var red, green, blue: Double
   ```
 -->
 
-> Note: It's rare that you need to write type annotations in practice.
-> If you provide an initial value for a constant or variable at the point that it's defined,
-> Swift can almost always infer the type to be used for that constant or variable,
-> as described in <doc:TheBasics#Type-Safety-and-Type-Inference>.
-> In the `welcomeMessage` example above, no initial value is provided,
-> and so the type of the `welcomeMessage` variable is specified with a type annotation
-> rather than being inferred from an initial value.
+> Примечание: В практике редко требуется написание аннотаций типов. 
+> Если вы предоставляете начальное значение для константы или переменной в том 
+> месте, где она определена, Swift почти всегда может самостоятельно вывести 
+> тип для использования этой константы или переменной, как описано в
+> <doc:TheBasics#Безопасность-типов-и-вывод-типов>. В приведенном выше примере 
+> `welcomeMessage` не предоставляется начальное значение, поэтому тип переменной
+> `welcomeMessage` указывается аннотацией типа, а не выводится из начального значения.
 
-### Naming Constants and Variables
+### Именование Констант и Переменных
 
-Constant and variable names can contain almost any character,
-including Unicode characters:
+Имена констант и переменных могут содержать практически любой символ, 
+включая символы Unicode:
 
 ```swift
 let π = 3.14159
@@ -240,30 +240,30 @@ let 🐶🐮 = "dogcow"
   ```
 -->
 
-Constant and variable names can't contain
-whitespace characters, mathematical symbols, arrows, private-use Unicode scalar values,
-or line- and box-drawing characters.
-Nor can they begin with a number,
-although numbers may be included elsewhere within the name.
+Имена констант и переменных не могут содержать пробельные символы, 
+математические символы, стрелки, значения юникодных скаляров для личного 
+использования, а также символы линий и рамок. 
+Они также не могут начинаться с цифры, 
+хотя числа могут включаться в других частях имени.
 
-Once you've declared a constant or variable of a certain type,
-you can't declare it again with the same name,
-or change it to store values of a different type.
-Nor can you change a constant into a variable
-or a variable into a constant.
+После того как вы объявили константу или переменную определенного типа, 
+вы не можете объявить ее снова с тем же именем или изменить ее, 
+чтобы хранить значения другого типа. 
+Вы также не можете изменить константу на переменную 
+или наоборот.
 
-> Note: If you need to give a constant or variable the same name as a reserved Swift keyword,
-> surround the keyword with backticks (`` ` ``) when using it as a name.
-> However, avoid using keywords as names unless you have absolutely no choice.
+> Примечание: Если вам нужно дать константе или переменной то же имя, что и зарезервированное ключевое слово
+> Swift, окружите ключевое слово обратными кавычками (`` ` ``) при использовании его в качестве имени. 
+> Однако избегайте использования ключевых слов в качестве имен, если у вас есть альтернативы.
 
-You can change the value of an existing variable to another value of a compatible type.
-In this example, the value of `friendlyWelcome` is changed from
-`"Hello!"` to `"Bonjour!"`:
+Значение существующей переменной можно изменить на другое значение совместимого типа. 
+В этом примере значение `friendlyWelcome` изменяется с 
+`"Hello!"` на `"Bonjour!"`:
 
 ```swift
 var friendlyWelcome = "Hello!"
 friendlyWelcome = "Bonjour!"
-// friendlyWelcome is now "Bonjour!"
+// friendlyWelcome теперь "Bonjour!"
 ```
 
 <!--
@@ -277,13 +277,13 @@ friendlyWelcome = "Bonjour!"
   ```
 -->
 
-Unlike a variable, the value of a constant can't be changed after it's set.
-Attempting to do so is reported as an error when your code is compiled:
+В отличие от переменной, значение константы не может быть изменено после установки. 
+Попытка сделать это вызовет ошибку во время компиляции:
 
 ```swift
 let languageName = "Swift"
 languageName = "Swift++"
-// This is a compile-time error: languageName cannot be changed.
+// Это ошибка времени компиляции: languageName нельзя изменить.
 ```
 
 <!--
@@ -303,13 +303,13 @@ languageName = "Swift++"
   ```
 -->
 
-### Printing Constants and Variables
+### Печать Констант и Переменных
 
-You can print the current value of a constant or variable with the `print(_:separator:terminator:)` function:
+Вы можете напечатать текущее значение константы или переменной с помощью функции `print(_:separator:terminator:)`:
 
 ```swift
 print(friendlyWelcome)
-// Prints "Bonjour!"
+// Печатает "Bonjour!"
 ```
 
 <!--
@@ -321,19 +321,19 @@ print(friendlyWelcome)
   ```
 -->
 
-The `print(_:separator:terminator:)` function
-is a global function that prints one or more values
-to an appropriate output.
-In Xcode, for example,
-the `print(_:separator:terminator:)` function prints its output in Xcode's “console” pane.
-The `separator` and `terminator` parameter have default values,
-so you can omit them when you call this function.
-By default, the function terminates the line it prints by adding a line break.
-To print a value without a line break after it,
-pass an empty string as the terminator --- for example,
-`print(someValue, terminator: "")`.
-For information about parameters with default values,
-see <doc:Functions#Default-Parameter-Values>.
+Функция `print(_:separator:terminator:)` является глобальной функцией, 
+которая выводит одно или несколько значений в соответствующий вывод. 
+Например, в Xcode функция 
+`print(_:separator:terminator:)` выводит результат в 
+"консольное" окно Xcode. Параметры `separator` и `terminator` имеют значения по 
+умолчанию, поэтому вы можете опустить их при вызове этой функции.
+По умолчанию функция завершает строку, 
+добавляя перевод строки после печатаемого значения. 
+Чтобы вывести значение без перевода строки после него, 
+передайте пустуюстроку в качестве аргумента `terminator` — 
+например, `print(someValue, terminator: "")`. 
+Дополнительную информацию о параметрах со значениями по умолчанию можно найти в 
+разделе <doc:Functions#Default-Parameter-Values>.
 
 <!--
   - test: `printingWithoutNewline`
@@ -347,19 +347,19 @@ see <doc:Functions#Default-Parameter-Values>.
 -->
 
 <!--
-  QUESTION: have I referred to Xcode's console correctly here?
-  Should I mention other output streams, such as the REPL / playgrounds?
+  ВОПРОС: я правильно обратился к консоли Xcode здесь? 
+  Следует ли упомянуть другие потоки вывода, такие как REPL / песочницы?
 -->
 
 <!--
-  NOTE: this is a deliberately simplistic description of what you can do with print().
-  It will be expanded later on.
+  ПРИМЕЧАНИЕ: это преднамеренно упрощенное описание того, что вы можете сделать с функцией print(). 
+  Позже оно будет расширено.
 -->
 
-Swift uses *string interpolation* to include the name of a constant or variable
-as a placeholder in a longer string,
-and to prompt Swift to replace it with the current value of that constant or variable.
-Wrap the name in parentheses and escape it with a backslash before the opening parenthesis:
+Swift использует *интерполяцию строк* для включения имени константы или переменной
+в качестве заполнителя в более длинной строке и для того, чтобы побудить Swift 
+заменить его текущим значением этой константы или переменной. Оберните имя в 
+круглые скобки и предварительно экранируйте его обратным слешем перед открывающей круглой скобкой:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
@@ -375,20 +375,20 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
   ```
 -->
 
-> Note: All options you can use with string interpolation
-> are described in <doc:StringsAndCharacters#String-Interpolation>.
+> Примечание: Все варианты использования интерполяции строк описаны 
+> в разделе <doc:StringsAndCharacters#String-Interpolation>.
 
-## Comments
+## Комментарии
 
-Use comments to include nonexecutable text in your code,
-as a note or reminder to yourself.
-Comments are ignored by the Swift compiler when your code is compiled.
+Используйте комментарии для включения неисполняемого текста в ваш код в виде 
+заметки или напоминания для себя. 
+Комментарии игнорируются компилятором Swift при компиляции вашего кода.
 
-Comments in Swift are very similar to comments in C.
-Single-line comments begin with two forward-slashes (`//`):
+Комментарии в Swift очень похожи на комментарии в C. 
+Однострочные комментарии начинаются с двух косых черт (`//`):
 
 ```swift
-// This is a comment.
+// Это комментарий.
 ```
 
 <!--
@@ -399,12 +399,12 @@ Single-line comments begin with two forward-slashes (`//`):
   ```
 -->
 
-Multiline comments start with a forward-slash followed by an asterisk (`/*`)
-and end with an asterisk followed by a forward-slash (`*/`):
+Многострочные комментарии начинаются с косой черты, за которой следует звезда (`/*`),
+и заканчиваются звездой, за которой следует косая черта (`*/`):
 
 ```swift
-/* This is also a comment
-but is written over multiple lines. */
+/* Это также комментарий,
+но написанный на нескольких строках. */
 ```
 
 <!--
@@ -416,16 +416,16 @@ but is written over multiple lines. */
   ```
 -->
 
-Unlike multiline comments in C,
-multiline comments in Swift can be nested inside other multiline comments.
-You write nested comments by starting a multiline comment block
-and then starting a second multiline comment within the first block.
-The second block is then closed, followed by the first block:
+В отличие от многострочных комментариев в C, многострочные комментарии в Swift 
+могут быть вложены друг в друга. Вы создаете вложенные комментарии, 
+начиная блок многострочного комментария, а затем начиная второй многострочный 
+комментарий внутри первого блока. Затем второй блок закрывается, 
+за которым следует первый блок:
 
 ```swift
-/* This is the start of the first multiline comment.
-    /* This is the second, nested multiline comment. */
-This is the end of the first multiline comment. */
+/* Это начало первого многострочного комментария.
+    /* Это второй, вложенный многострочный комментарий. */
+Это конец первого многострочного комментария. */
 ```
 
 <!--
@@ -438,20 +438,20 @@ This is the end of the first multiline comment. */
   ```
 -->
 
-Nested multiline comments enable you to comment out large blocks of code quickly and easily,
-even if the code already contains multiline comments.
+Вложенные многострочные комментарии позволяют вам быстро и легко комментировать 
+большие блоки кода, даже если код уже содержит многострочные комментарии.
 
-## Semicolons
+## Точки с запятой
 
-Unlike many other languages,
-Swift doesn't require you to write a semicolon (`;`) after each statement in your code,
-although you can do so if you wish.
-However, semicolons *are* required
-if you want to write multiple separate statements on a single line:
+В отличие от многих других языков программирования, в Swift нет обязательства 
+ставить точку с запятой (`;`) после каждого оператора в вашем коде, 
+хотя вы можете сделать это, если хотите. 
+Однако точки с запятой *обязательны*, 
+если вы хотите написать несколько отдельных операторов в одной строке:
 
 ```swift
 let cat = "🐱"; print(cat)
-// Prints "🐱"
+// Выводит "🐱"
 ```
 
 <!--
@@ -463,143 +463,143 @@ let cat = "🐱"; print(cat)
   ```
 -->
 
-## Integers
+## Целые числа
 
-*Integers* are whole numbers with no fractional component,
-such as `42` and `-23`.
-Integers are either *signed* (positive, zero, or negative)
-or *unsigned* (positive or zero).
+*Целые числа* - это целые числа без дробной части, 
+такие как `42` и `-23`. 
+Целые числа бывают *знаковыми* (положительные, ноль или отрицательные)
+или *беззнаковыми* (положительные или ноль).
 
-Swift provides signed and unsigned integers in 8, 16, 32, and 64 bit forms.
-These integers follow a naming convention similar to C,
-in that an 8-bit unsigned integer is of type `UInt8`,
-and a 32-bit signed integer is of type `Int32`.
-Like all types in Swift, these integer types have capitalized names.
+Swift предоставляет знаковые и беззнаковые целые числа в формах 8, 16, 32 и 64 бита. 
+Эти целые числа следуют конвенции имен, аналогичной C, 
+где 8-битное беззнаковое целое число имеет тип `UInt8`, 
+а 32-битное знаковое целое число - тип `Int32`. Как и все типы в Swift, 
+эти типы целых чисел начинаются с заглавной буквы.
 
-### Integer Bounds
+### Границы целых чисел
 
-You can access the minimum and maximum values of each integer type
-with its `min` and `max` properties:
+Вы можете получить доступ к минимальным и максимальным значениям каждого типа 
+целого числа с использованием свойств `min` и `max`:
 
 ```swift
-let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
-let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+let minValue = UInt8.min  // minValue равно 0, и имеет тип UInt8
+let maxValue = UInt8.max  // maxValue равно 255, и имеет тип UInt8
 ```
 
 <!--
   - test: `integerBounds`
 
   ```swifttest
-  -> let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
-  -> let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+  -> let minValue = UInt8.min  // minValue равно 0, и имеет тип UInt8
+  -> let maxValue = UInt8.max  // maxValue равно 255, и имеет тип UInt8
   >> print(minValue, maxValue)
   << 0 255
   ```
 -->
 
-The values of these properties are of the appropriate-sized number type
-(such as `UInt8` in the example above)
-and can therefore be used in expressions alongside other values of the same type.
+Значения этих свойств соответствуют числам с соответствующим размером (например,
+`UInt8` в приведенном выше примере) и, следовательно, 
+могут использоваться в выражениях вместе с другими значениями того же типа.
 
 ### Int
 
-In most cases, you don't need to pick a specific size of integer to use in your code.
-Swift provides an additional integer type, `Int`,
-which has the same size as the current platform's native word size:
+В большинстве случаев вам не нужно выбирать конкретный размер целого числа для 
+использования в вашем коде.  Swift предоставляет дополнительный тип целого числа, Int, 
+который имеет тот же размер, что и разрядность вашей системы:
 
-- On a 32-bit platform, `Int` is the same size as `Int32`.
-- On a 64-bit platform, `Int` is the same size as `Int64`.
+- На 32-битной платформе `Int` имеет тот же размер, что и `Int32`.
+- На 64-битной платформе `Int` имеет тот же размер, что и `Int64`.
 
-Unless you need to work with a specific size of integer,
-always use `Int` for integer values in your code.
-This aids code consistency and interoperability.
-Even on 32-bit platforms, `Int` can store any value between `-2,147,483,648` and `2,147,483,647`,
-and is large enough for many integer ranges.
+Если вам не нужно работать с конкретным размером целого числа, всегда 
+используйте `Int` для целочисленных значений в вашем коде. 
+Это способствует согласованности кода и взаимодействию. 
+Даже на 32-битных платформах `Int` может хранить любое значение между 
+`-2,147,483,648` и `2,147,483,647` и достаточно велико для многих диапазонов целых чисел.
 
 ### UInt
 
-Swift also provides an unsigned integer type, `UInt`,
-which has the same size as the current platform's native word size:
+Swift также предоставляет беззнаковый тип целого числа, `UInt`, 
+который имеет тот же размер, что и разрядность вашей системы:
 
-- On a 32-bit platform, `UInt` is the same size as `UInt32`.
-- On a 64-bit platform, `UInt` is the same size as `UInt64`.
+- На 32-битной платформе `UInt` имеет тот же размер, что и `UInt32`.
+- На 64-битной платформе `UInt` имеет тот же размер, что и `UInt64`.
 
-> Note: Use `UInt` only when you specifically need
-> an unsigned integer type with the same size as the platform's native word size.
-> If this isn't the case, `Int` is preferred,
-> even when the values to be stored are known to be nonnegative.
-> A consistent use of `Int` for integer values aids code interoperability,
-> avoids the need to convert between different number types,
-> and matches integer type inference, as described in <doc:TheBasics#Type-Safety-and-Type-Inference>.
+> Примечание: Используйте `UInt` только тогда, когда вам действительно нужен 
+> беззнаковый тип целого числа с тем же размером, что и разрядность вашей системы.
+> Если это не так, предпочтительнее использовать `Int`, даже когда известно, что
+> значения будут неотрицательными. Согласованное использование `Int` для 
+> целочисленных значений облегчит взаимодействие с кодом, избежит необходимости 
+> конвертировать между различными типами чисел и соответствует выводу типа для 
+> целых чисел, как описано в <doc:TheBasics#Безопасность-типов-и-вывод-типов>.
 
-## Floating-Point Numbers
+## Дробные числа с плавающей запятой
 
-*Floating-point numbers* are numbers with a fractional component,
-such as `3.14159`, `0.1`, and `-273.15`.
+*Дробные числа с плавающей запятой* представляют собой числа с дробной частью,
+такие как `3.14159`, `0.1` и `-273.15`.
 
-Floating-point types can represent a much wider range of values than integer types,
-and can store numbers that are much larger or smaller than can be stored in an `Int`.
-Swift provides two signed floating-point number types:
+Типы дробных чисел могут представлять гораздо более широкий диапазон значений, чем целочисленные типы,
+и могут хранить числа, которые намного больше или меньше тех, что могут быть сохранены в `Int`.
+Swift предоставляет два знаковых типа дробных чисел:
 
-- `Double` represents a 64-bit floating-point number.
-- `Float` represents a 32-bit floating-point number.
+- `Double` представляет собой 64-битное дробное число.
+- `Float` представляет собой 32-битное дробное число.
 
-> Note: `Double` has a precision of at least 15 decimal digits,
-> whereas the precision of `Float` can be as little as 6 decimal digits.
-> The appropriate floating-point type to use depends on the nature and range of
-> values you need to work with in your code.
-> In situations where either type would be appropriate, `Double` is preferred.
+> Примечание: `Double` имеет точность не менее 15 десятичных знаков,
+> в то время как точность `Float` может быть всего 6 десятичных знаков.
+> Выбор между типами дробных чисел зависит от характера и диапазона
+> значений, с которыми вам нужно работать в вашем коде.
+> В ситуациях, где подходит любой из типов, предпочтительнее использовать `Double`.
 
 <!--
-  TODO: Explicitly mention situations where Float is appropriate,
-  such as when optimizing for storage size of collections?
+  TODO: Явно упомянуть ситуации, когда Float подходит,
+  например, при оптимизации размера для коллекций?
 -->
 
 <!--
-  TODO: mention infinity, -infinity etc.
+  TODO: упомянуть бесконечность, -бесконечность и т.д.
 -->
 
-## Type Safety and Type Inference
+## Безопасность типов и вывод типов
 
-Swift is a *type-safe* language.
-A type safe language encourages you to be clear about
-the types of values your code can work with.
-If part of your code requires a `String`, you can't pass it an `Int` by mistake.
+Swift - *язык со строгой типизацией*.
+Язык со строгой типизацией побуждает вас быть ясными относительно
+типов значений, с которыми ваш код может работать.
+Если часть вашего кода требует `String`, вы не сможете передать в нее `Int` по ошибке.
 
-Because Swift is type safe,
-it performs *type checks* when compiling your code
-and flags any mismatched types as errors.
-This enables you to catch and fix errors as early as possible in the development process.
+Поскольку Swift является языком со строгой типизацией,
+он выполняет *проверку типов* при компиляции вашего кода
+и выдает сообщения об ошибках при несоответствии типов.
+Это позволяет вам выявлять и устранять ошибки на ранних этапах разработки.
 
-Type-checking helps you avoid errors when you're working with different types of values.
-However, this doesn't mean that you have to specify the type of
-every constant and variable that you declare.
-If you don't specify the type of value you need,
-Swift uses *type inference* to work out the appropriate type.
-Type inference enables a compiler to
-deduce the type of a particular expression automatically when it compiles your code,
-simply by examining the values you provide.
+Проверка типов помогает вам избегать ошибок при работе с различными типами значений.
+Однако это не означает, что вы должны указывать тип
+каждой константе и переменной, которую вы объявляете.
+Если вы не указываете тип значения,
+Swift использует *вывод типов*, чтобы определить соответствующий тип.
+Вывод типов позволяет компилятору
+автоматически выводить тип конкретного выражения при компиляции вашего кода,
+просто анализируя предоставленные значения.
 
-Because of type inference, Swift requires far fewer type declarations
-than languages such as C or Objective-C.
-Constants and variables are still explicitly typed,
-but much of the work of specifying their type is done for you.
+Из-за вывода типов Swift требует гораздо меньше объявлений типов,
+чем языки, такие как C или Objective-C.
+Константы и переменные по-прежнему имеют явные типы,
+но большая часть работы по указанию их типов делается за вас.
 
-Type inference is particularly useful
-when you declare a constant or variable with an initial value.
-This is often done by assigning a *literal value* (or *literal*)
-to the constant or variable at the point that you declare it.
-(A literal value is a value that appears directly in your source code,
-such as `42` and `3.14159` in the examples below.)
+Вывод типов особенно полезен
+при объявлении констант или переменных с начальным значением.
+Это часто делается с использованием *литерального значения* (или *литерала*),
+присваиваемого константе или переменной в момент ее объявления.
+(Литеральное значение - это значение, которое прямо встроено в ваш исходный код,
+как `42` и `3.14159` в приведенных ниже примерах.)
 
-For example, if you assign a literal value of `42` to a new constant
-without saying what type it is,
-Swift infers that you want the constant to be an `Int`,
-because you have initialized it with a number that looks like an integer:
+Например, если вы присваиваете литеральное значение `42` новой константе,
+не указывая при этом тип, Swift вычисляет, что вы хотите,
+чтобы константа была типа `Int`,
+поскольку вы инициализировали ее числом, похожим на целое:
 
 ```swift
 let meaningOfLife = 42
-// meaningOfLife is inferred to be of type Int
+// meaningOfLife выводится как тип Int
 ```
 
 <!--
@@ -613,12 +613,12 @@ let meaningOfLife = 42
   ```
 -->
 
-Likewise, if you don't specify a type for a floating-point literal,
-Swift infers that you want to create a `Double`:
+Точно так же, если вы не указываете тип для литерала с плавающей точкой,
+Swift выводит, что вы хотите создать `Double`:
 
 ```swift
 let pi = 3.14159
-// pi is inferred to be of type Double
+// pi выводится как тип Double
 ```
 
 <!--
@@ -632,17 +632,16 @@ let pi = 3.14159
   ```
 -->
 
-Swift always chooses `Double` (rather than `Float`)
-when inferring the type of floating-point numbers.
+Swift всегда выбирает `Double` (а не `Float`)
+при выводе типа чисел с плавающей запятой.
 
-If you combine integer and floating-point literals in an expression,
-a type of `Double` will be inferred from the context:
+Если вы комбинируете литералы целых и дробных чисел в выражении,
+тип `Double` будет выведен из контекста:
 
 ```swift
 let anotherPi = 3 + 0.14159
-// anotherPi is also inferred to be of type Double
+// anotherPi также выводится как тип Double
 ```
-
 <!--
   - test: `typeInference`
 
@@ -654,26 +653,27 @@ let anotherPi = 3 + 0.14159
   ```
 -->
 
-The literal value of `3` has no explicit type in and of itself,
-and so an appropriate output type of `Double` is inferred
-from the presence of a floating-point literal as part of the addition.
 
-## Numeric Literals
+Литеральное значение `3` не имеет явного типа само по себе,
+и поэтому подходящий выходной тип `Double` выводится
+из-за присутствия литерала с плавающей точкой в составе сложения.
 
-Integer literals can be written as:
+## Числовые литералы
 
-- A *decimal* number, with no prefix
-- A *binary* number, with a `0b` prefix
-- An *octal* number, with a `0o` prefix
-- A *hexadecimal* number, with a `0x` prefix
+Целочисленные литералы можно записывать следующим образом:
 
-All of these integer literals have a decimal value of `17`:
+- *Десятичное* число, без префикса
+- *Двоичное* число, с префиксом `0b`
+- *Восьмеричное* число, с префиксом `0o`
+- *Шестнадцатеричное* число, с префиксом `0x`
+
+Все эти целочисленные литералы имеют десятичное значение `17`:
 
 ```swift
 let decimalInteger = 17
-let binaryInteger = 0b10001       // 17 in binary notation
-let octalInteger = 0o21           // 17 in octal notation
-let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
+let binaryInteger = 0b10001       // 17 в двоичной записи
+let octalInteger = 0o21       // 17 в восьмеричной записи
+let hexadecimalInteger = 0x11 // 17 в шестнадцатеричной записи
 ```
 
 <!--
@@ -689,13 +689,13 @@ let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
   ```
 -->
 
-Floating-point literals can be decimal (with no prefix),
-or hexadecimal (with a `0x` prefix).
-They must always have a number (or hexadecimal number) on both sides of the decimal point.
-Decimal floats can also have an optional *exponent*,
-indicated by an uppercase or lowercase `e`;
-hexadecimal floats must have an exponent,
-indicated by an uppercase or lowercase `p`.
+Литералы с плавающей запятой могут быть десятичными (без префикса)
+или шестнадцатеричными (с префиксом `0x`).
+Они всегда должны иметь число (или шестнадцатеричное число) по обе стороны от десятичной запятой.
+Десятичные числа с плавающей запятой также могут иметь необязательный *показатель степени*,
+обозначенный заглавной или строчной буквой `e`;
+шестнадцатеричные числа с плавающей запятой должны иметь показатель степени,
+обозначенный заглавной или строчной буквой `p`.
 
 <!--
   - test: `float-required-vs-optional-exponent-err`
@@ -718,19 +718,19 @@ indicated by an uppercase or lowercase `p`.
   ```
 -->
 
-For decimal numbers with an exponent of `x`,
-the base number is multiplied by 10ˣ:
+Для десятичных чисел с показателем степени `x`,
+базовое число умножается на 10ˣ:
 
-- `1.25e2` means 1.25 x 10², or `125.0`.
-- `1.25e-2` means 1.25 x 10⁻², or `0.0125`.
+- `1.25e2` означает 1,25 x 10² или `125.0`.
+- `1.25e-2` означает 1,25 x 10⁻² или `0.0125`.
 
-For hexadecimal numbers with an exponent of `x`,
-the base number is multiplied by 2ˣ:
+Для шестнадцатеричных чисел с показателем степени `x`,
+базовое число умножается на 2ˣ:
 
-- `0xFp2` means 15 x 2², or `60.0`.
-- `0xFp-2` means 15 x 2⁻², or `3.75`.
+- `0xFp2` означает 15 x 2² или `60.0`.
+- `0xFp-2` означает 15 x 2⁻² или `3.75`.
 
-All of these floating-point literals have a decimal value of `12.1875`:
+Все эти литералы с плавающей запятой имеют десятичное значение `12.1875`:
 
 ```swift
 let decimalDouble = 12.1875
@@ -748,10 +748,10 @@ let hexadecimalDouble = 0xC.3p0
   ```
 -->
 
-Numeric literals can contain extra formatting to make them easier to read.
-Both integers and floats can be padded with extra zeros
-and can contain underscores to help with readability.
-Neither type of formatting affects the underlying value of the literal:
+Числовые литералы могут содержать дополнительное форматирование, чтобы их было легче читать.
+Как целые числа, так и числа с плавающей запятой могут быть дополнены дополнительными нулями
+и могут содержать символы подчеркивания для повышения читаемости.
+Ни один из этих типов форматирования не влияет на базовое значение литерала:
 
 ```swift
 let paddedDouble = 000123.456
@@ -769,36 +769,36 @@ let justOverOneMillion = 1_000_000.000_000_1
   ```
 -->
 
-## Numeric Type Conversion
+## Преобразование числовых типов
 
-Use the `Int` type for all general-purpose integer constants and variables in your code,
-even if they're known to be nonnegative.
-Using the default integer type in everyday situations means that
-integer constants and variables are immediately interoperable in your code
-and will match the inferred type for integer literal values.
+Используйте тип `Int` для всех целочисленных констант и переменных в вашем коде,
+даже если известно, что они неотрицательны.
+Использование типа целого числа по умолчанию в повседневных ситуациях означает, что
+целочисленные константы и переменные немедленно взаимосовместимы в вашем коде
+и будут соответствовать выведенному типу для целочисленных литералов.
 
-Use other integer types only when they're specifically needed for the task at hand,
-because of explicitly sized data from an external source,
-or for performance, memory usage, or other necessary optimization.
-Using explicitly sized types in these situations
-helps to catch any accidental value overflows
-and implicitly documents the nature of the data being used.
+Используйте другие целочисленные типы только тогда, когда они действительно необходимы для задачи,
+из-за явно определенных данных из внешнего источника,
+или для выполнения оптимизации производительности, использования памяти или других необходимых оптимизаций.
+Использование явно определенных типов в этих ситуациях
+помогает выявить любые случайные переполнения значений
+и неявно документирует характер используемых данных.
 
-### Integer Conversion
+### Преобразование целых чисел
 
-The range of numbers that can be stored in an integer constant or variable
-is different for each numeric type.
-An `Int8` constant or variable can store numbers between `-128` and `127`,
-whereas a `UInt8` constant or variable can store numbers between `0` and `255`.
-A number that won't fit into a constant or variable of a sized integer type
-is reported as an error when your code is compiled:
+Диапазон чисел, которые можно хранить в константе или переменной целого типа,
+различен для каждого числового типа.
+Константа или переменная типа `Int8` может хранить числа от `-128` до `127`,
+в то время как константа или переменная типа `UInt8` может хранить числа от `0` до `255`.
+Число, которое не помещается в константу или переменную с определенным размером целого числа,
+сообщается как ошибка при компиляции вашего кода:
 
 ```swift
 let cannotBeNegative: UInt8 = -1
-// UInt8 can't store negative numbers, and so this will report an error
+// UInt8 не может хранить отрицательные числа, и поэтому это вызовет ошибку
 let tooBig: Int8 = Int8.max + 1
-// Int8 can't store a number larger than its maximum value,
-// and so this will also report an error
+// Int8 не может хранить число, превышающее его максимальное значение,
+// и поэтому это также вызовет ошибку
 ```
 
 <!--
@@ -819,21 +819,21 @@ let tooBig: Int8 = Int8.max + 1
   ```
 -->
 
-Because each numeric type can store a different range of values,
-you must opt in to numeric type conversion on a case-by-case basis.
-This opt-in approach prevents hidden conversion errors
-and helps make type conversion intentions explicit in your code.
+Поскольку каждый числовой тип может хранить различный диапазон значений,
+вы должны явно выбирать преобразование числового типа в каждом конкретном случае.
+Этот подход предотвращает скрытые ошибки преобразования
+и помогает сделать намерения по преобразованию типов явными в вашем коде.
 
-To convert one specific number type to another,
-you initialize a new number of the desired type with the existing value.
-In the example below,
-the constant `twoThousand` is of type `UInt16`,
-whereas the constant `one` is of type `UInt8`.
-They can't be added together directly,
-because they're not of the same type.
-Instead, this example calls `UInt16(one)` to create
-a new `UInt16` initialized with the value of `one`,
-and uses this value in place of the original:
+Чтобы преобразовать один конкретный числовой тип в другой,
+вы инициализируете новое число нужного типа существующим значением.
+В приведенном ниже примере
+константа `twoThousand` имеет тип `UInt16`,
+тогда как константа `one` имеет тип `UInt8`.
+Их нельзя складывать напрямую,
+потому что они не одного и того же типа.
+Вместо этого в этом примере вызывается `UInt16(one)` для создания
+нового `UInt16`, инициализированного значением `one`,
+и это значение используется вместо исходного:
 
 ```swift
 let twoThousand: UInt16 = 2_000
@@ -853,30 +853,30 @@ let twoThousandAndOne = twoThousand + UInt16(one)
   ```
 -->
 
-Because both sides of the addition are now of type `UInt16`,
-the addition is allowed.
-The output constant (`twoThousandAndOne`) is inferred to be of type `UInt16`,
-because it's the sum of two `UInt16` values.
+Поскольку обе стороны сложения теперь имеют тип `UInt16`,
+сложение разрешено.
+Итоговая константа (`twoThousandAndOne`) выводится как тип `UInt16`,
+потому что это сумма двух значений `UInt16`.
 
-`SomeType(ofInitialValue)` is the default way to call the initializer of a Swift type
-and pass in an initial value.
-Behind the scenes, `UInt16` has an initializer that accepts a `UInt8` value,
-and so this initializer is used to make a new `UInt16` from an existing `UInt8`.
-You can't pass in *any* type here, however ---
-it has to be a type for which `UInt16` provides an initializer.
-Extending existing types to provide initializers that accept new types
-(including your own type definitions)
-is covered in <doc:Extensions>.
+`SomeType(ofInitialValue)` - это типичный способ вызова инициализатора типа Swift
+и передачи начального значения.
+Внутри `UInt16` есть инициализатор, принимающий значение типа `UInt8`,
+и поэтому этот инициализатор используется для создания нового `UInt16` из существующего `UInt8`.
+Здесь вы не можете передавать *любой* тип, однако ---
+это должен быть тип, для которого `UInt16` предоставляет инициализатор.
+Расширение существующих типов для предоставления инициализаторов, принимающих новые типы
+(включая ваши собственные определения типов)
+рассматривается в разделе <doc:Extensions>.
 
-### Integer and Floating-Point Conversion
+### Преобразование между целыми и числами с плавающей точкой
 
-Conversions between integer and floating-point numeric types must be made explicit:
+Преобразования между целыми и числами с плавающей точкой должны быть сделаны явно:
 
 ```swift
 let three = 3
 let pointOneFourOneFiveNine = 0.14159
 let pi = Double(three) + pointOneFourOneFiveNine
-// pi equals 3.14159, and is inferred to be of type Double
+// pi равно 3.14159 и выводится как тип Double
 ```
 
 <!--
@@ -891,16 +891,16 @@ let pi = Double(three) + pointOneFourOneFiveNine
   ```
 -->
 
-Here, the value of the constant `three` is used to create a new value of type `Double`,
-so that both sides of the addition are of the same type.
-Without this conversion in place, the addition would not be allowed.
+Здесь значение константы `three` используется для создания нового значения типа `Double`,
+чтобы обе стороны сложения имели одинаковый тип.
+Без этого преобразования сложение не было бы разрешено.
 
-Floating-point to integer conversion must also be made explicit.
-An integer type can be initialized with a `Double` or `Float` value:
+Преобразование чисел с плавающей точкой в целые числа также должно быть явным.
+Целочисленный тип можно инициализировать значением типа `Double` или `Float`:
 
 ```swift
 let integerPi = Int(pi)
-// integerPi equals 3, and is inferred to be of type Int
+// integerPi равно 3 и выводится как тип Int
 ```
 
 <!--
@@ -908,34 +908,34 @@ let integerPi = Int(pi)
 
   ```swifttest
   -> let integerPi = Int(pi)
-  /> integerPi equals \(integerPi), and is inferred to be of type Int
-  </ integerPi equals 3, and is inferred to be of type Int
+  /> integerPi равно \(integerPi) и выводится как тип Int
+  </ integerPi равно 3 и выводится как тип Int
   ```
 -->
 
-Floating-point values are always truncated when used to initialize a new integer value in this way.
-This means that `4.75` becomes `4`, and `-3.9` becomes `-3`.
+Значения с плавающей точкой всегда усекаются при использовании для инициализации нового целочисленного значения таким образом.
+Это означает, что `4.75` становится `4`, а `-3.9` становится `-3`.
 
-> Note: The rules for combining numeric constants and variables are different from
-> the rules for numeric literals.
-> The literal value `3` can be added directly to the literal value `0.14159`,
-> because number literals don't have an explicit type in and of themselves.
-> Their type is inferred only at the point that they're evaluated by the compiler.
+> Примечание: Правила для объединения числовых констант и переменных отличаются от
+> правил для числовых литералов.
+> Литеральное значение `3` можно добавить непосредственно к литеральному значению `0.14159`,
+> потому что числовые литералы сами по себе не имеют явного типа.
+> Их тип выводится только в тот момент, когда они оцениваются компилятором.
 
 <!--
-  NOTE: this section on explicit conversions could be included in the Operators section.
-  I think it's more appropriate here, however,
-  and helps to reinforce the “just use Int” message.
+  ПРИМЕЧАНИЕ: Этот раздел о явных преобразованиях может быть включен в раздел "Операторы".
+  Однако я считаю, что он более уместен здесь,
+  и помогает подчеркнуть сообщение "просто используйте Int".
 -->
 
-## Type Aliases
+## Псевдонимы типов
 
-*Type aliases* define an alternative name for an existing type.
-You define type aliases with the `typealias` keyword.
+*Псевдонимы типов* определяют альтернативное имя для существующего типа.
+Псевдонимы типов определяются с использованием ключевого слова `typealias`.
 
-Type aliases are useful when you want to refer to an existing type
-by a name that's contextually more appropriate,
-such as when working with data of a specific size from an external source:
+Псевдонимы типов полезны, когда вы хотите ссылаться на существующий тип
+более подходящим контекстным именем, например, 
+при работе с данными определенного размера из внешнего источника:
 
 ```swift
 typealias AudioSample = UInt16
@@ -949,12 +949,12 @@ typealias AudioSample = UInt16
   ```
 -->
 
-Once you define a type alias,
-you can use the alias anywhere you might use the original name:
+После определения псевдонима типа
+вы можете использовать его везде, где могли бы использовать оригинальное имя:
 
 ```swift
 var maxAmplitudeFound = AudioSample.min
-// maxAmplitudeFound is now 0
+// maxAmplitudeFound теперь равно 0
 ```
 
 <!--
@@ -962,23 +962,23 @@ var maxAmplitudeFound = AudioSample.min
 
   ```swifttest
   -> var maxAmplitudeFound = AudioSample.min
-  /> maxAmplitudeFound is now \(maxAmplitudeFound)
-  </ maxAmplitudeFound is now 0
+  /> maxAmplitudeFound теперь равно  \(maxAmplitudeFound)
+  </ maxAmplitudeFound теперь равно 0
   ```
 -->
 
-Here, `AudioSample` is defined as an alias for `UInt16`.
-Because it's an alias,
-the call to `AudioSample.min` actually calls `UInt16.min`,
-which provides an initial value of `0` for the `maxAmplitudeFound` variable.
+Здесь `AudioSample` определен как псевдоним для `UInt16`.
+Поскольку это псевдоним,
+вызов `AudioSample.min` фактически вызывает `UInt16.min`,
+что предоставляет начальное значение `0` для переменной `maxAmplitudeFound`.
 
-## Booleans
+## Логические значения
 
-Swift has a basic *Boolean* type, called `Bool`.
-Boolean values are referred to as *logical*,
-because they can only ever be true or false.
-Swift provides two Boolean constant values,
-`true` and `false`:
+Swift имеет базовый *логический* тип, называемый `Bool`.
+Логические значения называются *логическими*,
+потому что они могут быть только истинными или ложными.
+Swift предоставляет два константных значения типа `Bool`,
+`true` и `false`:
 
 ```swift
 let orangesAreOrange = true
@@ -994,17 +994,17 @@ let turnipsAreDelicious = false
   ```
 -->
 
-The types of `orangesAreOrange` and `turnipsAreDelicious`
-have been inferred as `Bool` from the fact that
-they were initialized with Boolean literal values.
-As with `Int` and `Double` above,
-you don't need to declare constants or variables as `Bool`
-if you set them to `true` or `false` as soon as you create them.
-Type inference helps make Swift code more concise and readable
-when it initializes constants or variables with other values whose type is already known.
+Типы `orangesAreOrange` и `turnipsAreDelicious`
+были выведены как `Bool` из-за того, что
+они были инициализированы логическими литеральными значениями.
+Как и в случае с `Int` и `Double` выше,
+вам не нужно объявлять константы или переменные как `Bool`,
+если вы устанавливаете их в `true` или `false` сразу при создании.
+Вывод типа помогает сделать код на Swift более лаконичным и читаемым,
+когда константы или переменные инициализируются значениями, тип которых уже известен.
 
-Boolean values are particularly useful when you work with conditional statements
-such as the `if` statement:
+Логические значения особенно полезны при работе с условными операторами,
+такими как оператор `if`:
 
 ```swift
 if turnipsAreDelicious {
@@ -1012,7 +1012,7 @@ if turnipsAreDelicious {
 } else {
     print("Eww, turnips are horrible.")
 }
-// Prints "Eww, turnips are horrible."
+// Вывод: "Eww, turnips are horrible."
 ```
 
 <!--
@@ -1028,15 +1028,15 @@ if turnipsAreDelicious {
   ```
 -->
 
-Conditional statements such as the `if` statement are covered in more detail in <doc:ControlFlow>.
+Условные операторы, такие как оператор `if`, рассматриваются более подробно в разделе <doc:ControlFlow>.
 
-Swift's type safety prevents non-Boolean values from being substituted for `Bool`.
-The following example reports a compile-time error:
+Типовая безопасность Swift предотвращает использование не логических значений вместо `Bool`.
+В следующем примере будет сообщена ошибка на этапе компиляции:
 
 ```swift
 let i = 1
 if i {
-    // this example will not compile, and will report an error
+    // этот пример не будет компилироваться и вызовет ошибку
 }
 ```
 
@@ -1046,21 +1046,21 @@ if i {
   ```swifttest
   -> let i = 1
   -> if i {
-        // this example will not compile, and will report an error
+        // этот пример не будет компилироваться и вызовет ошибку
      }
-  !$ error: type 'Int' cannot be used as a boolean; test for '!= 0' instead
+  !$ ошибка: тип 'Int' нельзя использовать как логическое значение; вместо этого используйте проверку на '!= 0'.
   !! if i {
   !!   ^
   !! ( != 0)
   ```
 -->
 
-However, the alternative example below is valid:
+Однако альтернативный пример ниже является допустимым:
 
 ```swift
 let i = 1
-if i == 1 {
-    // this example will compile successfully
+if i != 0 {
+    // этот пример будет компилироваться
 }
 ```
 
@@ -1070,32 +1070,32 @@ if i == 1 {
   ```swifttest
   -> let i = 1
   -> if i == 1 {
-        // this example will compile successfully
+        // этот пример будет компилироваться
      }
   ```
 -->
 
-The result of the `i == 1` comparison is of type `Bool`,
-and so this second example passes the type-check.
-Comparisons like `i == 1` are discussed in <doc:BasicOperators>.
+Результат сравнения `i == 1` имеет тип `Bool`,
+и поэтому этот второй пример успешно проходит проверку типов.
+Сравнения, такие как `i == 1`, рассматриваются в разделе <doc:BasicOperators>.
 
-As with other examples of type safety in Swift,
-this approach avoids accidental errors
-and ensures that the intention of a particular section of code is always clear.
+Как и в других примерах безопасности типов в Swift,
+этот подход предотвращает случайные ошибки
+и обеспечивает ясность намерений в конкретном участке кода.
 
-## Tuples
+## Кортежи
 
-*Tuples* group multiple values into a single compound value.
-The values within a tuple can be of any type
-and don't have to be of the same type as each other.
+*Кортежи* группируют несколько значений в единое сложное значение.
+Значения внутри кортежа могут иметь любой тип
+и не обязаны быть одного и того же типа.
 
-In this example, `(404, "Not Found")` is a tuple that describes an *HTTP status code*.
-An HTTP status code is a special value returned by a web server whenever you request a web page.
-A status code of `404 Not Found` is returned if you request a webpage that doesn't exist.
+В этом примере `(404, "Not Found")` - это кортеж, описывающий *код состояния HTTP*.
+Код состояния HTTP - это специальное значение, возвращаемое веб-сервером при запросе веб-страницы.
+Код состояния `404 Not Found` возвращается, если вы запрашиваете веб-страницу, которой не существует.
 
 ```swift
 let http404Error = (404, "Not Found")
-// http404Error is of type (Int, String), and equals (404, "Not Found")
+// http404Error имеет тип (Int, String) и равен (404, "Not Found")
 ```
 
 <!--
@@ -1103,31 +1103,31 @@ let http404Error = (404, "Not Found")
 
   ```swifttest
   -> let http404Error = (404, "Not Found")
-  /> http404Error is of type (Int, String), and equals (\(http404Error.0), \"\(http404Error.1)\")
-  </ http404Error is of type (Int, String), and equals (404, "Not Found")
+  /> http404Error имеет тип (Int, String) и равен (\(http404Error.0), \"\(http404Error.1)\")
+  </ http404Error имеет тип (Int, String) и равен (404, "Not Found")
   ```
 -->
 
-The `(404, "Not Found")` tuple groups together an `Int` and a `String`
-to give the HTTP status code two separate values:
-a number and a human-readable description.
-It can be described as “a tuple of type `(Int, String)`”.
+Кортеж (404, "Not Found") группирует вместе Int и String, 
+чтобы придать коду состояния HTTP два отдельных значения:
+число и понятное человеку описание. 
+Это можно описать как “кортеж типа (Int, String)”.
 
-You can create tuples from any permutation of types,
-and they can contain as many different types as you like.
-There's nothing stopping you from having
-a tuple of type `(Int, Int, Int)`, or `(String, Bool)`,
-or indeed any other permutation you require.
+Вы можете создавать кортежи из любой перестановки типов, 
+и они могут содержать столько различных типов, сколько вам нужно. 
+Ничто не мешает вам иметь кортеж типа `(Int, Int, Int)`, 
+`(String, Bool)` или любую другую перестановку, 
+которая вам нужна.
 
-You can *decompose* a tuple's contents into separate constants or variables,
-which you then access as usual:
+Вы можете *раскладывать* содержимое кортежа на отдельные константы или 
+переменные и затем использовать их как обычно:
 
 ```swift
 let (statusCode, statusMessage) = http404Error
-print("The status code is \(statusCode)")
-// Prints "The status code is 404"
-print("The status message is \(statusMessage)")
-// Prints "The status message is Not Found"
+print("Код состояния \(statusCode)")
+// Выводит "Код состояния 404"
+print("Сообщение состояния \(statusMessage)")
+// Выводит "Сообщение состояния Not Found"
 ```
 
 <!--
@@ -1142,14 +1142,14 @@ print("The status message is \(statusMessage)")
   ```
 -->
 
-If you only need some of the tuple's values,
-ignore parts of the tuple with an underscore (`_`)
-when you decompose the tuple:
+Если вам нужны только некоторые значения из кортежа, 
+вы можете игнорировать части кортежа, 
+поставив подчеркивание (`_`) при разложении кортежа:
 
 ```swift
 let (justTheStatusCode, _) = http404Error
-print("The status code is \(justTheStatusCode)")
-// Prints "The status code is 404"
+print("Код состояния \(justTheStatusCode)")
+// Выводит "Код состояния 404"
 ```
 
 <!--
@@ -1162,14 +1162,14 @@ print("The status code is \(justTheStatusCode)")
   ```
 -->
 
-Alternatively,
-access the individual element values in a tuple using index numbers starting at zero:
+В альтернативе, можно получить доступ к отдельным 
+значениям элементов в кортеже, используя индексы, начинающиеся с нуля:
 
 ```swift
-print("The status code is \(http404Error.0)")
-// Prints "The status code is 404"
-print("The status message is \(http404Error.1)")
-// Prints "The status message is Not Found"
+print("Код состояния \(http404Error.0)")
+// Выводит "Код состояния 404"
+print("Сообщение состояния \(http404Error.1)")
+// Выводит "Сообщение состояния Not Found"
 ```
 
 <!--
@@ -1183,7 +1183,7 @@ print("The status message is \(http404Error.1)")
   ```
 -->
 
-You can name the individual elements in a tuple when the tuple is defined:
+Вы можете называть отдельные элементы в кортеже при его определении:
 
 ```swift
 let http200Status = (statusCode: 200, description: "OK")
@@ -1197,14 +1197,14 @@ let http200Status = (statusCode: 200, description: "OK")
   ```
 -->
 
-If you name the elements in a tuple,
-you can use the element names to access the values of those elements:
+Если вы называете элементы в кортеже, 
+вы можете использовать имена элементов для доступа к их значениям:
 
 ```swift
-print("The status code is \(http200Status.statusCode)")
-// Prints "The status code is 200"
-print("The status message is \(http200Status.description)")
-// Prints "The status message is OK"
+print("Код состояния \(http200Status.statusCode)")
+// Выводит "Код состояния 200"
+print("Сообщение состояния \(http200Status.description)")
+// Выводит "Сообщение состояния OK"
 ```
 
 <!--
@@ -1218,41 +1218,41 @@ print("The status message is \(http200Status.description)")
   ```
 -->
 
-Tuples are particularly useful as the return values of functions.
-A function that tries to retrieve a web page might return the `(Int, String)` tuple type
-to describe the success or failure of the page retrieval.
-By returning a tuple with two distinct values,
-each of a different type,
-the function provides more useful information about its outcome
-than if it could only return a single value of a single type.
-For more information, see <doc:Functions#Functions-with-Multiple-Return-Values>.
+Кортежи особенно полезны в качестве возвращаемых значений функций. 
+Функция, которая пытается получить веб-страницу, 
+может вернуть тип кортежа `(Int, String)`, 
+чтобы описать успешность или неудачу получения страницы. 
+Возвращая кортеж с двумя различными значениями, 
+каждое из разных типов, функция предоставляет более полезную информацию о своем результате, 
+чем если бы она могла вернуть только одно значение одного типа. 
+Дополнительные сведения можно найти в разделе <doc:Functions#Functions-with-Multiple-Return-Values>.
 
-> Note: Tuples are useful for simple groups of related values.
-> They're not suited to the creation of complex data structures.
-> If your data structure is likely to be more complex,
-> model it as a class or structure, rather than as a tuple.
-> For more information, see <doc:ClassesAndStructures>.
+> Примечание: Кортежи удобны для простых групп связанных значений. 
+> Они не подходят для создания сложных структур данных. 
+> Если ваша структура данных, вероятно, будет более сложной, 
+> моделируйте ее как класс или структуру, а не как кортеж. 
+> Дополнительные сведения можно найти в разделе <doc:ClassesAndStructures>.
 
-## Optionals
+## Опционалы
 
-You use *optionals* in situations where a value may be absent.
-An optional represents two possibilities:
-Either there *is* a value of a specified type,
-and you can unwrap the optional to access that value,
-or there *isn't* a value at all.
+Опционалы используются в ситуациях, когда значение может отсутствовать. 
+Опционал представляет две возможности: либо *есть* значение указанного типа, 
+и вы можете извлечь опционал, 
+чтобы получить это значение, 
+либо *нет* значения вообще.
 
-As an example of a value that might be missing,
-Swift's `Int` type has an initializer
-that tries to convert a `String` value into an `Int` value.
-However, only some strings can be converted into integers.
-The string `"123"` can be converted into the numeric value `123`,
-but the string `"hello, world"` doesn't have a corresponding numeric value.
-The example below uses the initializer to try to convert a `String` into an `Int`:
+Как пример значения, которое может отсутствовать, 
+у типа `Int` в Swift есть инициализатор, 
+который пытается преобразовать значение `String` в значение типа `Int`. 
+Однако только некоторые строки можно преобразовать в целые числа. 
+Строка `"123"` может быть преобразована в числовое значение `123`, 
+но строка `"hello, world"` не имеет соответствующего числового значения. 
+В приведенном ниже примере используется инициализатор для попытки преобразования `String` в `Int`:
 
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
-// The type of convertedNumber is "optional Int"
+// Тип convertedNumber - "optional Int"
 ```
 
 <!--
@@ -1267,27 +1267,27 @@ let convertedNumber = Int(possibleNumber)
   ```
 -->
 
-Because the initializer in the code above might fail,
-it returns an *optional* `Int`, rather than an `Int`.
+Поскольку инициализатор в приведенном выше коде может завершиться неудачей, 
+он возвращает *опциональное* `Int`, а не `Int`.
 
-To write an optional type,
-you write a question mark (`?`)
-after the name of the type that the optional contains ---
-for example, the type of an optional `Int` is `Int?`.
-An optional `Int` always contains
-either some `Int` value or no value at all.
-It can't contain anything else, like a `Bool` or `String` value.
+Чтобы указать тип опционала, после имени типа, который он содержит, 
+пишется вопросительный знак (`?`) --- 
+например, тип опционального `Int` - это `Int?`. 
+Опциональное `Int` всегда содержит либо некоторое значение `Int`, 
+либо совсем ничего. 
+В нем не может содержаться ничего другого, например, 
+значение `Bool` или `String`.
 
 ### nil
 
-You set an optional variable to a valueless state
-by assigning it the special value `nil`:
+Вы устанавливаете переменную опционала в состояние без значения, 
+присваивая ей специальное значение `nil`:
 
 ```swift
 var serverResponseCode: Int? = 404
-// serverResponseCode contains an actual Int value of 404
+// serverResponseCode содержит фактическое значение Int 404
 serverResponseCode = nil
-// serverResponseCode now contains no value
+// Теперь serverResponseCode не содержит значения
 ```
 
 <!--
@@ -1302,12 +1302,12 @@ serverResponseCode = nil
   ```
 -->
 
-If you define an optional variable without providing a default value,
-the variable is automatically set to `nil`:
+Если вы определяете переменную опционала без предоставления значения по умолчанию,
+переменная автоматически устанавливается в `nil`:
 
 ```swift
 var surveyAnswer: String?
-// surveyAnswer is automatically set to nil
+// surveyAnswer автоматически устанавливается в nil
 ```
 
 <!--
@@ -1319,21 +1319,21 @@ var surveyAnswer: String?
   ```
 -->
 
-You can use an `if` statement to find out whether an optional contains a value
-by comparing the optional against `nil`.
-You perform this comparison with the “equal to” operator (`==`)
-or the “not equal to” operator (`!=`).
+Вы можете использовать оператор `if`, чтобы определить, 
+содержит ли опционал значение, сравнивая его с `nil`. 
+Это сравнение выполняется с использованием оператора «равно» (`==`) 
+или оператора «не равно» (`!=`).
 
-If an optional has a value, it's considered as “not equal to” `nil`:
+Если опционал содержит значение, он считается «не равным» `nil`:
 
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
 
 if convertedNumber != nil {
-    print("convertedNumber contains some integer value.")
+    print("convertedNumber содержит какое-то целочисленное значение.")
 }
-// Prints "convertedNumber contains some integer value."
+// Выводит "convertedNumber содержит какое-то целочисленное значение."
 ```
 
 <!--
@@ -1341,63 +1341,63 @@ if convertedNumber != nil {
 
   ```swifttest
   -> if convertedNumber != nil {
-        print("convertedNumber contains some integer value.")
+        print("convertedNumber содержит какое-то целочисленное значение.")
      }
-  <- convertedNumber contains some integer value.
+  <- convertedNumber содержит какое-то целочисленное значение.
   ```
 -->
 
-You can't use `nil` with non-optional constants or variables.
-If a constant or variable in your code needs to work with
-the absence of a value under certain conditions,
-declare it as an optional value of the appropriate type.
-A constant or variable that's declared as a non-optional value
-is guaranteed to never contain a `nil` value.
-If you try to assign `nil` to a non-optional value,
-you'll get a compile-time error.
+Вы не можете использовать `nil` с неопциональными константами или переменными.
+Если константа или переменная в вашем коде должна работать с отсутствием 
+значения в определенных условиях, объявите ее в виде опционального значения
+соответствующего типа. 
+Константа или переменная, объявленная как неопциональное 
+значение, гарантированно никогда не содержит значения `nil`. 
+Если вы попытаетесь присвоить `nil` неопциональному значению, 
+вы получите ошибку на этапе компиляции.
 
-This separation of optional and non-optional values
-lets you explicitly mark what information can be missing,
-and makes it easier to write code that handle missing values.
-You can't accidentally treat an optional as if it were non-optional
-because this mistake produces an error at compile time.
-After you unwrap the value,
-none of the other code that works with that value needs to check for `nil`,
-so there's no need to repeatedly check the same value
-in different parts of your code.
+Это разделение на опциональные и неопциональные значения 
+позволяет явно обозначить, какая информация может отсутствовать, 
+и упрощает написание кода, обрабатывающего отсутствующие значения. 
+Вы не можете случайно обрабатывать опционал так, 
+как если бы он был неопционалом, потому что такая ошибка приведет к ошибке 
+на этапе компиляции. После извлечения значения, ни один из другого кода, 
+работающего с этим значением, не должен проверять `nil`, 
+поэтому нет необходимости многократно проверять одно и то же значение 
+в различных частях вашего кода.
 
-When you access an optional value,
-your code always handles both the `nil` and non-`nil` case.
-There are several things you can do when a value is missing,
-as described in the following sections:
+При доступе к опциональному значению ваш код всегда обрабатывает как случай с `nil`, 
+так и без `nil`. 
+Существует несколько вариантов действий, 
+когда значение отсутствует, как описано в следующих разделах:
 
-- Skip the code that operates on the value when it's `nil`.
+- Пропустить код, который выполняет операции с значением, когда оно `nil`.
 
-- Propagate the `nil` value,
-  by returning `nil`
-  or using the `?.` operator described in <doc:OptionalChaining>.
+- Распространить значение `nil`, 
+  возвращая `nil` или используя оператор `?.`, 
+  описанный в разделе <doc:OptionalChaining>.
 
-- Provide a fallback value, using the `??` operator.
+- Предоставить значение по умолчанию с использованием оператора `??`.
 
-- Stop program execution, using the `!` operator.
+- Остановить выполнение программы с использованием оператора `!`.
 
-> Note:
-> In Objective-C, `nil` is a pointer to a nonexistent object.
-> In Swift, `nil` isn't a pointer --- it's the absence of a value of a certain type.
-> Optionals of *any* type can be set to `nil`, not just object types.
+> Примечание:
+> В Objective-C `nil` - это указатель на несуществующий объект. 
+> В Swift `nil` не является указателем - это отсутствие значения определенного типа.
+> Опционалы любого типа могут быть установлены в `nil`, не только для объектных типов.
 
-### Optional Binding
+### Привязка опционала
 
-You use optional binding to find out whether an optional contains a value,
-and if so, to make that value available as a temporary constant or variable.
-Optional binding can be used with `if`, `guard`, and `while` statements
-to check for a value inside an optional,
-and to extract that value into a constant or variable,
-as part of a single action.
-For more information about `if`, `guard`, and `while` statements,
-see <doc:ControlFlow>.
+Привязка опционала используется для определения, содержит ли опционал значение, 
+и если да, чтобы сделать это значение доступным в виде временной константы или 
+переменной. 
+Привязка опционала может использоваться с операторами `if`, 
+`guard` и `while` для проверки значения внутри опционала и извлечения этого 
+значения в константу или переменную в рамках одного действия. 
+Дополнительные сведения о операторах `if`, `guard` и `while` можно найти 
+в разделе <doc:ControlFlow>.
 
-Write an optional binding for an `if` statement as follows:
+Пример использования привязки опционала в операторе `if`:
 
 ```swift
 if let <#constantName#> = <#someOptional#> {
@@ -1405,17 +1405,17 @@ if let <#constantName#> = <#someOptional#> {
 }
 ```
 
-You can rewrite the `possibleNumber` example from
-the <doc:TheBasics#Optionals> section
-to use optional binding rather than forced unwrapping:
+Вы можете переписать пример с `possibleNumber` из 
+раздела <doc:TheBasics#Опционалы>, 
+используя привязку опционала вместо принудительного развертывания:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
-    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
+    print("Строка \"\(possibleNumber)\" имеет целочисленное значение \(actualNumber)")
 } else {
-    print("The string \"\(possibleNumber)\" couldn't be converted to an integer")
+    print("Строку \"\(possibleNumber)\" нельзя преобразовать в целое число")
 }
-// Prints "The string "123" has an integer value of 123"
+// Выводит "Строка "123" имеет целочисленное значение 123"
 ```
 
 <!--
@@ -1431,31 +1431,31 @@ if let actualNumber = Int(possibleNumber) {
   ```
 -->
 
-This code can be read as:
+Этот код можно прочитать так:
 
-“If the optional `Int` returned by `Int(possibleNumber)` contains a value,
-set a new constant called `actualNumber` to the value contained in the optional.”
+"Если опционал `Int`, возвращаемый `Int(possibleNumber)`, содержит значение, 
+то установит новую константу с именем `actualNumber` в значение, содержащееся в опционале."
 
-If the conversion is successful,
-the `actualNumber` constant becomes available for use within
-the first branch of the `if` statement.
-It has already been initialized with the value contained within the optional,
-and has the corresponding non-optional type.
-In this case, the type of `possibleNumber` is `Int?`,
-so the type of `actualNumber` is `Int`.
+Если преобразование прошло успешно, 
+константа `actualNumber` становится 
+доступной для использования внутри первой ветви оператора `if`. 
+Она уже была инициализирована значением, содержащимся в опционале, 
+и имеет соответствующий неопциональный тип. 
+В данном случае тип `possibleNumber` - это `Int?`, 
+поэтому тип `actualNumber` - это `Int`.
 
-If you don't need to refer to the original, optional constant or variable
-after accessing the value it contains,
-you can use the same name for the new constant or variable:
+Если вам не нужно ссылаться на исходный опциональный объект 
+после доступа к его значению, вы можете использовать то же 
+самое имя для новой константы или переменной:
 
 ```swift
 let myNumber = Int(possibleNumber)
-// Here, myNumber is an optional integer
+// Здесь myNumber является опциональным целым числом
 if let myNumber = myNumber {
-    // Here, myNumber is a non-optional integer
-    print("My number is \(myNumber)")
+    // Здесь myNumber является неопциональным целым числом
+    print("Моё число - \(myNumber)")
 }
-// Prints "My number is 123"
+// Выводит "Моё число - 123"
 ```
 
 <!--
@@ -1463,35 +1463,35 @@ if let myNumber = myNumber {
 
   ```swifttest
   -> let myNumber = Int(possibleNumber)
-  // Here, myNumber is an optional integer
+  // Здесь myNumber является опциональным целым числом
   -> if let myNumber = myNumber {
-         // Here, myNumber is a non-optional integer
-         print("My number is \(myNumber)")
+         // Здесь myNumber является неопциональным целым числом
+         print("Моё число - \(myNumber)")
      }
-  <- My number is 123
+  <- Моё число - 123
   ```
 -->
 
-This code starts by checking whether `myNumber` contains a value,
-just like the code in the previous example.
-If `myNumber` has a value,
-the value of a new constant named `myNumber` is set to that value.
-Inside the body of the `if` statement,
-writing `myNumber` refers to that new non-optional constant.
-Writing `myNumber` before or after the `if` statement
-refers to the original optional integer constant.
+Этот код начинается с проверки того, содержит ли `myNumber` значение, так же, 
+как и код в предыдущем примере. Если `myNumber` содержит значение, 
+значение новой константы с именем `myNumber`, 
+то устанавливается в это значение.
+Внутри тела оператора `if` запись `myNumber` обозначает эту новую неопциональную
+константу. 
+Запись `myNumber` до или после оператора `if` обозначает исходную 
+опциональную константу целого числа.
 
-Because this kind of code is so common,
-you can use a shorter spelling to unwrap an optional value:
-Write just the name of the constant or variable that you're unwrapping.
-The new, unwrapped constant or variable
-implicitly uses the same name as the optional value.
+Поскольку такой код весьма распространен, 
+можно использовать более короткую запись для развертывания опционального значения:
+написать только имя константы или переменной, которую вы разворачиваете. 
+Новая развернутая константа или переменная неявно использует то же имя, 
+что и опциональное значение.
 
 ```swift
 if let myNumber {
-    print("My number is \(myNumber)")
+    print("Моё число - \(myNumber)")
 }
-// Prints "My number is 123"
+// Выводит "Моё число - 123"
 ```
 
 <!--
@@ -1499,36 +1499,36 @@ if let myNumber {
 
   ```swifttest
   -> if let myNumber {
-         print("My number is \(myNumber)")
+         print("Моё число - \(myNumber)")
      }
-  <- My number is 123
+  <- Моё число - 123
   ```
 -->
 
-You can use both constants and variables with optional binding.
-If you wanted to manipulate the value of `myNumber`
-within the first branch of the `if` statement,
-you could write `if var myNumber` instead,
-and the value contained within the optional
-would be made available as a variable rather than a constant.
-Changes you make to `myNumber` inside the body of the `if` statement
-apply only to that local variable,
-*not* to the original, optional constant or variable that you unwrapped.
+Вы можете использовать как константы, 
+так и переменные с привязкой опционала. 
+Если вы хотите изменить значение `myNumber` внутри первой ветви оператора `if`, 
+вы можете написать `if var myNumber` вместо этого, 
+и значение, содержащееся в опционале, 
+будет доступно в виде переменной, 
+а не константы. 
+Изменения, внесенные в `myNumber` внутри тела оператора `if`, 
+применяются только к этой локальной переменной, 
+а *не* к исходному опциональному значению. 
 
-You can include as many optional bindings and Boolean conditions
-in a single `if` statement as you need to,
-separated by commas.
-If any of the values in the optional bindings are `nil`
-or any Boolean condition evaluates to `false`,
-the whole `if` statement's condition
-is considered to be `false`.
-The following `if` statements are equivalent:
+Вы можете включить в один оператор `if` 
+столько привязок опционала и логических 
+условий, сколько вам нужно, разделяя их запятыми. 
+Если хотя бы одно из значений в привязках опционала равно `nil` или любое 
+логическое условие оценивается как `false`, условие всего оператора `if` 
+считается ложным. 
+Следующие операторы `if` эквивалентны:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
     print("\(firstNumber) < \(secondNumber) < 100")
 }
-// Prints "4 < 42 < 100"
+// Выводит "4 < 42 < 100"
 
 if let firstNumber = Int("4") {
     if let secondNumber = Int("42") {
@@ -1537,7 +1537,7 @@ if let firstNumber = Int("4") {
         }
     }
 }
-// Prints "4 < 42 < 100"
+// Выводит "4 < 42 < 100"
 ```
 
 <!--
@@ -1561,36 +1561,36 @@ if let firstNumber = Int("4") {
 -->
 
 <!--
-  The example above uses multiple optional bindings
-  to show that you can have more than one
-  and to show the short-circuiting behavior.
-  It has multiple Boolean conditions
-  to show that you should join logically related conditions
-  using the && operator instead of a comma.
+  Приведенный выше пример использует несколько привязок опционала,
+  чтобы показать, что их может быть больше одной,
+  и чтобы показать поведение короткого замыкания.
+  В нем также используются несколько логических условий,
+  чтобы показать, что лучше объединять логически связанные условия
+  с использованием оператора && вместо запятой.
 -->
 
-Constants and variables created with optional binding in an `if` statement
-are available only within the body of the `if` statement.
-In contrast, the constants and variables created with a `guard` statement
-are available in the lines of code that follow the `guard` statement,
-as described in <doc:ControlFlow#Early-Exit>.
+Константы и переменные, созданные с использованием привязки опционала в 
+операторе `if`, доступны только внутри тела оператора `if`. 
+В отличие от этого константы и переменные, 
+созданные с использованием оператора `guard`, доступны в строках кода, следующих 
+за оператором `guard`, как описано в разделе <doc:ControlFlow#Early-Exit>.
 
-### Providing a Fallback Value
+### Предоставление значений по умолчанию
 
-Another way to handle a missing value is to supply
-a default value using the nil-coalescing operator (`??`).
-If the optional on the left of the `??` isn't `nil`,
-that value is unwrapped and used.
-Otherwise, the value on the right of `??` is used.
-For example,
-the code below greets someone by name if one is specified,
-and uses a generic greeting when the name is `nil`.
+Еще один способ обработки отсутствующего значения - предоставление значения по 
+умолчанию с использованием оператора объединения по нулю (`??`). 
+Если опционал слева от `??` не является `nil`, 
+то это значение извлекается и используется. 
+В противном случае используется значение справа от `??`. 
+Например, 
+приведенный ниже код приветствует человека по имени, если имя указано, 
+и использует обобщенное приветствие, когда имя равно `nil`.
 
 ```swift
 let name: String? = nil
 let greeting = "Hello, " + (name ?? "friend") + "!"
 print(greeting)
-// Prints "Hello, friend!"
+// Выводит "Hello, friend!"
 ```
 
 <!--
@@ -1604,22 +1604,22 @@ print(greeting)
    ```
 -->
 
-For more information about using `??` to provide a fallback value,
-see <doc:BasicOperators#Nil-Coalescing-Operator>.
+Дополнительную информацию о использовании `??` для предоставления значения 
+по умолчанию см. в разделе <doc:BasicOperators#Nil-Coalescing-Operator>.
 
-### Force Unwrapping
+### Принудительное извлечение
 
-When `nil` represents an unrecoverable failure,
-such as a programmer error or corrupted state,
-you can access the underlying value
-by adding an exclamation mark (`!`) to the end of the optional's name.
-This is known as *force unwrapping* the optional's value.
-When you force unwrap a non-`nil` value,
-the result is its unwrapped value.
-Force unwrapping a `nil` value triggers a runtime error.
+Когда `nil` представляет собой неустранимую ошибку, 
+такую как ошибка программиста или поврежденное состояние, 
+можно получить доступ к базовому значению, 
+добавив восклицательный знак (`!`) в конец имени опционала. 
+Это известно как *принудительное извлечение* значения опционала. 
+Когда вы принудительно извлекаете значение, не являющееся `nil`, 
+результатом является его извлеченное значение. 
+Принудительное извлечение значения `nil` вызывает ошибку времени выполнения.
 
-The `!` is, effectively, a shorter spelling of [`fatalError(_:file:line:)`][].
-For example, the code below shows two equivalent approaches:
+Символ `!` является, по сути, более короткой записью [`fatalError(_:file:line:)`][].
+Например, приведенный ниже код показывает два эквивалентных подхода:
 
 [`fatalError(_:file:line:)`]: https://developer.apple.com/documentation/swift/fatalerror(_:file:line:)
 
@@ -1634,60 +1634,60 @@ guard let number = convertedNumber else {
 }
 ```
 
-Both versions of the code above depend on `convertedNumber`
-always containing a value.
-Writing that requirement as part of the code,
-using either of the approaches above,
-lets your code check that the requirement is true at runtime.
+Обе версии кода выше зависят от того, 
+что `convertedNumber` всегда содержит значение. 
+Запись этого требования в коде с использованием 
+любого из приведенных выше подходов позволяет 
+вашему коду проверять, что требование выполняется на этапе выполнения.
 
-For more information about enforcing data requirements
-and checking assumptions at runtime,
-see <doc:TheBasics#Assertions-and-Preconditions>.
+Дополнительную информацию о обеспечении требований к 
+данным и проверке предположений на этапе выполнения 
+см. в разделе <doc:TheBasics#Утверждения-и-предусловия>.
 
-### Implicitly Unwrapped Optionals
+### Неявно извлеченные опционалы
 
-As described above,
-optionals indicate that a constant or variable is allowed to have “no value”.
-Optionals can be checked with an `if` statement to see if a value exists,
-and can be conditionally unwrapped with optional binding
-to access the optional's value if it does exist.
+Как описано выше, опционалы указывают, что константа или переменная может иметь
+«нет значения». Опционалы могут быть проверены с использованием оператора `if`, 
+чтобы увидеть, существует ли значение, и могут быть условно распакованы с 
+использованием привязки опционала для доступа к значению опционала, 
+если оно существует.
 
-Sometimes it's clear from a program's structure that an optional will *always* have a value,
-after that value is first set.
-In these cases, it's useful to remove the need
-to check and unwrap the optional's value every time it's accessed,
-because it can be safely assumed to have a value all of the time.
+Иногда из структуры программы ясно, что опционал *всегда* будет содержать 
+значение после того, как это значение будет установлено в первый раз. 
+В этих случаях полезно избавиться от необходимости проверки и распаковки значения
+опционала при каждом его доступе, потому что можно безопасно предположить, 
+что значение всегда существует.
 
-These kinds of optionals are defined as *implicitly unwrapped optionals*.
-You write an implicitly unwrapped optional by placing an exclamation point (`String!`)
-rather than a question mark (`String?`) after the type that you want to make optional.
-Rather than placing an exclamation point after the optional's name when you use it,
-you place an exclamation point after the optional's type when you declare it.
+Такие опционалы определяются как *неявно извлеченные опционалы*. Вы создаете 
+неявно извлеченный опционал, поместив восклицательный знак (`String!`) вместо
+вопросительного знака (`String?`) после типа, который вы хотите сделать опциональным. 
+Вместо того чтобы помещать восклицательный знак после имени опционала при его
+использовании, вы помещаете восклицательный знак после типа опционала при его объявлении.
 
-Implicitly unwrapped optionals are useful when
-an optional's value is confirmed to exist immediately after the optional is first defined
-and can definitely be assumed to exist at every point thereafter.
-The primary use of implicitly unwrapped optionals in Swift is during class initialization,
-as described in <doc:AutomaticReferenceCounting#Unowned-References-and-Implicitly-Unwrapped-Optional-Properties>.
+Неявно извлеченные опционалы полезны, когда значение опционала подтверждается 
+наличием сразу после того, как опционал впервые определен, и можно определенно
+предположить, что оно существует на любом этапе дальнейшего выполнения.
+Основное использование неявно распакованных опционалов в Swift - во время инициализации класса, как описано 
+в разделе <doc:AutomaticReferenceCounting#Unowned-References-and-Implicitly-Unwrapped-Optional-Properties>.
 
-Don't use an implicitly unwrapped optional when there's a possibility of
-a variable becoming `nil` at a later point.
-Always use a normal optional type if you need to check for a `nil` value
-during the lifetime of a variable.
+Не используйте неявно извлеченный опционал, если есть возможность того, 
+что переменная станет равной `nil` позже. 
+Всегда используйте обычный тип опционала, если вам нужно проверить наличие 
+значения `nil` в течение времени жизни переменной.
 
-An implicitly unwrapped optional is a normal optional behind the scenes,
-but can also be used like a non-optional value,
-without the need to unwrap the optional value each time it's accessed.
-The following example shows the difference in behavior between
-an optional string and an implicitly unwrapped optional string
-when accessing their wrapped value as an explicit `String`:
+Неявно извлеченный опционал - это обычный опционал на уровне реализации, 
+но также может использоваться как обычное значение без необходимости 
+распаковывать значение опционала при каждом доступе. 
+В следующем примере показано различие в поведении между опциональной строкой и 
+неявно распакованной опциональной строкой при доступе к их упакованному значению 
+как явному `String`:
 
 ```swift
 let possibleString: String? = "An optional string."
-let forcedString: String = possibleString! // Requires explicit unwrapping
+let forcedString: String = possibleString! // Требуется явное извлечение
 
 let assumedString: String! = "An implicitly unwrapped optional string."
-let implicitString: String = assumedString // Unwrapped automatically
+let implicitString: String = assumedString // Автоматическое извлечение
 ```
 
 <!--
@@ -1695,29 +1695,29 @@ let implicitString: String = assumedString // Unwrapped automatically
 
   ```swifttest
   -> let possibleString: String? = "An optional string."
-  -> let forcedString: String = possibleString! // requires an exclamation point
+  -> let forcedString: String = possibleString! // требуется восклицательный знак
 
   -> let assumedString: String! = "An implicitly unwrapped optional string."
-  -> let implicitString: String = assumedString // no need for an exclamation point
+  -> let implicitString: String = assumedString // восклицательный знак не требуется
   ```
 -->
 
-You can think of an implicitly unwrapped optional as
-giving permission for the optional to be force-unwrapped if needed.
-When you use an implicitly unwrapped optional value,
-Swift first tries to use it as an ordinary optional value;
-if it can't be used as an optional, Swift force-unwraps the value.
-In the code above,
-the optional value `assumedString` is force-unwrapped
-before assigning its value to `implicitString`
-because `implicitString` has an explicit, non-optional type of `String`.
-In code below,
-`optionalString` doesn't have an explicit type
-so it's an ordinary optional.
+Вы можете рассматривать неявно развернутый опционал как разрешение для опционала
+быть принудительно развернутым, если это необходимо. 
+Когда вы используете значение неявно извлеченного опционала, 
+Swift сначала пытается использовать его как обычное опциональное значение; 
+если его нельзя использовать как опционал, Swift принудительно извлекает 
+значение. 
+В приведенном выше коде опциональное значение `assumedString` 
+принудительно извлекается перед присвоением его значения `implicitString`, 
+потому что `implicitString` имеет явный, 
+неопциональный тип `String`. 
+В коде ниже `optionalString` не имеет явного типа, 
+поэтому это обычный опционал.
 
 ```swift
 let optionalString = assumedString
-// The type of optionalString is "String?" and assumedString isn't force-unwrapped.
+// Тип optionalString - "String?", и assumedString не принудительно развёрнут.
 ```
 
 <!--
@@ -1725,25 +1725,25 @@ let optionalString = assumedString
 
   ```swifttest
   -> let optionalString = assumedString
-  // The type of optionalString is "String?" and assumedString isn't force-unwrapped.
+  // Тип optionalString - "String?", и assumedString не принудительно развёрнут.
   >> print(type(of: optionalString))
   << Optional<String>
   ```
 -->
 
-If an implicitly unwrapped optional is `nil` and you try to access its wrapped value,
-you'll trigger a runtime error.
-The result is exactly the same as if you write an exclamation point
-to force unwrap a normal optional that doesn't contain a value.
+Если неявно извлеченный опционал равен `nil`, и вы пытаетесь получить доступ к его извлеченому значению,
+вы вызовете ошибку времени выполнения.
+Результат будет таким же, как если бы вы написали восклицательный знак,
+принудительно извелекая обычный опционал, который не содержит значения.
 
-You can check whether an implicitly unwrapped optional is `nil`
-the same way you check a normal optional:
+Вы можете проверить, является ли неявно извлеченный опционал `nil`,
+так же, как и обычный опционал:
 
 ```swift
 if assumedString != nil {
     print(assumedString!)
 }
-// Prints "An implicitly unwrapped optional string."
+// Вывод: "An implicitly unwrapped optional string."
 ```
 
 <!--
@@ -1757,14 +1757,14 @@ if assumedString != nil {
   ```
 -->
 
-You can also use an implicitly unwrapped optional with optional binding,
-to check and unwrap its value in a single statement:
+Также можно использовать неявно извлеченный опционал с опциональным связыванием,
+чтобы проверить и развернуть его значение в единственном выражении:
 
 ```swift
 if let definiteString = assumedString {
     print(definiteString)
 }
-// Prints "An implicitly unwrapped optional string."
+// Вывод: "An implicitly unwrapped optional string."
 ```
 
 <!--
@@ -1778,23 +1778,23 @@ if let definiteString = assumedString {
   ```
 -->
 
-## Error Handling
+## Обработка ошибок
 
-You use *error handling* to respond to error conditions
-your program may encounter during execution.
+Вы используете *обработку ошибок* для реагирования на условия ошибок, 
+которые ваша программа может встретить во время выполнения.
 
-In contrast to optionals,
-which can use the presence or absence of a value
-to communicate success or failure of a function,
-error handling allows you to determine the underlying cause of failure,
-and, if necessary, propagate the error to another part of your program.
+В отличие от опционалов, 
+которые могут использовать наличие или отсутствие значения для передачи 
+успешного или неудачного выполнения функции, 
+обработка ошибок позволяет вам определить основную причину ошибки и, 
+при необходимости, передавать ошибку в другую часть вашей программы.
 
-When a function encounters an error condition, it *throws* an error.
-That function's caller can then *catch* the error and respond appropriately.
+Когда функция сталкивается с условием ошибки, она *вызывает* ошибку. 
+Затем вызывающая функция может *перехватить* ошибку и соответственно отреагировать.
 
 ```swift
 func canThrowAnError() throws {
-    // this function may or may not throw an error
+    // Эта функция может вызвать ошибку или не вызвать
 }
 ```
 
@@ -1807,7 +1807,7 @@ func canThrowAnError() throws {
   >> }
   >> let condition = true
   -> func canThrowAnError() throws {
-        // this function may or may not throw an error
+        // Эта функция может вызвать ошибку или не вызвать
   >>    if condition {
   >>       throw SimpleError.someError
   >>    }
@@ -1815,20 +1815,20 @@ func canThrowAnError() throws {
   ```
 -->
 
-A function indicates that it can throw an error
-by including the `throws` keyword in its declaration.
-When you call a function that can throw an error,
-you prepend the `try` keyword to the expression.
+Функция указывает, что она может вызвать ошибку, включив ключевое слово `throws`
+в своем объявлении. 
+При вызове функции, которая может вызвать ошибку, вы добавляете ключевое слово 
+`try` перед выражением.
 
-Swift automatically propagates errors out of their current scope
-until they're handled by a `catch` clause.
+Swift автоматически передает ошибки из их текущей области видимости до тех пор, 
+пока они не будут обработаны в блоке `catch`.
 
 ```swift
 do {
     try canThrowAnError()
-    // no error was thrown
+    // Ошибки не возникло
 } catch {
-    // an error was thrown
+    // Была вызвана ошибка
 }
 ```
 
@@ -1839,20 +1839,20 @@ do {
   -> do {
   ->    try canThrowAnError()
   >>    print("No Error")
-  ->    // no error was thrown
+  ->    // Ошибки не возникло
   -> } catch {
   >>    print("Error")
-  ->    // an error was thrown
+  ->    // Была вызвана ошибка
   -> }
   << Error
   ```
 -->
 
-A `do` statement creates a new containing scope,
-which allows errors to be propagated to one or more `catch` clauses.
+Оператор `do` создает новую область видимости, что позволяет ошибкам 
+передаваться в один или несколько блоков `catch`.
 
-Here's an example of how error handling can be used
-to respond to different error conditions:
+Вот пример того, как обработка ошибок может быть использована для реагирования 
+на различные условия ошибок:
 
 ```swift
 func makeASandwich() throws {
@@ -1895,106 +1895,106 @@ do {
   ```
 -->
 
-In this example, the `makeASandwich()` function will throw an error
-if no clean dishes are available
-or if any ingredients are missing.
-Because `makeASandwich()` can throw an error,
-the function call is wrapped in a `try` expression.
-By wrapping the function call in a `do` statement,
-any errors that are thrown will be propagated
-to the provided `catch` clauses.
+В этом примере функция `makeASandwich()` будет вызывать ошибку, 
+если нет чистой посуды или если какие-то ингредиенты отсутствуют. 
+Поскольку `makeASandwich()` 
+может вызвать ошибку, 
+вызов функции обернут в выражение `try`. 
+Обернув вызов функции в оператор `do`, 
+любые ошибки, которые возникнут, 
+будут переданы в предоставленные блоки `catch`.
 
-If no error is thrown, the `eatASandwich()` function is called.
-If an error is thrown and it matches the `SandwichError.outOfCleanDishes` case,
-then the `washDishes()` function will be called.
-If an error is thrown and it matches the `SandwichError.missingIngredients` case,
-then the `buyGroceries(_:)` function is called
-with the associated `[String]` value captured by the `catch` pattern.
+Если ошибок не возникло, вызывается функция `eatASandwich()`. 
+Если произошла ошибка и она соответствует случаю `SandwichError.outOfCleanDishes`, 
+то вызывается функция `washDishes()`. 
+Если произошла ошибка и она соответствует случаю `SandwichError.missingIngredients`, 
+то вызывается функция `buyGroceries(_:)` с ассоциированным значением `[String]`,
+полученным сопоставлением с шаблоном `catch`.
 
-Throwing, catching, and propagating errors is covered in greater detail in
-<doc:ErrorHandling>.
+Генерация, перехват и передача ошибок подробно описаны 
+в разделе <doc:ErrorHandling>.
 
-## Assertions and Preconditions
+## Утверждения и предусловия
 
-*Assertions* and *preconditions*
-are checks that happen at runtime.
-You use them to make sure an essential condition is satisfied
-before executing any further code.
-If the Boolean condition in the assertion or precondition
-evaluates to `true`,
-code execution continues as usual.
-If the condition evaluates to `false`,
-the current state of the program is invalid;
-code execution ends, and your app is terminated.
+*Утверждения* и *предусловия* - 
+это проверки, выполняемые во время выполнения. 
+Вы используете их, чтобы удостовериться, 
+что существенное условие выполнено перед выполнением дальнейшего кода. 
+Если булево условие в утверждении или 
+предусловии оценивается как `true`, 
+выполнение кода продолжается как обычно. 
+Если условие оценивается как `false`, 
+текущее состояние программы недействительно; 
+выполнение кода завершается, и ваше приложение завершается.
 
-You use assertions and preconditions
-to express the assumptions you make
-and the expectations you have
-while coding,
-so you can include them as part of your code.
-Assertions help you find mistakes and incorrect assumptions during development,
-and preconditions help you detect issues in production.
+Вы используете утверждения и предусловия, 
+чтобы выражать предположения и ожидания, 
+которые у вас есть при написании кода, 
+поэтому их можно включать в состав вашего кода. 
+Утверждения помогают выявлять ошибки и неверные 
+предположения во время разработки, 
+а предусловия помогают выявлять проблемы в производстве.
 
-In addition to verifying your expectations at runtime,
-assertions and preconditions also become a useful form of documentation
-within the code.
-Unlike the error conditions discussed in <doc:TheBasics#Error-Handling> above,
-assertions and preconditions aren't used
-for recoverable or expected errors.
-Because a failed assertion or precondition
-indicates an invalid program state,
-there's no way to catch a failed assertion.
-Recovering from an invalid state is impossible.
-When an assertion fails,
-at least one piece of the program's data is invalid ---
-but you don't know why it's invalid
-or whether an additional state is also invalid.
+Помимо проверки ожиданий во время выполнения, 
+утверждения и предусловия также становятся полезной формой 
+документации в коде. 
+В отличие от условий ошибок, рассмотренных в разделе выше
+<doc:TheBasics#Обработка-ошибок> , утверждения и предусловия не используются для
+восстановимых или ожидаемых ошибок. 
+Поскольку неудачное утверждение или 
+предусловие указывает на недействительное 
+состояние программы, нет способа перехватить неудавшееся утверждение. 
+Восстановление из недействительного состояния невозможно. 
+Когда утверждение не выполняется, 
+хотя бы один элемент данных программы является
+недействительным, но вы не знаете, 
+почему он недействителен или является ли еще какое-то состояние недействительным.
 
-Using assertions and preconditions
-isn't a substitute for designing your code in such a way
-that invalid conditions are unlikely to arise.
-However,
-using them to enforce valid data and state
-causes your app to terminate more predictably
-if an invalid state occurs,
-and helps make the problem easier to debug.
-When assumptions aren't checked,
-you might not notice this kind problem until much later
-when code elsewhere starts failing visibly,
-and after user data has been silently corrupted.
-Stopping execution as soon as an invalid state is detected
-also helps limit the damage caused by that invalid state.
+Использование утверждений и предусловия
+не заменяет разработку вашего кода таким образом, 
+чтобы маловероятно возникновение недопустимых условий.  
+Однако 
+использование их для обеспечения действительных данных и состояния 
+приводит к более предсказуемому завершению вашего приложения, 
+если возникает недействительное состояние, 
+и помогает упростить отладку проблемы. 
+Когда предположения не проверяются, 
+вы можете не заметить эту 
+проблему до гораздо позднего времени, 
+когда код в другом месте начнет вызывать заметные сбои, 
+и после того, 
+как пользовательские данные будут молча повреждены.
 
-The difference between assertions and preconditions is in when they're checked:
-Assertions are checked only in debug builds,
-but preconditions are checked in both debug and production builds.
-In production builds,
-the condition inside an assertion isn't evaluated.
-This means you can use as many assertions as you want
-during your development process,
-without impacting performance in production.
+Различие между утверждениями и предусловиями заключается в том, когда они проверяются:
+утверждения проверяются только в отладочных сборках, 
+а предусловия проверяются как в отладочных, 
+так и в продукционных сборках. 
+В продукционных сборках условие внутри утверждения не оценивается. 
+Это означает, 
+что вы можете использовать столько утверждений, сколько хотите, 
+в процессе разработки, не влияя на производительность в продакшене.
 
-### Debugging with Assertions
+### Отладка с использованием утверждений
 
 <!--
-  If your code triggers an assertion while running in a debug environment,
-  such as when you build and run an app in Xcode,
-  you can see exactly where the invalid state occurred
-  and query the state of your app at the time that the assertion was triggered.
-  An assertion also lets you provide a suitable debug message as to the nature of the assert.
+  Если ваш код вызывает утверждение во время выполнения в отладочной среде,
+  например, при построении и запуске приложения в Xcode,
+  вы можете точно узнать, где произошло недействительное состояние,
+  и проверить состояние вашего приложения в момент срабатывания утверждения.
+  Утверждение также позволяет предоставить подходящее отладочное сообщение о характере утверждения.
 -->
 
-You write an assertion by calling the
-[`assert(_:_:file:line:)`](https://developer.apple.com/documentation/swift/1541112-assert) function
-from the Swift standard library.
-You pass this function an expression that evaluates to `true` or `false`
-and a message to display if the result of the condition is `false`.
-For example:
+Утверждение создается с помощью вызова функции
+[`assert(_:_:file:line:)`](https://developer.apple.com/documentation/swift/1541112-assert) 
+из стандартной библиотеки Swift. 
+Вы передаете этой функции выражение, которое оценивается как `true` или `false`,
+и сообщение для отображения в случае, если результат условия - `false`. 
+Например:
 
 ```swift
 let age = -3
-assert(age >= 0, "A person's age can't be less than zero.")
-// This assertion fails because -3 isn't >= 0.
+assert(age >= 0, "Возраст человека не может быть меньше нуля.")
+// Это утверждение не выполняется, потому что -3 не >= 0.
 ```
 
 <!--
@@ -2002,20 +2002,20 @@ assert(age >= 0, "A person's age can't be less than zero.")
 
   ```swifttest
   -> let age = -3
-  -> assert(age >= 0, "A person's age can't be less than zero.")
+  -> assert(age >= 0, "Возраст человека не может быть меньше нуля.")
   xx assert
-  // This assertion fails because -3 isn't >= 0.
+  // Это утверждение не выполняется, потому что -3 не >= 0.
   ```
 -->
 
-In this example, code execution continues if `age >= 0` evaluates to `true`,
-that is, if the value of `age` is nonnegative.
-If the value of `age` is negative, as in the code above,
-then `age >= 0` evaluates to `false`,
-and the assertion fails, terminating the application.
+В этом примере выполнение кода продолжается, если `age >= 0` оценивается как `true`, 
+то есть, если значение `age` неотрицательно. 
+Если значение `age` отрицательно, как в приведенном выше коде, 
+то `age >= 0` оценивается как `false`, 
+и утверждение не выполняется, завершая приложение.
 
-You can omit the assertion message ---
-for example, when it would just repeat the condition as prose.
+Вы можете опустить сообщение утверждения --- 
+например, когда оно просто повторяет условие в виде текста.
 
 ```swift
 assert(age >= 0)
@@ -2041,19 +2041,19 @@ assert(age >= 0)
   ```
 -->
 
-If the code already checks the condition,
-you use the
-[`assertionFailure(_:file:line:)`](https://developer.apple.com/documentation/swift/1539616-assertionfailure) function
-to indicate that an assertion has failed.
-For example:
+Если код уже проверяет условие, 
+вы используете функцию
+[`assertionFailure(_:file:line:)`](https://developer.apple.com/documentation/swift/1539616-assertionfailure), 
+чтобы указать, что утверждение не выполнено. 
+Например:
 
 ```swift
 if age > 10 {
-    print("You can ride the roller-coaster or the ferris wheel.")
+    print("Вы можете поехать на американские горки или колесо обозрения.")
 } else if age >= 0 {
-    print("You can ride the ferris wheel.")
+    print("Вы можете поехать на колесо обозрения.")
 } else {
-    assertionFailure("A person's age can't be less than zero.")
+    assertionFailure("Возраст человека не может быть меньше нуля.")
 }
 ```
 
@@ -2063,32 +2063,32 @@ if age > 10 {
   ```swifttest
   >> let age = -3
   -> if age > 10 {
-         print("You can ride the roller-coaster or the ferris wheel.")
+         print("Вы можете поехать на американские горки или колесо обозрения.")
      } else if age >= 0 {
-         print("You can ride the ferris wheel.")
+         print("Вы можете поехать на колесо обозрения.")
      } else {
-         assertionFailure("A person's age can't be less than zero.")
+         assertionFailure("Возраст человека не может быть меньше нуля.")
      }
   xx assert
   ```
 -->
 
-### Enforcing Preconditions
+### Соблюдение предусловий
 
-Use a precondition whenever a condition has the potential to be false,
-but must *definitely* be true for your code to continue execution.
-For example, use a precondition to check that a subscript isn't out of bounds,
-or to check that a function has been passed a valid value.
+Используйте предусловие, когда условие может быть ложным, 
+но *обязательно* должно быть истинным для продолжения выполнения вашего кода. 
+Например, используйте предусловие для проверки того, что индекс не выходит за 
+пределы массива, или для проверки того, что функции передано допустимое значение.
 
-You write a precondition by calling the
-[`precondition(_:_:file:line:)`](https://developer.apple.com/documentation/swift/1540960-precondition) function.
-You pass this function an expression that evaluates to `true` or `false`
-and a message to display if the result of the condition is `false`.
-For example:
+Предусловие создается с использованием функции
+[`precondition(_:_:file:line:)`](https://developer.apple.com/documentation/swift/1540960-precondition). 
+Вы передаете этой функции выражение, которое оценивается как `true` или `false`, 
+и сообщение для отображения в случае, если результат условия - `false`. 
+Например:
 
 ```swift
-// In the implementation of a subscript...
-precondition(index > 0, "Index must be greater than zero.")
+// В реализации подскрипта...
+precondition(index > 0, "Индекс должен быть больше нуля.")
 ```
 
 <!--
@@ -2096,63 +2096,63 @@ precondition(index > 0, "Index must be greater than zero.")
 
   ```swifttest
   >> let index = -1
-  // In the implementation of a subscript...
-  -> precondition(index > 0, "Index must be greater than zero.")
+  // В реализации подскрипта...
+  -> precondition(index > 0, "Индекс должен быть больше нуля.")
   xx assert
   ```
 -->
 
-You can also call the
-[`preconditionFailure(_:file:line:)`](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) function
-to indicate that a failure has occurred ---
-for example, if the default case of a switch was taken,
-but all valid input data should have been handled
-by one of the switch's other cases.
+Вы также можете вызвать функцию
+[`preconditionFailure(_:file:line:)`](https://developer.apple.com/documentation/swift/1539374-preconditionfailure), 
+чтобы указать, что произошел сбой --- 
+например, если был взят дефолтный случай `switch`, 
+но все допустимые входные данные должны были быть 
+обработаны одним из других случаев `switch`.
 
-> Note: If you compile in unchecked mode (`-Ounchecked`),
-> preconditions aren't checked.
-> The compiler assumes that preconditions are always true,
-> and it optimizes your code accordingly.
-> However, the `fatalError(_:file:line:)` function always halts execution,
-> regardless of optimization settings.
->
-> You can use the `fatalError(_:file:line:)` function
-> during prototyping and early development
-> to create stubs for functionality that hasn't been implemented yet,
-> by writing `fatalError("Unimplemented")` as the stub implementation.
-> Because fatal errors are never optimized out,
-> unlike assertions or preconditions,
-> you can be sure that execution always halts
-> if it encounters a stub implementation.
+> Примечание: Если вы компилируете в режиме без проверок (`-Ounchecked`), 
+> предусловия не проверяются. Компилятор предполагает, 
+> что предусловия всегда истинны, 
+> и оптимизирует ваш код соответственно. 
+> Однако функция `fatalError(_:file:line:)` всегда завершает выполнение, 
+> независимо от настроек оптимизации. 
+
+> Вы можете использовать функцию
+> `fatalError(_:file:line:)` во время прототипирования и ранней разработки для
+> создания заглушек для функциональности, 
+> которая еще не реализована, 
+> написав `fatalError("Не реализовано")` в качестве заглушки. 
+> Поскольку фатальные ошибки никогда не устраняются, 
+> в отличие от утверждений или предусловий, вы можете быть уверены, 
+> что выполнение всегда прекратится, если встретится заглушка.
 
 <!--
-  "\ " in the first cell below lets it be empty.
-  Otherwise RST treats the row as a continuation.
+  "\ " в первой ячейке ниже позволяет оставить ее пустой.
+  В противном случае RST рассматривает строку как продолжение.
 
   ============ =====  ==========  ===============================
   \            Debug  Production  Production with ``-Ounchecked``
   ============ =====  ==========  ===============================
-  Assertion    Yes    No          No
+  Assertion    Да     Нет         Нет
   ------------ -----  ----------  -------------------------------
-  Precondition Yes    Yes         No
+  Precondition Да     Да          Нет
   ------------ -----  ----------  -------------------------------
-  Fatal Error  Yes    Yes         Yes
+  Fatal Error  Да     Да          Да
   ============ =====  ==========  ===============================
 -->
 
 <!--
-  TODO: In Xcode, can you set a breakpoint on assertion/precondition failure?
-  If so, mention that fact and give a link to a guide that shows you how.
-  In LLDB, 'breakpoint set -E swift' catches when errors are thrown,
-  but doesn't stop at assertions.
+  TODO: В Xcode можно установить точку останова на сбое утверждения/предусловия?
+  Если да, укажите на это и предоставьте ссылку на руководство, которое покажет 
+  вам, как это сделать. В LLDB 'breakpoint set -E swift' перехватывает ошибки, 
+  но не останавливается на утверждениях.
 -->
 
 <!--
-This source file is part of the Swift.org open source project
+Этот исходный файл является частью проекта с открытым исходным кодом Swift.org
 
-Copyright (c) 2014 - 2022 Apple Inc. and the Swift project authors
-Licensed under Apache License v2.0 with Runtime Library Exception
+Copyright (c) 2014 - 2022 Apple Inc. и авторы проекта Swift
+Лицензия Apache License v2.0 с исключением из библиотеки времени выполнения
 
-See https://swift.org/LICENSE.txt for license information
-See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+См. https://swift.org/LICENSE.txt для информации о лицензии
+См. https://swift.org/CONTRIBUTORS.txt для списка авторов проекта Swift
 -->
